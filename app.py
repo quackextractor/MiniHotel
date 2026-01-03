@@ -186,6 +186,33 @@ def login():
     return jsonify({'message': 'Invalid password', 'WWW-Authenticate': 'Basic realm="Login required!"'}), 401
 
 
+@app.route('/api/auth/change-password', methods=['POST'])
+@token_required
+def change_password(current_user):
+    """Change user password
+    ---
+    responses:
+      200:
+        description: Password changed successfully
+      400:
+        description: Invalid data or wrong current password
+    """
+    data = request.get_json()
+    if not data or not data.get('current_password') or not data.get('new_password'):
+        return jsonify({'message': 'Missing current or new password'}), 400
+        
+    if not bcrypt.checkpw(data['current_password'].encode('utf-8'), current_user.password_hash.encode('utf-8')):
+         return jsonify({'message': 'Invalid current password'}), 401
+         
+    hashed_password = bcrypt.hashpw(data['new_password'].encode('utf-8'), bcrypt.gensalt())
+    current_user.password_hash = hashed_password.decode('utf-8')
+    
+    db.session.commit()
+    log_audit(current_user.id, "CHANGE_PASSWORD", "User changed password")
+    
+    return jsonify({'message': 'Password changed successfully'})
+
+
 @app.route('/api/auth/profile', methods=['PUT'])
 @token_required
 def update_profile(current_user):
