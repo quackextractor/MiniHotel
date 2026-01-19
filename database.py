@@ -3,6 +3,21 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 
+class Event(db.Model):
+    __tablename__ = 'events'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    event_date = db.Column(db.Date, nullable=False)
+    space = db.Column(db.String(100))
+    status = db.Column(db.String(20), default='scheduled')
+    expected_guests = db.Column(db.Integer)
+    created_at = db.Column(db.DateTime, default=db.func.now())
+
+    def __repr__(self):
+        return f'<Event {self.name}>'
+
+
 class RoomGroup(db.Model):
     __tablename__ = 'room_groups'
 

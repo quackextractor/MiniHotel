@@ -14,6 +14,29 @@ class TestMiniHotelAPI(unittest.TestCase):
     def setUp(self):
         """Set up test data before each test"""
         self.session = requests.Session()
+        
+        # Authentication - Use consistent admin credentials
+        auth_data = {'username': 'admin', 'password': 'admin'}
+        
+        # Try login first
+        login_resp = self.session.post(f"{BASE_URL}/auth/login", json=auth_data)
+        
+        if login_resp.status_code != 200:
+            # Try to register if login failed (maybe first run or clean DB)
+            reg_resp = self.session.post(f"{BASE_URL}/auth/register", json=auth_data)
+            
+            if reg_resp.status_code == 201:
+                # Registration successful, login again
+                login_resp = self.session.post(f"{BASE_URL}/auth/login", json=auth_data)
+            else:
+                 print(f"WARNING: Login and Registration failed for admin. DB might require reset. {reg_resp.text}")
+
+        if login_resp.status_code == 200:
+            token = login_resp.json().get('token')
+            self.session.headers['Authorization'] = f"Bearer {token}"
+        else:
+            print("WARNING: Authentication failed for tests. Some tests may fail.")
+
         self.test_guest_data = {
             "first_name": "Test",
             "last_name": "User",

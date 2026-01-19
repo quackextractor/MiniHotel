@@ -13,16 +13,17 @@ def create_app():
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['JSON_SORT_KEYS'] = False
     
-    # Secret Key Handling
-    env_secret = os.getenv('SECRET_KEY')
-    if not env_secret:
-        if app.env == 'production':
+    # Secret Key Configuration
+    app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+    
+    if not app.config['SECRET_KEY']:
+        if os.getenv('FLASK_ENV') == 'production':
             raise RuntimeError("SECRET_KEY must be set in production!")
         else:
             print("WARNING: Using generated secret key. Sessions will not persist across restarts.")
             app.config['SECRET_KEY'] = secrets.token_hex(32)
     else:
-        app.config['SECRET_KEY'] = env_secret
+        pass # The else block is now empty as the assignment is done upfront.
 
     # Initialize extensions
     db.init_app(app)
@@ -45,6 +46,9 @@ def create_app():
     app.register_blueprint(service_bp)
     app.register_blueprint(operations_bp)
     app.register_blueprint(report_bp)
+
+    from routes.event_routes import event_bp
+    app.register_blueprint(event_bp)
 
     # Create tables
     with app.app_context():
