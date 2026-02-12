@@ -101,7 +101,8 @@ def calculate_booking_rate(current_user):
             room_id=data['room_id'],
             check_in_date=check_in,
             check_out_date=check_out,
-            number_of_guests=data.get('number_of_guests', 1)
+            number_of_guests=data.get('number_of_guests', 1),
+            service_ids=data.get('service_ids')
         )
         return jsonify(result)
     except Exception as e:

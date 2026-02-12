@@ -1,11 +1,11 @@
 from datetime import datetime, timedelta
 from flask import jsonify
-from database import db, Room, Booking, Guest, BookingService as BookingServiceModel, SeasonalRate
+from database import db, Room, Booking, Guest, BookingService as BookingServiceModel, SeasonalRate, Service
 from schemas import booking_schema
 
 class BookingService:
     @staticmethod
-    def calculate_rate(room_id, check_in_date, check_out_date, number_of_guests):
+    def calculate_rate(room_id, check_in_date, check_out_date, number_of_guests, service_ids=None):
         room = Room.query.get_or_404(room_id)
         
         # Calculate base rate
@@ -35,12 +35,20 @@ class BookingService:
         if number_of_guests > 2:  # Example: charge 20% more for extra guests
             capacity_multiplier = 1.0 + (number_of_guests - 2) * 0.2
 
-        total_amount = (base_amount + seasonal_adjustment) * capacity_multiplier
+        # Calculate services cost
+        services_total = 0
+        if service_ids:
+            services = Service.query.filter(Service.id.in_(service_ids)).all()
+            for service in services:
+                services_total += service.price
+
+        total_amount = ((base_amount + seasonal_adjustment) * capacity_multiplier) + services_total
 
         return {
             'base_amount': base_amount,
             'seasonal_adjustment': seasonal_adjustment,
             'capacity_multiplier': capacity_multiplier,
+            'services_total': services_total,
             'total_amount': round(total_amount, 2),
             'total_nights': total_nights
         }
@@ -86,6 +94,33 @@ class BookingService:
         )
 
         db.session.add(booking)
+        db.session.flush() # Get ID
+
+        # Add services if provided
+        if 'services' in data and data['services']:
+            for svc_item in data['services']:
+                # Handle both list of IDs and list of objects
+                svc_id = svc_item['service_id'] if isinstance(svc_item, dict) else svc_item
+                quantity = svc_item.get('quantity', 1) if isinstance(svc_item, dict) else 1
+                svc_date = svc_item.get('date') if isinstance(svc_item, dict) else None
+                
+                # Default to check-in date if not specified
+                if not svc_date:
+                    svc_date = booking.check_in
+                else:
+                    try:
+                        svc_date = datetime.strptime(svc_date, '%Y-%m-%d').date()
+                    except:
+                        svc_date = booking.check_in
+
+                booking_service = BookingServiceModel(
+                    booking_id=booking.id,
+                    service_id=svc_id,
+                    quantity=quantity,
+                    date=svc_date
+                )
+                db.session.add(booking_service)
+
         db.session.commit()
 
         return booking
