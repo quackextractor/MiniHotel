@@ -11,9 +11,7 @@ print(f"Using DB at: {db_path}")
 try:
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
-    cursor.execute("ALTER TABLE rooms ADD COLUMN amenities VARCHAR(255) DEFAULT ''")
-    conn.commit()
-    print("Column 'amenities' added successfully.")
+    print("Database fix script run completed.")
 except sqlite3.OperationalError as e:
     print(f"Error: {e}")
 finally:

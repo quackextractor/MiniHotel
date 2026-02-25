@@ -62,8 +62,7 @@ def create_room(current_user):
             capacity=data['capacity'],
             base_rate=data['base_rate'],
             group_id=data.get('group_id') if data.get('group_id') != 0 else None,
-            is_active=data.get('is_active', True),
-            amenities=data.get('amenities', '')
+            is_active=data.get('is_active', True)
         )
 
         db.session.add(room)
@@ -109,8 +108,6 @@ def update_room(current_user, room_id):
         room.group_id = data['group_id'] if data['group_id'] != 0 else None
     if 'is_active' in data:
         room.is_active = data['is_active']
-    if 'amenities' in data:
-        room.amenities = data['amenities']
 
     try:
         db.session.commit()

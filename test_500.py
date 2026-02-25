@@ -15,8 +15,7 @@ if login_resp.status_code == 200:
             "room_number": f"V{int(time.time())}",
             "room_type": "single",
             "capacity": 2,
-            "base_rate": 100.0,
-            "amenities": "wifi"
+            "base_rate": 100.0
         }},
         {"name": "Missing room_type", "data": {
             "room_number": f"M{int(time.time())}",

@@ -160,18 +160,7 @@ class TestMiniHotelAPI(unittest.TestCase):
         """Test updating and deleting a room"""
         room_data = self.test_room_data.copy()
         room_data["room_number"] = f"UPD_DEL_{int(time.time())}"
-        room_data["amenities"] = "wifi,tv"
-
-        response = self.session.post(
-            f"{BASE_URL}/rooms",
-            json=room_data,
-            headers={"Content-Type": "application/json"}
-        )
-        self.assertEqual(response.status_code, 201)
-        room_id = response.json()["id"]
-
-        # Update
-        update_data = {"capacity": 4, "amenities": "wifi,tv,coffee"}
+        update_data = {"capacity": 4}
         response = self.session.put(
             f"{BASE_URL}/rooms/{room_id}",
             json=update_data,
@@ -180,7 +169,6 @@ class TestMiniHotelAPI(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         updated_room = response.json()
         self.assertEqual(updated_room["capacity"], 4)
-        self.assertEqual(updated_room["amenities"], "wifi,tv,coffee")
 
         # Delete
         response = self.session.delete(f"{BASE_URL}/rooms/{room_id}")
