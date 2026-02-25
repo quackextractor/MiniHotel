@@ -42,26 +42,36 @@ def get_room(current_user, room_id):
 def create_room(current_user):
     """Create a new room"""
     data = request.get_json()
+    if not data:
+        return jsonify({'error': 'No data provided'}), 400
+
+    required_fields = ['room_number', 'room_type', 'capacity', 'base_rate']
+    for field in required_fields:
+        if field not in data or data[field] is None or data[field] == "":
+            return jsonify({'error': f'Field "{field}" is required'}), 400
 
     # Check if room number already exists
     if Room.query.filter_by(room_number=data.get('room_number')).first():
-        return jsonify({'error': 'Room number already exists'}), 400
+        return jsonify({'error': f'Room number "{data.get("room_number")}" already exists'}), 400
 
-    room = Room(
-        room_number=data['room_number'],
-        room_type=data['room_type'],
-        description=data.get('description'),
-        capacity=data['capacity'],
-        base_rate=data['base_rate'],
-        group_id=data.get('group_id'),
-        is_active=data.get('is_active', True),
-        amenities=data.get('amenities', '')
-    )
+    try:
+        room = Room(
+            room_number=data['room_number'],
+            room_type=data['room_type'],
+            description=data.get('description'),
+            capacity=data['capacity'],
+            base_rate=data['base_rate'],
+            group_id=data.get('group_id') if data.get('group_id') != 0 else None,
+            is_active=data.get('is_active', True),
+            amenities=data.get('amenities', '')
+        )
 
-    db.session.add(room)
-    db.session.commit()
-
-    return jsonify(room_schema.dump(room)), 201
+        db.session.add(room)
+        db.session.commit()
+        return jsonify(room_schema.dump(room)), 201
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'error': str(e)}), 500
 
 
 @room_bp.route('/api/rooms/<int:room_id>', methods=['PUT'])
@@ -70,29 +80,44 @@ def update_room(current_user, room_id):
     """Update an existing room"""
     room = Room.query.get_or_404(room_id)
     data = request.get_json()
+    if not data:
+        return jsonify({'error': 'No data provided'}), 400
 
-    if 'room_number' in data and data['room_number'] != room.room_number:
-        if Room.query.filter_by(room_number=data['room_number']).first():
-            return jsonify({'error': 'Room number already exists'}), 400
-        room.room_number = data['room_number']
+    if 'room_number' in data:
+        if not data['room_number']:
+             return jsonify({'error': 'Room number cannot be empty'}), 400
+        if data['room_number'] != room.room_number:
+            if Room.query.filter_by(room_number=data['room_number']).first():
+                return jsonify({'error': f'Room number "{data.get("room_number")}" already exists'}), 400
+            room.room_number = data['room_number']
         
     if 'room_type' in data:
+        if not data['room_type']:
+            return jsonify({'error': 'Room type cannot be empty'}), 400
         room.room_type = data['room_type']
     if 'description' in data:
         room.description = data['description']
     if 'capacity' in data:
+        if data['capacity'] is None:
+             return jsonify({'error': 'Capacity cannot be null'}), 400
         room.capacity = data['capacity']
     if 'base_rate' in data:
+        if data['base_rate'] is None:
+            return jsonify({'error': 'Base rate cannot be null'}), 400
         room.base_rate = data['base_rate']
     if 'group_id' in data:
-        room.group_id = data['group_id']
+        room.group_id = data['group_id'] if data['group_id'] != 0 else None
     if 'is_active' in data:
         room.is_active = data['is_active']
     if 'amenities' in data:
         room.amenities = data['amenities']
 
-    db.session.commit()
-    return jsonify(room_schema.dump(room))
+    try:
+        db.session.commit()
+        return jsonify(room_schema.dump(room))
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'error': str(e)}), 500
 
 
 @room_bp.route('/api/rooms/<int:room_id>', methods=['DELETE'])
