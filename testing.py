@@ -491,6 +491,14 @@ class TestMiniHotelAPI(unittest.TestCase):
         )
         self.assertEqual(guest_response.status_code, 201)
 
+        # Create a second guest for update testing
+        guest_data2 = self.test_guest_data.copy()
+        guest_data2["email"] = f"updguest2{int(time.time())}@example.com"
+        guest_response2 = self.session.post(
+            f"{BASE_URL}/guests", json=guest_data2, headers={"Content-Type": "application/json"}
+        )
+        self.assertEqual(guest_response2.status_code, 201)
+
         room_data = self.test_booking_room_data()
         room_data["room_number"] = f"UPDBOOK{int(time.time())}"
         room_response = self.session.post(
@@ -517,6 +525,7 @@ class TestMiniHotelAPI(unittest.TestCase):
 
         # Update the booking (change dates and guests)
         update_data = {
+            "guest_id": guest_response2.json()["id"],
             "check_in": (date.today() + timedelta(days=20)).isoformat(),
             "check_out": (date.today() + timedelta(days=23)).isoformat(),
             "number_of_guests": 2,
@@ -529,6 +538,7 @@ class TestMiniHotelAPI(unittest.TestCase):
         self.assertEqual(update_response.status_code, 200)
         
         updated_booking = update_response.json()
+        self.assertEqual(updated_booking['guest_id'], update_data['guest_id'])
         self.assertEqual(updated_booking['check_out'], update_data['check_out'])
         self.assertEqual(updated_booking['number_of_guests'], 2)
         self.assertEqual(updated_booking['notes'], "Updated notes")

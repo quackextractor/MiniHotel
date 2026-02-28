@@ -133,6 +133,8 @@ class BookingService:
         booking = Booking.query.get_or_404(booking_id)
 
         # Update fields if provided
+        if 'guest_id' in data:
+            booking.guest_id = data['guest_id']
         if 'check_in' in data:
             booking.check_in = datetime.strptime(data['check_in'], '%Y-%m-%d').date()
         if 'check_out' in data:
