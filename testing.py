@@ -420,6 +420,62 @@ class TestMiniHotelAPI(unittest.TestCase):
         self.test_room_id = room_data["id"]
         self.test_booking_id = booking_response["id"]
 
+    def test_update_booking(self):
+        """Test updating an existing booking"""
+        # Create prerequisite data
+        guest_data = self.test_guest_data.copy()
+        guest_data["email"] = f"updguest{int(time.time())}@example.com"
+        guest_response = self.session.post(
+            f"{BASE_URL}/guests", json=guest_data, headers={"Content-Type": "application/json"}
+        )
+        self.assertEqual(guest_response.status_code, 201)
+
+        room_data = self.test_booking_room_data()
+        room_data["room_number"] = f"UPDBOOK{int(time.time())}"
+        room_response = self.session.post(
+            f"{BASE_URL}/rooms", json=room_data, headers={"Content-Type": "application/json"}
+        )
+        self.assertEqual(room_response.status_code, 201)
+
+        # Create initial booking
+        booking_data = {
+            "guest_id": guest_response.json()["id"],
+            "room_id": room_response.json()["id"],
+            "check_in": (date.today() + timedelta(days=20)).isoformat(),
+            "check_out": (date.today() + timedelta(days=22)).isoformat(),
+            "number_of_guests": 1,
+            "status": "confirmed"
+        }
+        
+        create_response = self.session.post(
+            f"{BASE_URL}/bookings", json=booking_data, headers={"Content-Type": "application/json"}
+        )
+        self.assertEqual(create_response.status_code, 201)
+        booking_id = create_response.json()['id']
+        initial_amount = create_response.json()['total_amount']
+
+        # Update the booking (change dates and guests)
+        update_data = {
+            "check_in": (date.today() + timedelta(days=20)).isoformat(),
+            "check_out": (date.today() + timedelta(days=23)).isoformat(),
+            "number_of_guests": 2,
+            "notes": "Updated notes"
+        }
+        
+        update_response = self.session.put(
+            f"{BASE_URL}/bookings/{booking_id}", json=update_data, headers={"Content-Type": "application/json"}
+        )
+        self.assertEqual(update_response.status_code, 200)
+        
+        updated_booking = update_response.json()
+        self.assertEqual(updated_booking['check_out'], update_data['check_out'])
+        self.assertEqual(updated_booking['number_of_guests'], 2)
+        self.assertEqual(updated_booking['notes'], "Updated notes")
+        # Check if amount was recalculated
+        self.assertNotEqual(updated_booking['total_amount'], initial_amount)
+        # 3 days at 100 = 300
+        self.assertEqual(updated_booking['total_amount'], 300.0)
+
     def test_create_booking_invalid_dates(self):
         """Test creating a booking with check-out date before check-in date"""
         guest_data = self.test_guest_data.copy()

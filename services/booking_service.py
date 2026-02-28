@@ -127,3 +127,62 @@ class BookingService:
         db.session.commit()
 
         return booking
+
+    @staticmethod
+    def update_booking(booking_id, data):
+        booking = Booking.query.get_or_404(booking_id)
+
+        # Update fields if provided
+        if 'check_in' in data:
+            booking.check_in = datetime.strptime(data['check_in'], '%Y-%m-%d').date()
+        if 'check_out' in data:
+            booking.check_out = datetime.strptime(data['check_out'], '%Y-%m-%d').date()
+        
+        if booking.check_in >= booking.check_out:
+            raise ValueError('Check-out date must be after check-in date')
+
+        if 'room_id' in data:
+            booking.room_id = data['room_id']
+        if 'number_of_guests' in data:
+            booking.number_of_guests = data['number_of_guests']
+        if 'notes' in data:
+            booking.notes = data['notes']
+        if 'status' in data:
+            booking.status = data['status']
+        if 'payment_status' in data:
+            booking.payment_status = data['payment_status']
+        if 'payment_method' in data:
+            booking.payment_method = data['payment_method']
+        if 'assigned_to' in data:
+            booking.assigned_to = data['assigned_to']
+
+        # Check room availability if dates or room changed and status is not draft/tentative
+        if booking.status not in ['draft', 'tentative']:
+            conflicting_booking = Booking.query.filter(
+                Booking.room_id == booking.room_id,
+                Booking.id != booking.id,
+                Booking.status.in_(['confirmed', 'checked_in', 'pending_payment']),
+                Booking.check_in < booking.check_out,
+                Booking.check_out > booking.check_in
+            ).first()
+
+            if conflicting_booking:
+                raise ValueError('Room not available for the selected dates')
+
+        # Recalculate rate if room, dates, or guests changed
+        if any(k in data for k in ['room_id', 'check_in', 'check_out', 'number_of_guests']):
+            # get current services
+            services = BookingServiceModel.query.filter_by(booking_id=booking.id).all()
+            service_ids = [s.service_id for s in services]
+            
+            rate_info = BookingService.calculate_rate(
+                room_id=booking.room_id,
+                check_in_date=booking.check_in,
+                check_out_date=booking.check_out,
+                number_of_guests=booking.number_of_guests,
+                service_ids=service_ids if service_ids else None
+            )
+            booking.total_amount = rate_info['total_amount']
+
+        db.session.commit()
+        return booking

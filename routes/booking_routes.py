@@ -138,7 +138,23 @@ def update_booking_status(current_user, booking_id):
 
     db.session.commit()
 
+    db.session.commit()
+
     return jsonify(booking_schema.dump(booking))
+
+
+@booking_bp.route('/<int:booking_id>', methods=['PUT'])
+@token_required
+def update_booking(current_user, booking_id):
+    """Update an existing booking"""
+    data = request.get_json()
+    try:
+        booking = BookingService.update_booking(booking_id, data)
+        return jsonify(booking_schema.dump(booking))
+    except ValueError as e:
+        return jsonify({'error': str(e)}), 400
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 
 @booking_bp.route('/<int:booking_id>', methods=['DELETE'])
