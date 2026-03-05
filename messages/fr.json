@@ -256,7 +256,9 @@
             "phone": "Téléphone",
             "address": "Adresse",
             "checkOutBeforeCheckInError": "La date de départ doit être postérieure à la date d'arrivée",
-            "invalidGuestsError": "Le nombre de clients doit être d'au moins 1"
+            "invalidGuestsError": "Le nombre de clients doit être d'au moins 1",
+            "capacityWarningTitle": "Avertissement de capacité",
+            "capacityWarning": "Le nombre de clients ({guests}) dépasse la capacité maximale de la chambre ({capacity}). Veuillez confirmer si cela est intentionnel."
         },
         "status": {
             "draft": "Brouillon",

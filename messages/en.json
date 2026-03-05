@@ -256,7 +256,9 @@
             "phone": "Phone",
             "address": "Address",
             "checkOutBeforeCheckInError": "Check-out date must be after check-in date",
-            "invalidGuestsError": "Number of guests must be at least 1"
+            "invalidGuestsError": "Number of guests must be at least 1",
+            "capacityWarningTitle": "Capacity Warning",
+            "capacityWarning": "The number of guests ({guests}) exceeds the room's maximum capacity ({capacity}). Please confirm if this is intentional."
         },
         "status": {
             "draft": "Draft",

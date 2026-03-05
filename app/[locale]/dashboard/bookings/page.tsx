@@ -305,14 +305,20 @@ export default function BookingsPage() {
                 </DialogFooter>
               </form>
             ) : (
-              <BookingForm
-                rooms={rooms}
-                guests={guests}
-                services={services}
-                onSubmit={handleCreateBookingSubmit}
-                onCancel={() => setIsAddDialogOpen(false)}
-                onGuestCreateClick={() => setShowGuestForm(true)}
-              />
+              <>
+                <DialogHeader>
+                  <DialogTitle>{t("newBooking")}</DialogTitle>
+                  <DialogDescription>{t("createBookingDescription")}</DialogDescription>
+                </DialogHeader>
+                <BookingForm
+                  rooms={rooms}
+                  guests={guests}
+                  services={services}
+                  onSubmit={handleCreateBookingSubmit}
+                  onCancel={() => setIsAddDialogOpen(false)}
+                  onGuestCreateClick={() => setShowGuestForm(true)}
+                />
+              </>
             )}
           </DialogContent>
         </Dialog>

@@ -15,7 +15,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command"
-import { Check, ChevronsUpDown, UserPlus } from "lucide-react"
+import { Check, ChevronsUpDown, UserPlus, AlertTriangle } from "lucide-react"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { cn } from "@/lib/utils"
 
 import { useEnterNavigation } from "@/hooks/use-enter-navigation"
@@ -71,6 +72,10 @@ export function BookingForm({
     const [openGuestPopover, setOpenGuestPopover] = useState(false)
     const [selectedServices, setSelectedServices] = useState<Set<number>>(new Set())
     const [calculatedRate, setCalculatedRate] = useState<number | null>(null)
+    const [capacityWarning, setCapacityWarning] = useState<{ exceeded: boolean; max: number | null }>({
+        exceeded: false,
+        max: null
+    })
 
     const form = useForm<BookingFormValues>({
         resolver: zodResolver(bookingSchema),
@@ -122,6 +127,10 @@ export function BookingForm({
                 service_ids: Array.from(currentSelectedServices),
             })
             setCalculatedRate(result.total_amount || result.calculated_rate)
+            setCapacityWarning({
+                exceeded: !!result.capacity_exceeded,
+                max: result.max_capacity || null
+            })
         } catch (err) {
             console.error("[BookingForm] Error calculating rate:", err)
         }
@@ -291,6 +300,19 @@ export function BookingForm({
                         )}
                     </div>
                 </div>
+
+                {capacityWarning.exceeded && (
+                    <Alert variant="destructive" className="bg-destructive/10 border-destructive">
+                        <AlertTriangle className="size-4" />
+                        <AlertTitle>{t("form.capacityWarningTitle")}</AlertTitle>
+                        <AlertDescription>
+                            {t("form.capacityWarning", {
+                                guests: watchNumberOfGuests,
+                                capacity: capacityWarning.max || 0
+                            })}
+                        </AlertDescription>
+                    </Alert>
+                )}
 
                 {/* Services */}
                 {!isEditing && (

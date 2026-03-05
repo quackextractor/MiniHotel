@@ -256,7 +256,9 @@
             "phone": "Speaker Tube",
             "address": "Home Port",
             "checkOutBeforeCheckInError": "Departure must be after arrival, ye fool",
-            "invalidGuestsError": "Need at least one warm body"
+            "invalidGuestsError": "Need at least one warm body",
+            "capacityWarningTitle": "Tight Squeeze Warning",
+            "capacityWarning": "Avast! There be more souls ({guests}) than hammocks ({capacity}) in this cabin! Confirm if ye want 'em sleeping on top o' each other."
         },
         "status": {
             "draft": "Rough Map",

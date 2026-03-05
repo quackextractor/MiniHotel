@@ -256,7 +256,9 @@
             "phone": "Telefon",
             "address": "Adresa",
             "checkOutBeforeCheckInError": "Datum odjezdu musí být po datu příjezdu",
-            "invalidGuestsError": "Počet hostů musí být alespoň 1"
+            "invalidGuestsError": "Počet hostů musí být alespoň 1",
+            "capacityWarningTitle": "Varování o kapacitě",
+            "capacityWarning": "Počet hostů ({guests}) překračuje maximální kapacitu pokoje ({capacity}). Potvrďte prosím, zda je to úmyslné."
         },
         "status": {
             "draft": "Koncept",

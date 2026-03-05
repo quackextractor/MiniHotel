@@ -256,7 +256,9 @@
             "phone": "Ring Ring",
             "address": "Home",
             "checkOutBeforeCheckInError": "Bai must be after Hi",
-            "invalidGuestsError": "Need at least 1 fren"
+            "invalidGuestsError": "Number of guests must be at least 1",
+            "capacityWarningTitle": "Capacity Warning",
+            "capacityWarning": "The number of guests ({guests}) exceeds the room's maximum capacity ({capacity}). Please confirm if this is intentional."
         },
         "status": {
             "draft": "Scribble",

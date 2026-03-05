@@ -256,7 +256,9 @@
             "phone": "Telefon",
             "address": "Adresse",
             "checkOutBeforeCheckInError": "Das Check-out-Datum muss nach dem Check-in-Datum liegen",
-            "invalidGuestsError": "Die Anzahl der Gäste muss mindestens 1 betragen"
+            "invalidGuestsError": "Die Anzahl der Gäste muss mindestens 1 betragen",
+            "capacityWarningTitle": "Kapazitätswarnung",
+            "capacityWarning": "Die Anzahl der Gäste ({guests}) überschreitet die maximale Kapazität des Zimmers ({capacity}). Bitte bestätigen Sie, ob dies beabsichtigt ist."
         },
         "status": {
             "draft": "Entwurf",

@@ -256,7 +256,9 @@
             "phone": "Farspeaker",
             "address": "Abode",
             "checkOutBeforeCheckInError": "Thine exodus cannot precede thine arrival",
-            "invalidGuestsError": "Prithee, at least one soul must attend"
+            "invalidGuestsError": "Prithee, at least one soul must attend",
+            "capacityWarningTitle": "A Crowded Sanctuary",
+            "capacityWarning": "The number of souls ({guests}) doth exceed the chamber's bounds ({capacity}). Confirm if this be thy true intent."
         },
         "status": {
             "draft": "A Mere Whim",
