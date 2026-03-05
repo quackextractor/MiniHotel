@@ -158,7 +158,8 @@
         "deleteRate": "Preis löschen",
         "rateUpdated": "Preis erfolgreich aktualisiert",
         "rateDeleted": "Preis erfolgreich gelöscht",
-        "deleteConfirmMessage": "Sind Sie sicher, dass Sie diesen Preis löschen möchten?"
+        "deleteConfirmMessage": "Sind Sie sicher, dass Sie diesen Preis löschen möchten?",
+        "endDateMustBeAfterStart": "Das Enddatum muss nach dem Startdatum liegen"
     },
     "Services": {
         "title": "Dienstleistungen",

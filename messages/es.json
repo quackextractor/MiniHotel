@@ -158,7 +158,8 @@
         "deleteRate": "Eliminar Tarifa",
         "rateUpdated": "Tarifa actualizada con éxito",
         "rateDeleted": "Tarifa eliminada con éxito",
-        "deleteConfirmMessage": "¿Estás seguro de que deseas eliminar esta tarifa?"
+        "deleteConfirmMessage": "¿Estás seguro de que deseas eliminar esta tarifa?",
+        "endDateMustBeAfterStart": "La fecha de fin debe ser posterior a la fecha de inicio"
     },
     "Services": {
         "title": "Servicios",

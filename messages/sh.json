@@ -158,7 +158,8 @@
         "deleteRate": "Vanquish Toll",
         "rateUpdated": "Toll updated fittingly",
         "rateDeleted": "Toll vanquished",
-        "deleteConfirmMessage": "Are you certain you wish to vanquish this toll?"
+        "deleteConfirmMessage": "Are you certain you wish to vanquish this toll?",
+        "endDateMustBeAfterStart": "The Setting Sun must follow the Rising Sun, lest chaos reign"
     },
     "Services": {
         "title": "Royal Favours",

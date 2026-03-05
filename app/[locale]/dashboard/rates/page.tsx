@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useCallback } from "react"
 import type React from "react"
 import { toast } from "sonner"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -46,6 +46,9 @@ export default function RatesPage() {
     const [searchQuery, setSearchQuery] = useState("")
     const [isAddDialogOpen, setIsAddDialogOpen] = useState(false)
     const [selectedRate, setSelectedRate] = useState<SeasonalRate | null>(null)
+    const [formStartDate, setFormStartDate] = useState("")
+    const [formEndDate, setFormEndDate] = useState("")
+    const [dateError, setDateError] = useState<string | null>(null)
 
     useEffect(() => {
         async function fetchData() {
@@ -77,6 +80,13 @@ export default function RatesPage() {
         e.preventDefault()
         const formData = new FormData(e.currentTarget)
 
+        // Validate dates - end must be strictly after start (cross-year is allowed)
+        if (formStartDate && formEndDate && formEndDate <= formStartDate) {
+            setDateError(t("endDateMustBeAfterStart") || "End date must be after start date")
+            return
+        }
+        setDateError(null)
+
         try {
             const multiplier = Number(formData.get("multiplier"))
             if (isNaN(multiplier) || multiplier <= 0) {
@@ -85,8 +95,8 @@ export default function RatesPage() {
 
             const payload = {
                 name: formData.get("name") as string,
-                start_date: formData.get("startDate") as string,
-                end_date: formData.get("endDate") as string,
+                start_date: formStartDate,
+                end_date: formEndDate,
                 rate_multiplier: multiplier,
                 room_type: formData.get("roomType") as string || null,
                 room_group_id: formData.get("roomGroupId") ? Number(formData.get("roomGroupId")) : null
@@ -104,6 +114,9 @@ export default function RatesPage() {
 
             setIsAddDialogOpen(false)
             setSelectedRate(null)
+            setFormStartDate("")
+            setFormEndDate("")
+            setDateError(null)
         } catch (err) {
             console.error("Error saving rate:", err)
             toast.error("Failed to save rate: " + (err instanceof Error ? err.message : "Unknown error"))
@@ -125,13 +138,29 @@ export default function RatesPage() {
 
     const openEditDialog = (rate: SeasonalRate) => {
         setSelectedRate(rate)
+        setFormStartDate(rate.start_date)
+        setFormEndDate(rate.end_date)
+        setDateError(null)
         setIsAddDialogOpen(true)
     }
 
     const openAddDialog = () => {
         setSelectedRate(null)
+        setFormStartDate("")
+        setFormEndDate("")
+        setDateError(null)
         setIsAddDialogOpen(true)
     }
+
+    const handleDialogOpenChange = useCallback((open: boolean) => {
+        setIsAddDialogOpen(open)
+        if (!open) {
+            setSelectedRate(null)
+            setFormStartDate("")
+            setFormEndDate("")
+            setDateError(null)
+        }
+    }, [])
 
     if (loading) {
         return (
@@ -164,7 +193,7 @@ export default function RatesPage() {
                     <h1 className="text-3xl font-bold tracking-tight">{t("title")}</h1>
                     <p className="text-muted-foreground">{t("subtitle")}</p>
                 </div>
-                <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
+                <Dialog open={isAddDialogOpen} onOpenChange={handleDialogOpenChange}>
                     <DialogTrigger asChild>
                         <Button onClick={openAddDialog}>
                             <Plus className="mr-2 size-4" />
@@ -190,22 +219,11 @@ export default function RatesPage() {
                                             id="startDate"
                                             name="startDate"
                                             type="date"
-                                            defaultValue={selectedRate?.start_date || ""}
+                                            value={formStartDate}
                                             required
                                             onChange={(e) => {
-                                                const endDateInput = document.getElementById("endDate") as HTMLInputElement
-                                                if (endDateInput) {
-                                                    const startDate = new Date(e.target.value)
-                                                    if (!isNaN(startDate.getTime())) {
-                                                        const minEndDate = new Date(startDate.getTime() + 86400000)
-                                                        const minEndDateStr = minEndDate.toISOString().split('T')[0]
-                                                        endDateInput.min = minEndDateStr
-
-                                                        if (endDateInput.value && endDateInput.value < minEndDateStr) {
-                                                            endDateInput.value = minEndDateStr
-                                                        }
-                                                    }
-                                                }
+                                                setFormStartDate(e.target.value)
+                                                setDateError(null)
                                             }}
                                         />
                                     </div>
@@ -215,24 +233,18 @@ export default function RatesPage() {
                                             id="endDate"
                                             name="endDate"
                                             type="date"
-                                            defaultValue={selectedRate?.end_date || ""}
+                                            value={formEndDate}
                                             required
                                             onChange={(e) => {
-                                                const startDateInput = document.getElementById("startDate") as HTMLInputElement
-                                                if (startDateInput && startDateInput.value && e.target.value) {
-                                                    const startDate = new Date(startDateInput.value)
-                                                    const endDate = new Date(e.target.value)
-                                                    if (!isNaN(startDate.getTime()) && !isNaN(endDate.getTime())) {
-                                                        if (endDate <= startDate) {
-                                                            const minEndDate = new Date(startDate.getTime() + 86400000)
-                                                            e.target.value = minEndDate.toISOString().split('T')[0]
-                                                        }
-                                                    }
-                                                }
+                                                setFormEndDate(e.target.value)
+                                                setDateError(null)
                                             }}
                                         />
                                     </div>
                                 </div>
+                                {dateError && (
+                                    <p className="text-sm text-destructive">{dateError}</p>
+                                )}
 
                                 <div className="grid gap-2">
                                     <Label htmlFor="multiplier">{t("multiplier")}</Label>

@@ -158,7 +158,8 @@
         "deleteRate": "Smazat sazbu",
         "rateUpdated": "Sazba úspěšně aktualizována",
         "rateDeleted": "Sazba úspěšně smazána",
-        "deleteConfirmMessage": "Opravdu chcete tuto sazbu smazat?"
+        "deleteConfirmMessage": "Opravdu chcete tuto sazbu smazat?",
+        "endDateMustBeAfterStart": "Datum konce musí být po datu začátku"
     },
     "Services": {
         "title": "Služby",

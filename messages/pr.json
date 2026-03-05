@@ -158,7 +158,8 @@
         "deleteRate": "Scrap Bounty",
         "rateUpdated": "Bounty modified successfully",
         "rateDeleted": "Bounty scrapped to the depths",
-        "deleteConfirmMessage": "Ye sure ye want to abandon this bounty?"
+        "deleteConfirmMessage": "Ye sure ye want to abandon this bounty?",
+        "endDateMustBeAfterStart": "The End Watch must be set after the Start Watch, ye fool"
     },
     "Services": {
         "title": "Extras & Loot",

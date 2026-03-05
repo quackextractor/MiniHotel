@@ -158,7 +158,8 @@
         "deleteRate": "Delete Rule",
         "rateUpdated": "Rule updated bigly",
         "rateDeleted": "Rule deleted completely",
-        "deleteConfirmMessage": "U sure u wanna delete this rule?"
+        "deleteConfirmMessage": "U sure u wanna delete this rule?",
+        "endDateMustBeAfterStart": "End wen must be aftr start wen plz"
     },
     "Services": {
         "title": "Treetz",
