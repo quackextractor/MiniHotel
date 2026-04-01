@@ -34,4 +34,4 @@ A comprehensive hotel management system comprising a Next.js frontend dashboard 
 4. Access the dashboard at `http://localhost:3000`.
 
 ## License
-MIT [License](LICENSE.md)
+MIT [License](LICENSE)
