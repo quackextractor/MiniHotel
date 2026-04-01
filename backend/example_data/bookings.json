@@ -1,0 +1,38 @@
+[
+    {
+        "booking_id": "BKG-0001",
+        "guest_email": "john.doe@example.com",
+        "room_number": "101",
+        "check_in": "2026-06-01",
+        "check_out": "2026-06-05",
+        "number_of_guests": 1,
+        "total_amount": 320.0,
+        "status": "confirmed",
+        "payment_status": "paid",
+        "notes": "Late check-in requested"
+    },
+    {
+        "booking_id": "BKG-0002",
+        "guest_email": "jane.smith@example.com",
+        "room_number": "102",
+        "check_in": "2026-06-10",
+        "check_out": "2026-06-12",
+        "number_of_guests": 2,
+        "total_amount": 240.0,
+        "status": "pending_payment",
+        "payment_status": "not_paid",
+        "notes": "Allergic to peanuts"
+    },
+    {
+        "booking_id": "BKG-0003",
+        "guest_email": "alice.j@example.com",
+        "room_number": "201",
+        "check_in": "2026-07-01",
+        "check_out": "2026-07-07",
+        "number_of_guests": 2,
+        "total_amount": 1500.0,
+        "status": "checked_in",
+        "payment_status": "paid",
+        "notes": "Anniversary trip"
+    }
+]
