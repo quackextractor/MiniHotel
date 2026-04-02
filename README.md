@@ -37,4 +37,4 @@ A comprehensive hotel management system comprising a Next.js frontend dashboard 
 MIT License. See [LICENSE](LICENSE) for details.
 
 ## Note
-This app was made as a technical project to be featured in a public student expo in Prague. I have added the [A0 poster](TP-MiniHotel-slezak.pdf) to the repository for anyone curious. See the source for "The Urgent Truth" in this [Google Docs research paper](https://docs.google.com/document/d/1I0AgpkMXqGaWvVJGjogmcWv20FCinGRBeiEhVuVr7cQ/edit?usp=drivesdk).
+This app was made as a technical project to be featured in a public student expo in Prague. I have added the [A0 poster](TP-MiniHotel.pdf) to the repository for anyone curious. See the source for "The Urgent Truth" in this [Google Docs research paper](https://docs.google.com/document/d/1I0AgpkMXqGaWvVJGjogmcWv20FCinGRBeiEhVuVr7cQ/edit?usp=drivesdk).
