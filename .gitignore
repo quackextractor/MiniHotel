@@ -30,3 +30,4 @@ frontend/.vercel/
 *.tsbuildinfo
 frontend/next-env.d.ts
 /.vscode
+/.obsidian
