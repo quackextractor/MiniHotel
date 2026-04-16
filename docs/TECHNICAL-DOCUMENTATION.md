@@ -27,7 +27,7 @@ The system is split into two main parts:
 * **Frontend (`/frontend`)** – Next.js application for operating the system.
 * **Backend (`/backend`)** – Flask REST API with business logic and database access.
 
-Architecture diagram: [`docs/diagrams/01-system-architecture.drawio.xml`](docs/diagrams/01-system-architecture.drawio.xml)
+Architecture diagram: [`diagrams/01-system-architecture.drawio.xml`](diagrams/01-system-architecture.drawio.xml)
 
 Interactions:
 * The frontend calls backend endpoints via `/api/*`.
@@ -91,7 +91,7 @@ List and description of third-party integrations.
 * Protected endpoints use the `token_required` decorator.
 * The login endpoint has a rate limit (`5 per minute`).
 
-Authentication sequence diagram: [`docs/diagrams/03-auth-sequence.drawio.xml`](docs/diagrams/03-auth-sequence.drawio.xml)
+Authentication sequence diagram: [`diagrams/03-auth-sequence.drawio.xml`](diagrams/03-auth-sequence.drawio.xml)
 
 ### 6.2 User Roles and Permissions
 The current implementation documents a single user type (`User`) with no explicit RBAC role separation.  
@@ -131,9 +131,10 @@ Minimum requirements:
 
 ## 10. Appendices and References
 * Repository: `quackextractor/MiniHotel`
-* Root documentation: `README.md`
-* Backend documentation: `backend/README.md`
-* Frontend documentation: `frontend/README.md`
-* Czech user manual: `frontend/manual/manual-CZ.html`
-* System architecture diagram: `docs/diagrams/01-system-architecture.drawio.xml`
-* Authentication sequence diagram: `docs/diagrams/03-auth-sequence.drawio.xml`
+* Root documentation: `../README.md`
+* Backend documentation: `../backend/README.md`
+* Frontend documentation: `../frontend/README.md`
+* Czech user manual: `../frontend/manual/manual-CZ.html`
+* Czech version of this document: `TECHNICKA-DOKUMENTACE.md`
+* System architecture diagram: `diagrams/01-system-architecture.drawio.xml`
+* Authentication sequence diagram: `diagrams/03-auth-sequence.drawio.xml`
