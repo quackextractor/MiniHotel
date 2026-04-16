@@ -27,6 +27,8 @@ Systém je rozdělen na dvě hlavní části:
 * **Frontend (`/frontend`)** – Next.js aplikace pro obsluhu systému.
 * **Backend (`/backend`)** – Flask REST API s business logikou a přístupem k databázi.
 
+Diagram architektury: [`docs/diagrams/01-system-architecture.drawio.xml`](docs/diagrams/01-system-architecture.drawio.xml)
+
 Interakce:
 * Frontend volá backend endpointy přes `/api/*`.
 * Backend poskytuje Swagger/OpenAPI UI na `/docs`.
@@ -42,7 +44,7 @@ Výčet technologií použitých při vývoji a provozu systému.
 ## 4. Architektura a návrh
 ### 4.1 Datový model
 Popis struktury databáze.
-* **Schéma databáze:** ERD není v repozitáři doložen.
+* **Schéma databáze:** viz [`docs/diagrams/02-data-model-erd.drawio.xml`](docs/diagrams/02-data-model-erd.drawio.xml)
 * **Popis hlavních entit:**  
   `RoomGroup`, `SeasonalRate`, `Service`, `BookingService`, `Room`, `Guest`, `Booking`, `Housekeeping`, `Maintenance`, `Contact`, `User`, `AuditLog`, `ExchangeRate`, `Event`.
 
@@ -90,6 +92,8 @@ Seznam a popis integrací se systémy třetích stran.
 * Chráněné endpointy používají dekorátor `token_required`.
 * Login endpoint má rate limit (`5 per minute`).
 
+Sekvenční diagram autentizace: [`docs/diagrams/03-auth-sequence.drawio.xml`](docs/diagrams/03-auth-sequence.drawio.xml)
+
 ### 6.2 Uživatelské role a oprávnění
 V aktuální implementaci je doložen model jednoho typu uživatele (`User`) bez explicitního RBAC členění na více rolí.  
 Přístup je řešen binárně: autentizovaný vs. neautentizovaný uživatel.
@@ -132,3 +136,6 @@ Minimálně:
 * Backend dokumentace: `backend/README.md`
 * Frontend dokumentace: `frontend/README.md`
 * Český uživatelský manuál: `frontend/manual/manual-CZ.html`
+* Diagram architektury systému: `docs/diagrams/01-system-architecture.drawio.xml`
+* Datový model (ERD): `docs/diagrams/02-data-model-erd.drawio.xml`
+* Sekvenční diagram (autentizace): `docs/diagrams/03-auth-sequence.drawio.xml`

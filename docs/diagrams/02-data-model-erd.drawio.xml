@@ -1,0 +1,381 @@
+<mxGraphModel dx="1500" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+
+    <!-- Title -->
+    <mxCell id="title" value="MiniHotel – Datový model (ERD)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="500" y="20" width="600" height="40" as="geometry" />
+    </mxCell>
+
+    <!-- ========== RoomGroup ========== -->
+    <mxCell id="rg-hdr" value="RoomGroup" style="swimlane;startSize=30;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="40" y="100" width="220" height="150" as="geometry" />
+    </mxCell>
+    <mxCell id="rg1" value="PK  id : INTEGER" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="rg-hdr">
+      <mxGeometry x="10" y="35" width="200" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="rg2" value="     name : VARCHAR(100)" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="rg-hdr">
+      <mxGeometry x="10" y="55" width="200" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="rg3" value="     description : TEXT" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="rg-hdr">
+      <mxGeometry x="10" y="75" width="200" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="rg4" value="FK  parent_group_id : INTEGER" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="rg-hdr">
+      <mxGeometry x="10" y="95" width="200" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="rg-self" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;curved=1;exitX=1;exitY=0.7;entryX=1;entryY=0.3;" edge="1" source="rg-hdr" target="rg-hdr" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="320" y="165" />
+          <mxPoint x="320" y="120" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+
+    <!-- ========== Room ========== -->
+    <mxCell id="rm-hdr" value="Room" style="swimlane;startSize=30;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="320" y="80" width="230" height="200" as="geometry" />
+    </mxCell>
+    <mxCell id="rm1" value="PK  id : INTEGER" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="rm-hdr">
+      <mxGeometry x="10" y="35" width="210" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="rm2" value="     room_number : VARCHAR(10)" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="rm-hdr">
+      <mxGeometry x="10" y="55" width="210" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="rm3" value="     room_type : VARCHAR(50)" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="rm-hdr">
+      <mxGeometry x="10" y="75" width="210" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="rm4" value="     capacity : INTEGER" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="rm-hdr">
+      <mxGeometry x="10" y="95" width="210" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="rm5" value="     base_rate : FLOAT" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="rm-hdr">
+      <mxGeometry x="10" y="115" width="210" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="rm6" value="FK  group_id : INTEGER" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="rm-hdr">
+      <mxGeometry x="10" y="135" width="210" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="rm7" value="     is_active : BOOLEAN" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="rm-hdr">
+      <mxGeometry x="10" y="155" width="210" height="20" as="geometry" />
+    </mxCell>
+
+    <!-- ========== SeasonalRate ========== -->
+    <mxCell id="sr-hdr" value="SeasonalRate" style="swimlane;startSize=30;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="40" y="300" width="230" height="190" as="geometry" />
+    </mxCell>
+    <mxCell id="sr1" value="PK  id : INTEGER" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="sr-hdr">
+      <mxGeometry x="10" y="35" width="210" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="sr2" value="     name : VARCHAR(100)" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="sr-hdr">
+      <mxGeometry x="10" y="55" width="210" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="sr3" value="     start_date : DATE" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="sr-hdr">
+      <mxGeometry x="10" y="75" width="210" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="sr4" value="     end_date : DATE" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="sr-hdr">
+      <mxGeometry x="10" y="95" width="210" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="sr5" value="     rate_multiplier : FLOAT" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="sr-hdr">
+      <mxGeometry x="10" y="115" width="210" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="sr6" value="     room_type : VARCHAR(50)" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="sr-hdr">
+      <mxGeometry x="10" y="135" width="210" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="sr7" value="FK  room_group_id : INTEGER" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="sr-hdr">
+      <mxGeometry x="10" y="155" width="210" height="20" as="geometry" />
+    </mxCell>
+
+    <!-- ========== Guest ========== -->
+    <mxCell id="gu-hdr" value="Guest" style="swimlane;startSize=30;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="600" y="80" width="210" height="170" as="geometry" />
+    </mxCell>
+    <mxCell id="gu1" value="PK  id : INTEGER" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="gu-hdr">
+      <mxGeometry x="10" y="35" width="190" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="gu2" value="     first_name : VARCHAR(100)" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="gu-hdr">
+      <mxGeometry x="10" y="55" width="190" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="gu3" value="     last_name : VARCHAR(100)" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="gu-hdr">
+      <mxGeometry x="10" y="75" width="190" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="gu4" value="     email : VARCHAR(120)" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="gu-hdr">
+      <mxGeometry x="10" y="95" width="190" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="gu5" value="     phone : VARCHAR(20)" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="gu-hdr">
+      <mxGeometry x="10" y="115" width="190" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="gu6" value="     address : TEXT" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="gu-hdr">
+      <mxGeometry x="10" y="135" width="190" height="20" as="geometry" />
+    </mxCell>
+
+    <!-- ========== Booking ========== -->
+    <mxCell id="bk-hdr" value="Booking" style="swimlane;startSize=30;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="600" y="310" width="230" height="330" as="geometry" />
+    </mxCell>
+    <mxCell id="bk1" value="PK  id : INTEGER" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="bk-hdr">
+      <mxGeometry x="10" y="35" width="210" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="bk2" value="     booking_id : VARCHAR(20)" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="bk-hdr">
+      <mxGeometry x="10" y="55" width="210" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="bk3" value="FK  guest_id : INTEGER" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="bk-hdr">
+      <mxGeometry x="10" y="75" width="210" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="bk4" value="FK  room_id : INTEGER" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="bk-hdr">
+      <mxGeometry x="10" y="95" width="210" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="bk5" value="     check_in : DATE" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="bk-hdr">
+      <mxGeometry x="10" y="115" width="210" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="bk6" value="     check_out : DATE" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="bk-hdr">
+      <mxGeometry x="10" y="135" width="210" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="bk7" value="     number_of_guests : INTEGER" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="bk-hdr">
+      <mxGeometry x="10" y="155" width="210" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="bk8" value="     total_amount : FLOAT" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="bk-hdr">
+      <mxGeometry x="10" y="175" width="210" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="bk9" value="     status : VARCHAR(20)" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="bk-hdr">
+      <mxGeometry x="10" y="195" width="210" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="bk10" value="     payment_status : VARCHAR(20)" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="bk-hdr">
+      <mxGeometry x="10" y="215" width="210" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="bk11" value="     payment_method : VARCHAR(50)" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="bk-hdr">
+      <mxGeometry x="10" y="235" width="210" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="bk12" value="     notes : TEXT" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="bk-hdr">
+      <mxGeometry x="10" y="255" width="210" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="bk13" value="     recreational_fee : FLOAT" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="bk-hdr">
+      <mxGeometry x="10" y="275" width="210" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="bk14" value="     consumed_amount : FLOAT" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="bk-hdr">
+      <mxGeometry x="10" y="295" width="210" height="20" as="geometry" />
+    </mxCell>
+
+    <!-- ========== Service ========== -->
+    <mxCell id="sv-hdr" value="Service" style="swimlane;startSize=30;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="880" y="310" width="210" height="150" as="geometry" />
+    </mxCell>
+    <mxCell id="sv1" value="PK  id : INTEGER" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="sv-hdr">
+      <mxGeometry x="10" y="35" width="190" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="sv2" value="     name : VARCHAR(100)" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="sv-hdr">
+      <mxGeometry x="10" y="55" width="190" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="sv3" value="     description : TEXT" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="sv-hdr">
+      <mxGeometry x="10" y="75" width="190" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="sv4" value="     price : FLOAT" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="sv-hdr">
+      <mxGeometry x="10" y="95" width="190" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="sv5" value="     is_active : BOOLEAN" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="sv-hdr">
+      <mxGeometry x="10" y="115" width="190" height="20" as="geometry" />
+    </mxCell>
+
+    <!-- ========== BookingService ========== -->
+    <mxCell id="bs-hdr" value="BookingService" style="swimlane;startSize=30;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="880" y="500" width="210" height="130" as="geometry" />
+    </mxCell>
+    <mxCell id="bs1" value="PK  id : INTEGER" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="bs-hdr">
+      <mxGeometry x="10" y="35" width="190" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="bs2" value="FK  booking_id : INTEGER" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="bs-hdr">
+      <mxGeometry x="10" y="55" width="190" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="bs3" value="FK  service_id : INTEGER" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="bs-hdr">
+      <mxGeometry x="10" y="75" width="190" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="bs4" value="     quantity : INTEGER" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="bs-hdr">
+      <mxGeometry x="10" y="95" width="190" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="bs5" value="     date : DATE" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="bs-hdr">
+      <mxGeometry x="10" y="115" width="190" height="20" as="geometry" />
+    </mxCell>
+
+    <!-- ========== Housekeeping ========== -->
+    <mxCell id="hk-hdr" value="Housekeeping" style="swimlane;startSize=30;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="320" y="340" width="220" height="170" as="geometry" />
+    </mxCell>
+    <mxCell id="hk1" value="PK  id : INTEGER" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="hk-hdr">
+      <mxGeometry x="10" y="35" width="200" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="hk2" value="FK  room_id : INTEGER" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="hk-hdr">
+      <mxGeometry x="10" y="55" width="200" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="hk3" value="     status : VARCHAR(30)" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="hk-hdr">
+      <mxGeometry x="10" y="75" width="200" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="hk4" value="     last_cleaned : DATE" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="hk-hdr">
+      <mxGeometry x="10" y="95" width="200" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="hk5" value="     cleaner : VARCHAR(100)" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="hk-hdr">
+      <mxGeometry x="10" y="115" width="200" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="hk6" value="     notes : TEXT" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="hk-hdr">
+      <mxGeometry x="10" y="135" width="200" height="20" as="geometry" />
+    </mxCell>
+
+    <!-- ========== Maintenance ========== -->
+    <mxCell id="mn-hdr" value="Maintenance" style="swimlane;startSize=30;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="320" y="550" width="220" height="190" as="geometry" />
+    </mxCell>
+    <mxCell id="mn1" value="PK  id : INTEGER" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="mn-hdr">
+      <mxGeometry x="10" y="35" width="200" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="mn2" value="     ticket_id : VARCHAR(20)" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="mn-hdr">
+      <mxGeometry x="10" y="55" width="200" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="mn3" value="     area : VARCHAR(100)" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="mn-hdr">
+      <mxGeometry x="10" y="75" width="200" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="mn4" value="     issue : TEXT" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="mn-hdr">
+      <mxGeometry x="10" y="95" width="200" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="mn5" value="     reported_date : DATE" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="mn-hdr">
+      <mxGeometry x="10" y="115" width="200" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="mn6" value="     priority : VARCHAR(20)" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="mn-hdr">
+      <mxGeometry x="10" y="135" width="200" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="mn7" value="     status : VARCHAR(20)" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="mn-hdr">
+      <mxGeometry x="10" y="155" width="200" height="20" as="geometry" />
+    </mxCell>
+
+    <!-- ========== User ========== -->
+    <mxCell id="us-hdr" value="User" style="swimlane;startSize=30;fillColor=#ffe6cc;strokeColor=#d6b656;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="1150" y="80" width="200" height="110" as="geometry" />
+    </mxCell>
+    <mxCell id="us1" value="PK  id : INTEGER" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="us-hdr">
+      <mxGeometry x="10" y="35" width="180" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="us2" value="     username : VARCHAR(80)" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="us-hdr">
+      <mxGeometry x="10" y="55" width="180" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="us3" value="     password_hash : VARCHAR(128)" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="us-hdr">
+      <mxGeometry x="10" y="75" width="180" height="20" as="geometry" />
+    </mxCell>
+
+    <!-- ========== AuditLog ========== -->
+    <mxCell id="al-hdr" value="AuditLog" style="swimlane;startSize=30;fillColor=#ffe6cc;strokeColor=#d6b656;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="1150" y="240" width="200" height="150" as="geometry" />
+    </mxCell>
+    <mxCell id="al1" value="PK  id : INTEGER" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="al-hdr">
+      <mxGeometry x="10" y="35" width="180" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="al2" value="FK  user_id : INTEGER" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="al-hdr">
+      <mxGeometry x="10" y="55" width="180" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="al3" value="     action : VARCHAR(100)" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="al-hdr">
+      <mxGeometry x="10" y="75" width="180" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="al4" value="     details : TEXT" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="al-hdr">
+      <mxGeometry x="10" y="95" width="180" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="al5" value="     timestamp : DATETIME" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="al-hdr">
+      <mxGeometry x="10" y="115" width="180" height="20" as="geometry" />
+    </mxCell>
+
+    <!-- ========== ExchangeRate ========== -->
+    <mxCell id="er-hdr" value="ExchangeRate" style="swimlane;startSize=30;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="1150" y="440" width="200" height="130" as="geometry" />
+    </mxCell>
+    <mxCell id="er1" value="PK  id : INTEGER" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="er-hdr">
+      <mxGeometry x="10" y="35" width="180" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="er2" value="     currency_code : VARCHAR(10)" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="er-hdr">
+      <mxGeometry x="10" y="55" width="180" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="er3" value="     rate : FLOAT" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="er-hdr">
+      <mxGeometry x="10" y="75" width="180" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="er4" value="     last_updated : DATETIME" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="er-hdr">
+      <mxGeometry x="10" y="95" width="180" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="er5" value="     is_tracked : BOOLEAN" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="er-hdr">
+      <mxGeometry x="10" y="115" width="180" height="20" as="geometry" />
+    </mxCell>
+
+    <!-- ========== Contact ========== -->
+    <mxCell id="ct-hdr" value="Contact" style="swimlane;startSize=30;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="40" y="560" width="200" height="150" as="geometry" />
+    </mxCell>
+    <mxCell id="ct1" value="PK  id : INTEGER" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="ct-hdr">
+      <mxGeometry x="10" y="35" width="180" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="ct2" value="     role : VARCHAR(100)" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="ct-hdr">
+      <mxGeometry x="10" y="55" width="180" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="ct3" value="     name : VARCHAR(100)" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="ct-hdr">
+      <mxGeometry x="10" y="75" width="180" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="ct4" value="     phone : VARCHAR(20)" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="ct-hdr">
+      <mxGeometry x="10" y="95" width="180" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="ct5" value="     email : VARCHAR(120)" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="ct-hdr">
+      <mxGeometry x="10" y="115" width="180" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="ct6" value="     on_call : BOOLEAN" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="ct-hdr">
+      <mxGeometry x="10" y="135" width="180" height="20" as="geometry" />
+    </mxCell>
+
+    <!-- ========== Event ========== -->
+    <mxCell id="ev-hdr" value="Event" style="swimlane;startSize=30;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+      <mxGeometry x="880" y="80" width="210" height="170" as="geometry" />
+    </mxCell>
+    <mxCell id="ev1" value="PK  id : INTEGER" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="ev-hdr">
+      <mxGeometry x="10" y="35" width="190" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="ev2" value="     name : VARCHAR(100)" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="ev-hdr">
+      <mxGeometry x="10" y="55" width="190" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="ev3" value="     event_date : DATE" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="ev-hdr">
+      <mxGeometry x="10" y="75" width="190" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="ev4" value="     space : VARCHAR(100)" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="ev-hdr">
+      <mxGeometry x="10" y="95" width="190" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="ev5" value="     status : VARCHAR(20)" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="ev-hdr">
+      <mxGeometry x="10" y="115" width="190" height="20" as="geometry" />
+    </mxCell>
+    <mxCell id="ev6" value="     expected_guests : INTEGER" style="text;strokeColor=none;fillColor=none;align=left;html=1;fontSize=11;" vertex="1" parent="ev-hdr">
+      <mxGeometry x="10" y="135" width="190" height="20" as="geometry" />
+    </mxCell>
+
+    <!-- ===== RELATIONSHIPS ===== -->
+    <!-- RoomGroup → Room (1:N) -->
+    <mxCell id="r-rg-rm" value="1:N" style="edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" source="rg-hdr" target="rm-hdr" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <!-- RoomGroup → SeasonalRate (1:N) -->
+    <mxCell id="r-rg-sr" value="1:N" style="edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" source="rg-hdr" target="sr-hdr" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <!-- Guest → Booking (1:N) -->
+    <mxCell id="r-gu-bk" value="1:N" style="edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" source="gu-hdr" target="bk-hdr" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <!-- Room → Booking (1:N) -->
+    <mxCell id="r-rm-bk" value="1:N" style="edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" source="rm-hdr" target="bk-hdr" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <!-- Booking → BookingService (1:N) -->
+    <mxCell id="r-bk-bs" value="1:N" style="edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" source="bk-hdr" target="bs-hdr" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <!-- Service → BookingService (1:N) -->
+    <mxCell id="r-sv-bs" value="1:N" style="edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" source="sv-hdr" target="bs-hdr" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <!-- Room → Housekeeping (1:N) -->
+    <mxCell id="r-rm-hk" value="1:N" style="edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" source="rm-hdr" target="hk-hdr" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <!-- User → AuditLog (1:N) -->
+    <mxCell id="r-us-al" value="1:N" style="edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" source="us-hdr" target="al-hdr" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  </root>
+</mxGraphModel>
