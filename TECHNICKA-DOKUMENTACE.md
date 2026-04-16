@@ -128,7 +128,7 @@ Minimálně:
 
 ## 10. Přílohy a odkazy
 * Repozitář: `quackextractor/MiniHotel`
-* Root dokumentace: `/home/runner/work/MiniHotel/MiniHotel/README.md`
-* Backend dokumentace: `/home/runner/work/MiniHotel/MiniHotel/backend/README.md`
-* Frontend dokumentace: `/home/runner/work/MiniHotel/MiniHotel/frontend/README.md`
-* Český uživatelský manuál: `/home/runner/work/MiniHotel/MiniHotel/frontend/manual/manual-CZ.html`
+* Root dokumentace: `README.md`
+* Backend dokumentace: `backend/README.md`
+* Frontend dokumentace: `frontend/README.md`
+* Český uživatelský manuál: `frontend/manual/manual-CZ.html`
