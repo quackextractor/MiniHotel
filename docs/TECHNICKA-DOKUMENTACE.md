@@ -29,6 +29,8 @@ Systém je rozdělen na dvě hlavní části:
 
 Diagram architektury: [`diagrams/cs-01-architektura-systemu.drawio.xml`](diagrams/cs-01-architektura-systemu.drawio.xml)
 
+![Architektura systému](diagrams/cs-01-architektura-systemu.png)
+
 Interakce:
 * Frontend volá backend endpointy přes `/api/*`.
 * Backend obsahuje Flasgger pro Swagger/OpenAPI dokumentaci; aktuálně není inicializován.
@@ -92,6 +94,8 @@ Seznam a popis integrací se systémy třetích stran.
 * Login endpoint má rate limit (`5 per minute`).
 
 Sekvenční diagram autentizace: [`diagrams/cs-03-sekvencni-diagram-autentizace.drawio.xml`](diagrams/cs-03-sekvencni-diagram-autentizace.drawio.xml)
+
+![Sekvenční diagram autentizace](diagrams/cs-03-sekvencni-diagram-autentizace.png)
 
 ### 6.2 Uživatelské role a oprávnění
 V aktuální implementaci je doložen model jednoho typu uživatele (`User`) bez explicitního RBAC členění na více rolí.  
