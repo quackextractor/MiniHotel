@@ -31,7 +31,7 @@ Architecture diagram: [`diagrams/01-system-architecture.drawio.xml`](diagrams/01
 
 Interactions:
 * The frontend calls backend endpoints via `/api/*`.
-* The backend exposes Swagger/OpenAPI UI at `/docs`.
+* The backend includes Flasgger for Swagger/OpenAPI documentation; it is not currently initialized.
 
 ## 3. Technology Stack
 Technologies used during development and operation.
@@ -65,7 +65,7 @@ Core design principles of the frontend.
 Description of API endpoints provided by the system.
 * **Architectural style:** REST
 * **API authentication:** Bearer token (JWT)
-* **Endpoint documentation:** Swagger UI at `http://localhost:5000/docs`
+* **Endpoint documentation:** Flasgger is included in `requirements.txt` and routes carry Swagger YAML docstrings, but Flasgger is not currently initialized in the application; the Swagger UI at `/docs` is therefore **not active** in the current codebase.
 
 Registered backend blueprints:
 * `/api/auth`
@@ -73,7 +73,7 @@ Registered backend blueprints:
 * `/api/guests`
 * `/api/bookings`
 * `/api/services`
-* `/api/housekeeping`, `/api/maintenance` (operations)
+* `/api/housekeeping`, `/api/maintenance`, `/api/contacts` (operations)
 * `/api/reports`
 * `/api/exchange-rates`
 * `/api/events`

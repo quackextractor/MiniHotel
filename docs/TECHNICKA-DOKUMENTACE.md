@@ -27,11 +27,11 @@ Systém je rozdělen na dvě hlavní části:
 * **Frontend (`/frontend`)** – Next.js aplikace pro obsluhu systému.
 * **Backend (`/backend`)** – Flask REST API s business logikou a přístupem k databázi.
 
-Diagram architektury: [`diagrams/01-system-architecture.drawio.xml`](diagrams/01-system-architecture.drawio.xml)
+Diagram architektury: [`diagrams/cs-01-architektura-systemu.drawio.xml`](diagrams/cs-01-architektura-systemu.drawio.xml)
 
 Interakce:
 * Frontend volá backend endpointy přes `/api/*`.
-* Backend poskytuje Swagger/OpenAPI UI na `/docs`.
+* Backend obsahuje Flasgger pro Swagger/OpenAPI dokumentaci; aktuálně není inicializován.
 
 ## 3. Technologický stack
 Výčet technologií použitých při vývoji a provozu systému.
@@ -65,7 +65,7 @@ Základní principy návrhu frontendové části.
 Popis API endpointů, které systém poskytuje.
 * **Architektonický styl:** REST
 * **Autentizace API:** Bearer token (JWT)
-* **Dokumentace endpointů:** Swagger UI na `http://localhost:5000/docs`
+* **Dokumentace endpointů:** Flasgger je obsažen v `requirements.txt` a endpointy nesou Swagger YAML komentáře, avšak Flasgger není aktuálně inicializován; Swagger UI na `/docs` proto **není aktivní** v aktuálním kódu.
 
 Registrované backend blueprints:
 * `/api/auth`
@@ -73,7 +73,7 @@ Registrované backend blueprints:
 * `/api/guests`
 * `/api/bookings`
 * `/api/services`
-* `/api/housekeeping`, `/api/maintenance` (operations)
+* `/api/housekeeping`, `/api/maintenance`, `/api/contacts` (operations)
 * `/api/reports`
 * `/api/exchange-rates`
 * `/api/events`
@@ -91,7 +91,7 @@ Seznam a popis integrací se systémy třetích stran.
 * Chráněné endpointy používají dekorátor `token_required`.
 * Login endpoint má rate limit (`5 per minute`).
 
-Sekvenční diagram autentizace: [`diagrams/03-auth-sequence.drawio.xml`](diagrams/03-auth-sequence.drawio.xml)
+Sekvenční diagram autentizace: [`diagrams/cs-03-sekvencni-diagram-autentizace.drawio.xml`](diagrams/cs-03-sekvencni-diagram-autentizace.drawio.xml)
 
 ### 6.2 Uživatelské role a oprávnění
 V aktuální implementaci je doložen model jednoho typu uživatele (`User`) bez explicitního RBAC členění na více rolí.  
@@ -120,7 +120,7 @@ Minimálně:
 ## 8. Testování
 * **Jednotkové testy (Unit testing):** v backendu jsou přítomné skripty (`testing.py`, `test_500.py`), ale není doložen standardní runner (např. pytest) ani metrika pokrytí.
 * **Integrační testy:** nejsou explicitně popsány.
-* **Uživatelské testování (E2E):** nástroje jako Cypress/Playwright nejsou v repozitáři doloženy.
+* **End-to-end testování (E2E):** nástroje jako Cypress/Playwright nejsou v repozitáři doloženy.
 
 ## 9. Známá omezení a technický dluh
 * Chybí doložený standardizovaný CI/CD proces.
@@ -136,5 +136,5 @@ Minimálně:
 * Frontend dokumentace: `../frontend/README.md`
 * Český uživatelský manuál: `../frontend/manual/manual-CZ.html`
 * Anglická verze tohoto dokumentu: `TECHNICAL-DOCUMENTATION.md`
-* Diagram architektury systému: `diagrams/01-system-architecture.drawio.xml`
-* Sekvenční diagram (autentizace): `diagrams/03-auth-sequence.drawio.xml`
+* Diagram architektury systému: `diagrams/cs-01-architektura-systemu.drawio.xml`
+* Sekvenční diagram (autentizace): `diagrams/cs-03-sekvencni-diagram-autentizace.drawio.xml`
