@@ -1,0 +1,221 @@
+<mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+
+    <!-- Název -->
+    <mxCell id="title" value="MiniHotel – Sekvenční diagram (Autentizace a API volání)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="100" y="20" width="960" height="40" as="geometry" />
+    </mxCell>
+
+    <!-- === ZÁHLAVÍ ŽIVOTNÍCH LINIÍ === -->
+    <mxCell id="actor" value="👤 Uživatel" style="shape=mxgraph.archimate3.actor;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="60" y="80" width="90" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="fe" value="Frontend&#xa;(Next.js)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="240" y="80" width="120" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="be" value="Backend&#xa;(Flask API)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="490" y="80" width="120" height="60" as="geometry" />
+    </mxCell>
+    <mxCell id="db" value="Databáze&#xa;(SQLite)" style="shape=cylinder3;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="740" y="80" width="100" height="60" as="geometry" />
+    </mxCell>
+
+    <!-- === ŽIVOTNÍ LINIE (přerušované svislé čáry) === -->
+    <mxCell id="ll-actor" value="" style="endArrow=none;dashed=1;html=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="105" y="140" as="sourcePoint" />
+        <mxPoint x="105" y="780" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="ll-fe" value="" style="endArrow=none;dashed=1;html=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="300" y="140" as="sourcePoint" />
+        <mxPoint x="300" y="780" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="ll-be" value="" style="endArrow=none;dashed=1;html=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="550" y="140" as="sourcePoint" />
+        <mxPoint x="550" y="780" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="ll-db" value="" style="endArrow=none;dashed=1;html=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="790" y="140" as="sourcePoint" />
+        <mxPoint x="790" y="780" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- ============================================================ -->
+    <!--  ČÁST A: PŘIHLÁŠENÍ                                           -->
+    <!-- ============================================================ -->
+    <mxCell id="sec-a" value="A. Přihlášení" style="text;html=1;strokeColor=none;fillColor=#ffffc0;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="20" y="160" width="130" height="30" as="geometry" />
+    </mxCell>
+
+    <!-- 1: Uživatel zadá přihlašovací údaje -->
+    <mxCell id="a1" value="1. Zadání uživatelského jména + hesla" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=open;endFill=0;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="105" y="200" as="sourcePoint" />
+        <mxPoint x="295" y="200" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="a1-lbl" value="1" style="text;html=1;fontSize=10;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+      <mxGeometry x="190" y="185" width="20" height="20" as="geometry" />
+    </mxCell>
+
+    <!-- 2: POST /api/auth/login -->
+    <mxCell id="a2" value="2. POST /api/auth/login&#xa;   {username, password}" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=open;endFill=0;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="305" y="230" as="sourcePoint" />
+        <mxPoint x="545" y="230" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- 3: Kontrola rate limitu (5/min) -->
+    <mxCell id="a3-box" value="omezení požadavků&#xa;5/min" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="520" y="248" width="80" height="35" as="geometry" />
+    </mxCell>
+
+    <!-- 4: SELECT uživatel -->
+    <mxCell id="a4" value="3. SELECT * FROM users WHERE username=?" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=open;endFill=0;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="555" y="295" as="sourcePoint" />
+        <mxPoint x="785" y="295" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- 5: Vrácení záznamu uživatele -->
+    <mxCell id="a5" value="4. Záznam uživatele (password_hash)" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=open;endFill=0;dashed=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="785" y="325" as="sourcePoint" />
+        <mxPoint x="555" y="325" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- 6: Ověření bcrypt -->
+    <mxCell id="a6-box" value="bcrypt.checkpw" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="520" y="340" width="90" height="30" as="geometry" />
+    </mxCell>
+
+    <!-- 7: INSERT auditní záznam -->
+    <mxCell id="a7" value="5. INSERT INTO audit_logs (LOGIN)" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=open;endFill=0;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="555" y="385" as="sourcePoint" />
+        <mxPoint x="785" y="385" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- 8: Vrácení JWT tokenu -->
+    <mxCell id="a8" value="6. 200 OK {token, username}" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=open;endFill=0;dashed=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="545" y="415" as="sourcePoint" />
+        <mxPoint x="305" y="415" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- 9: Uložení do localStorage -->
+    <mxCell id="a9-box" value="localStorage.setItem&#xa;(username, userId)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="265" y="425" width="130" height="35" as="geometry" />
+    </mxCell>
+
+    <!-- 10: Přesměrování na dashboard -->
+    <mxCell id="a10" value="7. Přesměrování na /dashboard" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=open;endFill=0;dashed=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="300" y="470" as="sourcePoint" />
+        <mxPoint x="110" y="470" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- ============================================================ -->
+    <!--  ČÁST B: CHRÁNĚNÉ API VOLÁNÍ                                  -->
+    <!-- ============================================================ -->
+    <mxCell id="sec-b" value="B. Chráněné API volání (příklad: GET /api/bookings)" style="text;html=1;strokeColor=none;fillColor=#ffffc0;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="20" y="495" width="380" height="30" as="geometry" />
+    </mxCell>
+
+    <!-- B1: Uživatel přechází na stránku -->
+    <mxCell id="b1" value="8. Přechod na stránku Rezervací" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=open;endFill=0;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="105" y="540" as="sourcePoint" />
+        <mxPoint x="295" y="540" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- B2: GET /api/bookings -->
+    <mxCell id="b2" value="9. GET /api/bookings&#xa;   Authorization: Bearer &lt;token&gt;" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=open;endFill=0;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="305" y="575" as="sourcePoint" />
+        <mxPoint x="545" y="575" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- B3: @token_required ověří JWT -->
+    <mxCell id="b3-box" value="@token_required&#xa;jwt.decode(token)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="520" y="590" width="110" height="35" as="geometry" />
+    </mxCell>
+
+    <!-- B4: Dotaz do DB -->
+    <mxCell id="b4" value="10. SELECT * FROM bookings (+ JOINs)" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=open;endFill=0;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="555" y="640" as="sourcePoint" />
+        <mxPoint x="785" y="640" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- B5: Vrácení výsledku -->
+    <mxCell id="b5" value="11. Sada výsledků (stránkovaně)" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=open;endFill=0;dashed=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="785" y="665" as="sourcePoint" />
+        <mxPoint x="555" y="665" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- B6: Marshmallow serializace -->
+    <mxCell id="b6-box" value="Marshmallow serializace&#xa;(BookingSchema)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="520" y="678" width="110" height="35" as="geometry" />
+    </mxCell>
+
+    <!-- B7: 200 JSON odpověď -->
+    <mxCell id="b7" value="12. 200 OK [{booking}, ...]" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=open;endFill=0;dashed=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="545" y="720" as="sourcePoint" />
+        <mxPoint x="305" y="720" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- B8: Vykreslení UI -->
+    <mxCell id="b8" value="13. Vykreslení tabulky rezervací" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=open;endFill=0;dashed=1;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="300" y="750" as="sourcePoint" />
+        <mxPoint x="110" y="750" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+
+    <!-- ============================================================ -->
+    <!--  ČÁST C: VYPRŠENÍ TOKENU (401)                                -->
+    <!-- ============================================================ -->
+    <mxCell id="sec-c" value="C. Vypršení tokenu (401)" style="text;html=1;strokeColor=none;fillColor=#ffffc0;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="860" y="540" width="220" height="30" as="geometry" />
+    </mxCell>
+
+    <mxCell id="c1-box" value="GET /api/* s vypršeným tokenem&#xa;→ 401 Unauthorized" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" vertex="1" parent="1">
+      <mxGeometry x="860" y="580" width="230" height="50" as="geometry" />
+    </mxCell>
+    <mxCell id="c2-box" value="fetchAPI: response.status === 401&#xa;→ localStorage.removeItem(...)&#xa;→ přesměrování /login?error=Session+expired" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d6b656;fontSize=11;align=left;" vertex="1" parent="1">
+      <mxGeometry x="860" y="650" width="260" height="65" as="geometry" />
+    </mxCell>
+
+    <!-- Šipka spojující bloky C -->
+    <mxCell id="c-arrow" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" source="c1-box" target="c2-box" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- Legenda -->
+    <mxCell id="leg" value="→ Plná šipka = synchronní volání     ⇢ Přerušovaná šipka = odpověď     ▭ Interní operace komponenty" style="text;html=1;strokeColor=#666666;fillColor=#ffffff;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
+      <mxGeometry x="20" y="790" width="680" height="25" as="geometry" />
+    </mxCell>
+  </root>
+</mxGraphModel>

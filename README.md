@@ -33,6 +33,13 @@ A comprehensive hotel management system comprising a Next.js frontend dashboard 
    `npm run dev`
 4. Access the dashboard at `http://localhost:3000`.
 
+## Documentation
+
+Technical documentation is available in two languages inside the [`docs/`](docs/) folder:
+
+* [Technical Documentation (English)](docs/TECHNICAL-DOCUMENTATION.md)
+* [Technická dokumentace (Czech)](docs/TECHNICKA-DOKUMENTACE.md)
+
 ## License
 MIT License. See [LICENSE](LICENSE) for details.
 
