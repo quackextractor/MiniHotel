@@ -7,6 +7,7 @@ All notable changes to the MiniHotel root repository are documented here.
 - Integrated Vitest, jsdom, and React Testing Library setup in the frontend.
 - Created robust unit test files for all main custom React components (`AppSidebar`, `AutoLogoutManager`, `BookingForm`, `I18nAuditLoader`, `I18nAudit`, `ThemeProvider`).
 - Implemented global mocks for Next.js routing, `next-intl` translations, and JSDOM API support (`ResizeObserver`, `matchMedia`).
+- Added `.npmrc` configuration file to automate `legacy-peer-deps` handling during local installations.
 
 ### Changed
 - Upgraded ESLint to `^9.17.0` to resolve peer dependency issues with `eslint-config-next`.

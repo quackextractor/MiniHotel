@@ -9,7 +9,8 @@ Prior to the audit, `npm audit` flagged 11 vulnerabilities (moderate to high sev
 ### Actions Taken:
 - **ESLint Upgrade**: Upgraded `eslint` from `8.57.1` to `9.17.0` to resolve peer dependency issues with Next.js configuration.
 - **PostCSS Override**: Added a npm package override in `package.json` to force nested dependencies to resolve `postcss` to version `^8.5.10` or higher, removing the critical DoS/XSS risks.
-- **Audit Verification**: Cleaned up all other dependencies with `npm audit fix --legacy-peer-deps`. `npm audit` now reports **0 vulnerabilities**.
+- **NPM Configuration**: Added a `.npmrc` file with `legacy-peer-deps=true` to automatically handle React 19 / `vaul` peer conflicts during local installations.
+- **Audit Verification**: Cleaned up all other dependencies. `npm audit` now reports **0 vulnerabilities**.
 
 ## 2. ESLint Flat Config Migration
 
