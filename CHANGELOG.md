@@ -2,6 +2,14 @@
 
 All notable changes to the MiniHotel root repository are documented here.
 
+## [0.9.1] - 2026-06-20
+
+### Changed
+- Migrated deprecated Next.js frontend `middleware.ts` to `proxy.ts` according to Next.js 16 file convention.
+- Renamed exported function `middleware` to `proxy` in the Next.js proxy config.
+- Removed the deprecated `runtime` option from the proxy config object as Next.js 16 proxy defaults to the Node.js runtime and setting it throws an error.
+- Updated comments in `AuthContext.tsx` referencing middleware to refer to proxy.
+
 ## [0.9.0] - 2026-06-20
 ### Added
 - Integrated Vitest, jsdom, and React Testing Library setup in the frontend.

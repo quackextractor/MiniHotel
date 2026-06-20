@@ -3,6 +3,30 @@
 All notable changes to the MiniHotel frontend are documented here.
 Versioning follows [Semantic Versioning 2.0.0](https://semver.org/).
 
+## [0.9.1] - 2026-06-20
+
+### Changed
+- Migrated deprecated Next.js frontend `middleware.ts` to `proxy.ts` according to Next.js 16 file convention.
+- Renamed exported function `middleware` to `proxy` in the Next.js proxy config.
+- Removed the deprecated `runtime` option from the proxy config object as Next.js 16 proxy defaults to the Node.js runtime and setting it throws an error.
+- Updated comments in `AuthContext.tsx` referencing middleware to refer to proxy.
+
+---
+
+## [0.9.0] - 2026-06-20
+
+### Added
+- Integrated Vitest, jsdom, and React Testing Library setup in the frontend.
+- Created robust unit test files for all main custom React components (`AppSidebar`, `AutoLogoutManager`, `BookingForm`, `I18nAuditLoader`, `I18nAudit`, `ThemeProvider`).
+- Implemented global mocks for Next.js routing, `next-intl` translations, and JSDOM API support (`ResizeObserver`, `matchMedia`).
+- Added `.npmrc` configuration file to automate `legacy-peer-deps` handling during local installations.
+
+### Changed
+- Upgraded ESLint to `^9.17.0` to resolve peer dependency issues with `eslint-config-next`.
+- Migrated legacy ESLint JSON configuration to the new flat config file `eslint.config.js`.
+- Configured yarn/npm package overrides for `postcss` (resolved to `^8.5.10`) to eliminate all nested sub-dependency vulnerabilities.
+- Updated frontend version to `0.9.0`.
+
 ---
 
 ## [0.8.0] - 2026-03-05

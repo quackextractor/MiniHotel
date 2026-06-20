@@ -64,7 +64,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     const isAuthenticated = !!user
 
-    // Protected routes logic handled here or in middleware.
+    // Protected routes logic handled here or in proxy.
     // We'll use this context to conditionally render or redirect as a fail-safe.
     useEffect(() => {
         if (!loading && !isAuthenticated && pathname !== '/login' && pathname !== '/register') {
