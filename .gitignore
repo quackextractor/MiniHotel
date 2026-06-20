@@ -31,3 +31,5 @@ frontend/.vercel/
 frontend/next-env.d.ts
 /.vscode
 /.obsidian
+docs/plan.md
+docs/review.md
