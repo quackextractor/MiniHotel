@@ -6,7 +6,14 @@ const mockFetchAPI = vi.fn();
 // Mock the api module
 vi.mock('@/lib/api', () => {
     return {
-        fetchAPI: mockFetchAPI
+        fetchAPI: mockFetchAPI,
+        api: {
+            getBookings: async (params?: Record<string, string>) => {
+                const queryString = params ? "?" + new URLSearchParams(params).toString() : ""
+                const response = await mockFetchAPI(`/bookings${queryString}`)
+                return Array.isArray(response) ? response : response.items || []
+            }
+        }
     };
 });
 

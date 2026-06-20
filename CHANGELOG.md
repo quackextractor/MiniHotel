@@ -2,6 +2,18 @@
 
 All notable changes to the MiniHotel root repository are documented here.
 
+## [0.9.0] - 2026-06-20
+### Added
+- Integrated Vitest, jsdom, and React Testing Library setup in the frontend.
+- Created robust unit test files for all main custom React components (`AppSidebar`, `AutoLogoutManager`, `BookingForm`, `I18nAuditLoader`, `I18nAudit`, `ThemeProvider`).
+- Implemented global mocks for Next.js routing, `next-intl` translations, and JSDOM API support (`ResizeObserver`, `matchMedia`).
+
+### Changed
+- Upgraded ESLint to `^9.17.0` to resolve peer dependency issues with `eslint-config-next`.
+- Migrated legacy ESLint JSON configuration to the new flat config file `eslint.config.js`.
+- Configured yarn/npm package overrides for `postcss` (resolved to `^8.5.10`) to eliminate all nested sub-dependency vulnerabilities.
+- Updated project root, frontend, and backend versions to `0.9.0`.
+
 ## [0.8.0] - 2026-03-05
 ### Frontend (0.8.0)
 * Added: Favicon updated to bed.ico; icons metadata added to app layout.
