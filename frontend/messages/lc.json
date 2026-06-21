@@ -393,7 +393,17 @@
         "importFailed": "faild 2 import data :(",
         "importing": "importinnng....",
         "serverProxy": "srver proxying",
-        "lastRefreshed": "Last licked at"
+        "lastRefreshed": "Last licked at",
+        "privacyGdprTitle": "Securiti & GDPR",
+        "privacyGdprDesc": "View compliance and data usage statements",
+        "privacyGdprNotice": "Chek out how MiniHotel keeps guest profiles, booking schedules, rates, and audit logs.",
+        "viewPrivacyPolicy": "See Privacy Policy",
+        "clearDemoDataTitle": "Clean demo datz",
+        "clearDemoDataDesc": "Nuke dem demo records in localstorage. Keep color theme tho.",
+        "clearDemoDataBtn": "Clean demo datz",
+        "firstDayOfWeek": "Start of weeky",
+        "sunday": "Sunday",
+        "monday": "Monday"
     },
     "AuditLogs": {
         "title": "Stalkin Logz",
@@ -499,5 +509,21 @@
         "dataDetails": "This MiniHotel thingy keeps guest names, emails, room configurations, and stalkin logs.",
         "demoDataControl": "In demo mode, u is teh boss of ur data. Clearin cache will instantly wipe everything 4ever.",
         "goBack": "Go Bak"
+    },
+    "Days": {
+        "sun": "Caturday Eve",
+        "mon": "Munday",
+        "tue": "Toofday",
+        "wed": "Wenzday",
+        "thu": "Thurstay",
+        "fri": "Fryday",
+        "sat": "Caturday",
+        "sunShort": "Sun",
+        "monShort": "Mon",
+        "tueShort": "Tue",
+        "wedShort": "Wed",
+        "thuShort": "Thu",
+        "friShort": "Fri",
+        "satShort": "Sat"
     }
 }

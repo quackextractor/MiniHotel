@@ -2,6 +2,16 @@
 
 All notable changes to the MiniHotel root repository are documented here.
 
+## [0.10.6] - 2026-06-21
+
+### Added
+- Added `firstDayOfWeek` dropdown selector to the regional settings form and synchronized it with the calendar page week dates generator.
+- Added comprehensive unit tests checking start of the week calculation in `calendar-week-start.test.tsx`.
+- Localized all hardcoded text elements in settings-form.tsx (Auto Logout, Clear Demo Data, and Privacy & GDPR cards) using `next-intl`.
+
+### Fixed
+- Fixed Shakespearean (`sh.json`) i18n locales to strictly use High Shakespearean wording instead of Shatner-style ellipses.
+
 ## [0.10.5] - 2026-06-21
 
 ### Fixed

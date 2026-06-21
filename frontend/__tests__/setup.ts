@@ -73,3 +73,22 @@ Object.defineProperty(window, 'matchMedia', {
     dispatchEvent: vi.fn(),
   })),
 });
+
+// Mock settings-context
+vi.mock('@/lib/settings-context', () => {
+  return {
+    useSettings: () => ({
+      settings: {
+        language: 'en',
+        currency: 'USD',
+        dateFormat: 'MM/DD/YYYY',
+        timeFormat: '12h',
+        hotelName: 'Mock Hotel',
+        autoLogoutEnabled: false,
+        autoLogoutTimeout: 30,
+        firstDayOfWeek: 1,
+      },
+      updateSettings: vi.fn(),
+    }),
+  };
+});

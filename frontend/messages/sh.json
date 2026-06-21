@@ -393,7 +393,17 @@
         "importFailed": "Woe! The inscription of tales failed:",
         "importing": "Inscribing...",
         "serverProxy": "Proxy of the Lord",
-        "lastRefreshed": "Last refreshed at"
+        "lastRefreshed": "Last refreshed at",
+        "privacyGdprTitle": "Decree of Secrecy & GDPR",
+        "privacyGdprDesc": "Behold the scrolls of compliance and the usage of thy scrolls",
+        "privacyGdprNotice": "Review how MiniHotel governeth guest dossiers, booking chronicles, seasonal rates, and the ledger of audit logs.",
+        "viewPrivacyPolicy": "Behold the Decree of Secrecy",
+        "clearDemoDataTitle": "Purge the Phantom Scrolls",
+        "clearDemoDataDesc": "Exterminate all phantom records from the browser's vault and restore the void. Thy color humours shall be preserved.",
+        "clearDemoDataBtn": "Purge the Illusions",
+        "firstDayOfWeek": "First day of the week's journey",
+        "sunday": "The Sun's Day",
+        "monday": "The Moon's Day"
     },
     "AuditLogs": {
         "title": "The Book of Judgement",
@@ -499,5 +509,21 @@
         "dataDetails": "In truth, this MiniHotel parchment governeth guest titles, bedchambers, booking calendars, seasonal tribute rates, banquet requests, and audit logs of deeds.",
         "demoDataControl": "In this mimicry mode, thou art the master of thine own scrolls. Purging thy browser's memory shall immediately and eternally cast all bedchambers, guests, and covenants into oblivion.",
         "goBack": "Turn Back"
+    },
+    "Days": {
+        "sun": "The Sun's Day",
+        "mon": "The Moon's Day",
+        "tue": "Tiw's Day",
+        "wed": "Woden's Day",
+        "thu": "Thor's Day",
+        "fri": "Frige's Day",
+        "sat": "Saturn's Day",
+        "sunShort": "Sun",
+        "monShort": "Mon",
+        "tueShort": "Tue",
+        "wedShort": "Wed",
+        "thuShort": "Thu",
+        "friShort": "Fri",
+        "satShort": "Sat"
     }
 }

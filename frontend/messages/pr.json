@@ -393,7 +393,17 @@
         "importFailed": "Failed to plunder data:",
         "importing": "Plundering...",
         "serverProxy": "Server's First Mate",
-        "lastRefreshed": "Last swabbed at"
+        "lastRefreshed": "Last swabbed at",
+        "privacyGdprTitle": "Piracy & GDPR",
+        "privacyGdprDesc": "Behold compliance and boot-y usage scrolls",
+        "privacyGdprNotice": "Inspect how MiniHotel guards yer crew profiles, voyage schedules, doubloons, and captain's logs.",
+        "viewPrivacyPolicy": "Read the Code of Conduct",
+        "clearDemoDataTitle": "Scuttle Demo Booty",
+        "clearDemoDataDesc": "Toss all demo cargo overboard and clear the deck. Keep yer banner colors intact.",
+        "clearDemoDataBtn": "Scuttle Demo Booty",
+        "firstDayOfWeek": "First day of the voyage",
+        "sunday": "Sun-day",
+        "monday": "Mon-day"
     },
     "AuditLogs": {
         "title": "Captain's Log",
@@ -499,5 +509,21 @@
         "dataDetails": "Specifically, this MiniHotel vessel manages crew profiles, cabin quarters, plunder schedules, seasonal gold rates, grog orders, and captain's logs.",
         "demoDataControl": "In demo mode, ye be the captain of yer own loot. Clearing yer ship's cache will immediately and permanently sink all cabins, crew, bookings, and records to the ocean floor.",
         "goBack": "Sail Back"
+    },
+    "Days": {
+        "sun": "Sunday",
+        "mon": "Monday",
+        "tue": "Tuesday",
+        "wed": "Wednesday",
+        "thu": "Thursday",
+        "fri": "Friday",
+        "sat": "Saturday",
+        "sunShort": "Sun",
+        "monShort": "Mon",
+        "tueShort": "Tue",
+        "wedShort": "Wed",
+        "thuShort": "Thu",
+        "friShort": "Fri",
+        "satShort": "Sat"
     }
 }

@@ -393,7 +393,17 @@
         "importFailed": "Error al importar datos:",
         "importing": "Importando...",
         "serverProxy": "Proxy del servidor",
-        "lastRefreshed": "Última actualización:"
+        "lastRefreshed": "Última actualización:",
+        "privacyGdprTitle": "Privacidad y GDPR",
+        "privacyGdprDesc": "Ver declaraciones de cumplimiento y uso de datos",
+        "privacyGdprNotice": "Revise cómo MiniHotel administra los perfiles de los huéspedes, los horarios de reserva, las tarifas y los registros de auditoría.",
+        "viewPrivacyPolicy": "Ver política de privacidad",
+        "clearDemoDataTitle": "Limpiar datos de demostración",
+        "clearDemoDataDesc": "Elimina todos los registros de demostración del almacenamiento del navegador y los restablece a un estado vacío. Se conservan las preferencias del tema.",
+        "clearDemoDataBtn": "Limpiar datos de demostración",
+        "firstDayOfWeek": "Primer día de la semana",
+        "sunday": "Domingo",
+        "monday": "Lunes"
     },
     "AuditLogs": {
         "title": "Registros de Auditoría",
@@ -499,5 +509,21 @@
         "dataDetails": "Específicamente, esta aplicación MiniHotel gestiona perfiles de huéspedes (nombres, correos electrónicos, teléfonos), configuraciones de habitaciones, calendarios de reservas, tarifas de temporada, pedidos de servicios y registros de auditoría de acciones.",
         "demoDataControl": "En modo demo, tienes control total sobre tus datos ya que todo se mantiene en tu dispositivo. Borrar la caché del navegador o los datos del sitio eliminará de forma inmediata y permanente todas las habitaciones, huéspedes, reservas y otros registros de datos.",
         "goBack": "Volver"
+    },
+    "Days": {
+        "sun": "Domingo",
+        "mon": "Lunes",
+        "tue": "Martes",
+        "wed": "Miércoles",
+        "thu": "Jueves",
+        "fri": "Viernes",
+        "sat": "Sábado",
+        "sunShort": "Dom",
+        "monShort": "Lun",
+        "tueShort": "Mar",
+        "wedShort": "Mié",
+        "thuShort": "Jue",
+        "friShort": "Vie",
+        "satShort": "Sáb"
     }
 }

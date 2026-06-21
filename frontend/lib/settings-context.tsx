@@ -12,6 +12,7 @@ export interface Settings {
   hotelName: string
   autoLogoutEnabled: boolean
   autoLogoutTimeout: number // in minutes
+  firstDayOfWeek: number // 0 for Sunday, 1 for Monday
 }
 
 const defaultSettings: Settings = {
@@ -22,6 +23,7 @@ const defaultSettings: Settings = {
   hotelName: "",
   autoLogoutEnabled: false,
   autoLogoutTimeout: 30, // 30 minutes
+  firstDayOfWeek: 1, // default to Monday
 }
 
 interface SettingsContextType {

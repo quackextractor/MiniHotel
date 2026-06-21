@@ -393,7 +393,17 @@
         "importFailed": "Datenimport fehlgeschlagen:",
         "importing": "Importieren...",
         "serverProxy": "Server-Proxy",
-        "lastRefreshed": "Zuletzt aktualisiert:"
+        "lastRefreshed": "Zuletzt aktualisiert:",
+        "privacyGdprTitle": "Datenschutz & GDPR",
+        "privacyGdprDesc": "Konformitätserklärung und Datennutzung anzeigen",
+        "privacyGdprNotice": "Überprüfen Sie, wie MiniHotel Gäste-Profile, Buchungspläne, Raten und Audit-Protokolle verwaltet.",
+        "viewPrivacyPolicy": "Datenschutzerklärung anzeigen",
+        "clearDemoDataTitle": "Demo-Daten löschen",
+        "clearDemoDataDesc": "Entfernt alle Demo-Datensätze aus dem Browser-Speicher und setzt den Zustand zurück. Theme-Einstellungen bleiben erhalten.",
+        "clearDemoDataBtn": "Demo-Daten löschen",
+        "firstDayOfWeek": "Erster Wochentag",
+        "sunday": "Sonntag",
+        "monday": "Montag"
     },
     "AuditLogs": {
         "title": "Audit-Protokolle",
@@ -499,5 +509,21 @@
         "dataDetails": "Insbesondere verwaltet diese MiniHotel-Anwendung Gästeprofile (Namen, E-Mails, Telefonnummern), Zimmerkonfigurationen, Buchungspläne, saisonale Preise, Servicebestellungen und Aktivitätsauditprotokolle.",
         "demoDataControl": "Im Demo-Modus haben Sie die volle Kontrolle über Ihre Daten, da alles auf Ihrem Gerät verbleibt. Durch das Löschen Ihres Browser-Caches oder der Website-Daten werden alle Zimmer, Gäste, Buchungen und andere Datensätze sofort und dauerhaft gelöscht.",
         "goBack": "Zurückgehen"
+    },
+    "Days": {
+        "sun": "Sonntag",
+        "mon": "Montag",
+        "tue": "Dienstag",
+        "wed": "Mittwoch",
+        "thu": "Donnerstag",
+        "fri": "Freitag",
+        "sat": "Samstag",
+        "sunShort": "So",
+        "monShort": "Mo",
+        "tueShort": "Di",
+        "wedShort": "Mi",
+        "thuShort": "Do",
+        "friShort": "Fr",
+        "satShort": "Sa"
     }
 }

@@ -180,7 +180,20 @@ Based on the final requirements in `docs/review.md` to modernize the repository 
 - Automatically redirects/replaces URL paths back to the saved language route if the user attempts to forcibly change the URL prefix manually.
 - Integrated `updateSettings` inside `LanguageSwitcher.tsx` to ensure intentional dropdown switches update the saved active language safely without triggering the lock mechanism redirect.
 
+## 16. First Day of Week Configuration & Settings Localization (v0.10.6)
 
+### First Day of Week settings
+- Added `firstDayOfWeek` key (0 for Sunday, 1 for Monday) to the global `Settings` interface and `defaultSettings` in `lib/settings-context.tsx`.
+- Integrated a dropdown selector for the first day of the week under the Regional Settings section in `settings-form.tsx`.
+- Updated `calendar/page.tsx` to read `firstDayOfWeek` from settings, dynamically shifting the week start dates boundaries.
+- Localized the calendar column headers using the new `Days` translation keys (`sunShort`, `monShort`, etc.) to support joke languages correctly.
 
+### Settings Page Localization
+- Localized all hardcoded text blocks in `settings-form.tsx` under the Auto Logout, Clear Demo Data, and Privacy & GDPR cards using next-intl translations.
 
+### Shakespearean i18n Fixes
+- Corrected the Shakespearean (`sh.json`) locale translations in Settings and Days namespaces to strictly adhere to High Shakespearean language patterns (e.g. `Decree of Secrecy`, `Purge the Phantom Scrolls`) instead of Shatner-style ellipses.
 
+### Testing
+- Created unit tests inside `calendar-week-start.test.tsx` verifying that changing `firstDayOfWeek` dynamically adjusts the rendered start of the week.
+- Ran entire Vitest suite (58/58 tests passed) and Next.js Turbopack build cleanly.

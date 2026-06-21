@@ -393,7 +393,17 @@
         "importFailed": "Failed to import data:",
         "importing": "Importing...",
         "serverProxy": "Server Proxy",
-        "lastRefreshed": "Last refreshed at"
+        "lastRefreshed": "Last refreshed at",
+        "privacyGdprTitle": "Privacy & GDPR",
+        "privacyGdprDesc": "View compliance and data usage statements",
+        "privacyGdprNotice": "Review how MiniHotel manages guest profiles, booking schedules, rates, and audit logs.",
+        "viewPrivacyPolicy": "View Privacy Policy",
+        "clearDemoDataTitle": "Clear Demo Data",
+        "clearDemoDataDesc": "Remove all demo records from browser storage and reset to blank state. Theme preferences are preserved.",
+        "clearDemoDataBtn": "Clear Demo Data",
+        "firstDayOfWeek": "First day of the week",
+        "sunday": "Sunday",
+        "monday": "Monday"
     },
     "AuditLogs": {
         "title": "Audit Logs",
@@ -499,5 +509,21 @@
         "dataDetails": "Specifically, this MiniHotel application manages guest profiles (names, emails, phones), room configurations, booking schedules, seasonal rates, service orders, and action audit logs.",
         "demoDataControl": "In demo mode, you have complete control over your data since everything is kept on your device. Clearing your browser cache or site data will immediately and permanently erase all rooms, guests, bookings, and other data records.",
         "goBack": "Go Back"
+    },
+    "Days": {
+        "sun": "Sunday",
+        "mon": "Monday",
+        "tue": "Tuesday",
+        "wed": "Wednesday",
+        "thu": "Thursday",
+        "fri": "Friday",
+        "sat": "Saturday",
+        "sunShort": "Sun",
+        "monShort": "Mon",
+        "tueShort": "Tue",
+        "wedShort": "Wed",
+        "thuShort": "Thu",
+        "friShort": "Fri",
+        "satShort": "Sat"
     }
 }

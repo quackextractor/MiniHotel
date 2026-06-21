@@ -393,7 +393,17 @@
         "importFailed": "Import dat se nezdařil:",
         "importing": "Importování...",
         "serverProxy": "Proxy serveru",
-        "lastRefreshed": "Naposledy aktualizováno:"
+        "lastRefreshed": "Naposledy aktualizováno:",
+        "privacyGdprTitle": "Ochrana osobních údajů & GDPR",
+        "privacyGdprDesc": "Zobrazit prohlášení o shodě a využití dat",
+        "privacyGdprNotice": "Zkontrolujte, jak MiniHotel spravuje profily hostů, plány rezervací, sazby a protokoly auditů.",
+        "viewPrivacyPolicy": "Zobrazit zásady ochrany osobních údajů",
+        "clearDemoDataTitle": "Vymazat demo data",
+        "clearDemoDataDesc": "Odstraní všechny demo záznamy z úložiště prohlížeče a resetuje systém do prázdného stavu. Nastavení motivu bude zachováno.",
+        "clearDemoDataBtn": "Vymazat demo data",
+        "firstDayOfWeek": "První den v týdnu",
+        "sunday": "Neděle",
+        "monday": "Pondělí"
     },
     "AuditLogs": {
         "title": "Auditní logy",
@@ -499,5 +509,21 @@
         "dataDetails": "Konkrétně tato aplikace MiniHotel spravuje profily hostů (jména, e-maily, telefony), konfigurace pokojů, rezervační plány, sezónní sazby, objednávky služeb a protokoly o auditu akcí.",
         "demoDataControl": "V demo režimu máte plnou kontrolu nad svými daty, protože vše zůstává na vašem zařízení. Vymazání mezipaměti prohlížeče nebo dat webu okamžitě a trvale vymaže všechny pokoje, hosty, rezervace a další datové záznamy.",
         "goBack": "Zpět"
+    },
+    "Days": {
+        "sun": "Neděle",
+        "mon": "Pondělí",
+        "tue": "Úterý",
+        "wed": "Středa",
+        "thu": "Čtvrtek",
+        "fri": "Pátek",
+        "sat": "Sobota",
+        "sunShort": "Ne",
+        "monShort": "Po",
+        "tueShort": "Út",
+        "wedShort": "St",
+        "thuShort": "Čt",
+        "friShort": "Pá",
+        "satShort": "So"
     }
 }

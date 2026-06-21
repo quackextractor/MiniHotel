@@ -291,6 +291,22 @@ export default function SettingsForm({ availableLocales }: SettingsFormProps) {
                                 </SelectContent>
                             </Select>
                         </div>
+
+                        <div className="grid gap-2">
+                            <Label htmlFor="firstDayOfWeek">{t("firstDayOfWeek")}</Label>
+                            <Select
+                                value={String(localSettings.firstDayOfWeek ?? 1)}
+                                onValueChange={(value) => setLocalSettings({ ...localSettings, firstDayOfWeek: parseInt(value) })}
+                            >
+                                <SelectTrigger id="firstDayOfWeek">
+                                    <SelectValue />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="0">{t("sunday")}</SelectItem>
+                                    <SelectItem value="1">{t("monday")}</SelectItem>
+                                </SelectContent>
+                            </Select>
+                        </div>
                     </CardContent>
                 </Card>
 
@@ -327,9 +343,9 @@ export default function SettingsForm({ availableLocales }: SettingsFormProps) {
                         <CardContent className="space-y-4">
                             <div className="flex items-center justify-between space-x-2">
                                 <Label htmlFor="auto-logout" className="flex flex-col space-y-1">
-                                    <span>Auto Logout</span>
+                                    <span>{t("autoLogout")}</span>
                                     <span className="font-normal leading-snug text-muted-foreground">
-                                        Automatically log out after inactivity
+                                        {t("autoLogoutDesc")}
                                     </span>
                                 </Label>
                                 <Switch
@@ -340,7 +356,7 @@ export default function SettingsForm({ availableLocales }: SettingsFormProps) {
                             </div>
                             {localSettings.autoLogoutEnabled && (
                                 <div className="grid gap-2">
-                                    <Label htmlFor="timeout">Timeout (minutes)</Label>
+                                    <Label htmlFor="timeout">{t("timeoutMinutes")}</Label>
                                     <Input
                                         id="timeout"
                                         type="number"
@@ -451,16 +467,16 @@ export default function SettingsForm({ availableLocales }: SettingsFormProps) {
                         </div>
                         {isDemoMode && (
                             <div className="space-y-2 border-t pt-4">
-                                <Label>Clear Demo Data</Label>
+                                <Label>{t("clearDemoDataTitle")}</Label>
                                 <p className="text-sm text-muted-foreground mb-4">
-                                    Remove all demo records from browser storage and reset to blank state. Theme preferences are preserved.
+                                    {t("clearDemoDataDesc")}
                                 </p>
                                 <Button
                                     id="clear-demo-data-btn"
                                     onClick={handleClearDemoData}
                                     variant="destructive"
                                 >
-                                    Clear Demo Data
+                                    {t("clearDemoDataBtn")}
                                 </Button>
                             </div>
                         )}
@@ -471,18 +487,18 @@ export default function SettingsForm({ availableLocales }: SettingsFormProps) {
                     <CardHeader>
                         <div className="flex items-center gap-2">
                             <Shield className="size-5 text-primary" />
-                            <CardTitle>Privacy & GDPR</CardTitle>
+                            <CardTitle>{t("privacyGdprTitle")}</CardTitle>
                         </div>
-                        <CardDescription>View compliance and data usage statements</CardDescription>
+                        <CardDescription>{t("privacyGdprDesc")}</CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4">
                         <div className="space-y-2">
-                            <Label>Privacy Policy</Label>
+                            <Label>{t("viewPrivacyPolicy")}</Label>
                             <p className="text-sm text-muted-foreground mb-4">
-                                Review how MiniHotel manages guest profiles, booking schedules, rates, and audit logs.
+                                {t("privacyGdprNotice")}
                             </p>
                             <Button onClick={() => router.push("/privacy")} variant="outline" className="w-full">
-                                View Privacy Policy
+                                {t("viewPrivacyPolicy")}
                             </Button>
                         </div>
                     </CardContent>

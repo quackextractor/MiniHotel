@@ -393,7 +393,17 @@
         "importFailed": "Échec de l'importation des données:",
         "importing": "Importation en cours...",
         "serverProxy": "Proxy du serveur",
-        "lastRefreshed": "Dernière actualisation :"
+        "lastRefreshed": "Dernière actualisation :",
+        "privacyGdprTitle": "Confidentialité & RGPD",
+        "privacyGdprDesc": "Afficher les déclarations de conformité et d'utilisation des données",
+        "privacyGdprNotice": "Découvrez comment MiniHotel gère les profils des clients, les calendriers de réservation, les tarifs et les journaux d'audit.",
+        "viewPrivacyPolicy": "Afficher la politique de confidentialité",
+        "clearDemoDataTitle": "Effacer les données de démonstration",
+        "clearDemoDataDesc": "Supprime tous les enregistrements de démonstration du stockage du navigateur et réinitialise à l'état vierge. Les préférences de thème sont conservées.",
+        "clearDemoDataBtn": "Effacer les données de démonstration",
+        "firstDayOfWeek": "Premier jour de la semaine",
+        "sunday": "Dimanche",
+        "monday": "Lundi"
     },
     "AuditLogs": {
         "title": "Journaux d'Audit",
@@ -499,5 +509,21 @@
         "dataDetails": "Plus précisément, cette application MiniHotel gère les profils des clients (noms, e-mails, téléphones), les configurations des chambres, les calendriers de réservation, les tarifs saisonniers, les commandes de services et les journaux d'audit des actions.",
         "demoDataControl": "En mode démo, vous avez un contrôle total sur vos données car tout est conservé sur votre appareil. L'effacement du cache de votre navigateur ou des données du site effacera immédiatement et définitivement toutes les chambres, clients, réservations et autres enregistrements de données.",
         "goBack": "Retourner"
+    },
+    "Days": {
+        "sun": "Dimanche",
+        "mon": "Lundi",
+        "tue": "Mardi",
+        "wed": "Mercredi",
+        "thu": "Jeudi",
+        "fri": "Vendredi",
+        "sat": "Samedi",
+        "sunShort": "Dim",
+        "monShort": "Lun",
+        "tueShort": "Mar",
+        "wedShort": "Mer",
+        "thuShort": "Jeu",
+        "friShort": "Ven",
+        "satShort": "Sam"
     }
 }

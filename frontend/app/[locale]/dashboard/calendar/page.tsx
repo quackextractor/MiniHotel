@@ -25,6 +25,7 @@ import { api } from "@/lib/api"
 import { useCurrency } from "@/hooks/use-currency"
 import { useDateFormat } from "@/hooks/use-custom-format"
 import { useLocale, useTranslations } from "next-intl"
+import { useSettings } from "@/lib/settings-context"
 import {
   Dialog,
   DialogContent,
@@ -76,9 +77,11 @@ export default function CalendarPage() {
   const { formatDate } = useDateFormat()
   const { convert, currency } = useCurrency()
   const locale = useLocale()
+  const { settings } = useSettings()
   const t = useTranslations("Calendar")
   const tBookings = useTranslations("Bookings")
   const tCommon = useTranslations("Common")
+  const tDays = useTranslations("Days")
   const [currentDate, setCurrentDate] = useState(new Date())
   const [bookings, setBookings] = useState<Booking[]>([])
   const [rooms, setRooms] = useState<any[]>([])
@@ -123,7 +126,10 @@ export default function CalendarPage() {
   const getWeekDates = (date: Date) => {
     const week = []
     const startOfWeek = new Date(date)
-    startOfWeek.setDate(date.getDate() - date.getDay())
+    const firstDayOfWeek = settings.firstDayOfWeek ?? 1
+    const currentDay = date.getDay()
+    const distance = (currentDay - firstDayOfWeek + 7) % 7
+    startOfWeek.setDate(date.getDate() - distance)
 
     for (let i = 0; i < 7; i++) {
       const day = new Date(startOfWeek)
@@ -211,11 +217,14 @@ export default function CalendarPage() {
   }
 
   const formatMonthYear = (date: Date) => {
-    return date.toLocaleDateString("en-US", { month: "long", year: "numeric" })
+    const standardLocales = ["cs", "de", "en", "es", "fr"]
+    const dateLocale = standardLocales.includes(locale) ? locale : "en-US"
+    return date.toLocaleDateString(dateLocale, { month: "long", year: "numeric" })
   }
 
   const formatDayDate = (date: Date) => {
-    return date.toLocaleDateString("en-US", { weekday: "short", day: "numeric" })
+    const dayKeys = ["sunShort", "monShort", "tueShort", "wedShort", "thuShort", "friShort", "satShort"]
+    return `${tDays(dayKeys[date.getDay()])} ${date.getDate()}`
   }
 
   const handleStatusChange = async (bookingId: number, newStatus: string, paymentStatus?: string) => {
