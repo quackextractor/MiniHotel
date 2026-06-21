@@ -101,21 +101,20 @@ export function ChangelogViewer({ content }: ChangelogViewerProps) {
   }
 
   return (
-    <div className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-6 w-full">
-      <div>
-        <h1 className="text-lg font-semibold md:text-2xl">Changelog</h1>
-        <p className="text-sm text-muted-foreground">Browse through release versions and changes</p>
-      </div>
-
-      <Card className="w-full">
-        <CardContent className="space-y-6 pt-6">
+    <div className="flex flex-col gap-6 max-w-4xl mx-auto w-full h-[calc(100vh-12rem)] min-h-[450px]">
+      <Card className="flex flex-1 flex-col overflow-hidden h-full">
+        <CardHeader className="shrink-0">
+          <CardTitle className="text-3xl font-bold">Changelog</CardTitle>
+          <CardDescription>Browse through release versions and changes</CardDescription>
+        </CardHeader>
+        <CardContent className="flex flex-1 flex-col gap-6 overflow-hidden min-h-0 pb-6">
           {/* Main content display */}
-          <div className="h-[400px] overflow-y-auto border border-border rounded-lg p-6 bg-muted/20">
+          <div key={currentPage} className="flex-1 overflow-y-auto pr-4">
             {renderMarkdown(chunks[currentPage])}
           </div>
 
           {/* Slider controller */}
-          <div className="space-y-2 pt-4">
+          <div className="space-y-2 pt-2 shrink-0">
             <div className="flex justify-between text-xs text-muted-foreground font-mono">
               <span>First Version</span>
               <span>Entry {currentPage + 1} of {chunks.length}</span>
@@ -130,7 +129,7 @@ export function ChangelogViewer({ content }: ChangelogViewerProps) {
           </div>
 
           {/* Pagination controls */}
-          <Pagination className="pt-2">
+          <Pagination className="pt-2 shrink-0">
             <PaginationContent className="w-full justify-between">
               <PaginationItem>
                 <Button
