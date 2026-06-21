@@ -91,21 +91,21 @@ export default function BookingsPage() {
     async function fetchData() {
       try {
         setLoading(true)
-        console.log("[v0] Fetching bookings, rooms, guests, and services from API...")
+        console.log("[MiniHotel] Fetching bookings, rooms, guests, and services from API...")
         const [bookingsData, roomsData, guestsData, servicesData] = await Promise.all([
           api.getBookings(),
           api.getRooms(),
           api.getGuests(),
           api.getServices(),
         ])
-        console.log("[v0] Data received:", { bookingsData, roomsData, guestsData, servicesData })
+        console.log("[MiniHotel] Data received:", { bookingsData, roomsData, guestsData, servicesData })
         setBookings(bookingsData || [])
         setRooms(roomsData)
         setGuests(guestsData)
         setServices(servicesData)
         setError(null)
       } catch (err) {
-        console.error("[v0] Error fetching data:", err)
+        console.error("[MiniHotel] Error fetching data:", err)
         setError(err instanceof Error ? err.message : "Failed to load bookings")
       } finally {
         setLoading(false)
@@ -118,7 +118,7 @@ export default function BookingsPage() {
   const handleEditBookingSubmit = async (bookingData: any) => {
     if (!selectedBooking) return
     try {
-      console.log("[v0] Saving booking edits...")
+      console.log("[MiniHotel] Saving booking edits...")
       await api.updateBooking(selectedBooking.id, bookingData)
       const updatedBookings = await api.getBookings()
       setBookings(Array.isArray(updatedBookings) ? updatedBookings : updatedBookings.items || [])
@@ -129,22 +129,22 @@ export default function BookingsPage() {
       setIsEditing(false)
       toast.success("Booking updated successfully")
     } catch (err) {
-      console.error("[v0] Error updating booking:", err)
+      console.error("[MiniHotel] Error updating booking:", err)
       toast.error("Failed to update booking: " + (err instanceof Error ? err.message : "Unknown error"))
     }
   }
 
   const handleCreateBookingSubmit = async (bookingData: any) => {
     try {
-      console.log("[v0] Creating new booking...")
+      console.log("[MiniHotel] Creating new booking...")
       const newBooking = await api.createBooking(bookingData)
-      console.log("[v0] Booking created:", newBooking)
+      console.log("[MiniHotel] Booking created:", newBooking)
       setBookings([...bookings, newBooking])
       setIsAddDialogOpen(false)
       setShowGuestForm(false)
       toast.success("Booking created successfully!")
     } catch (err) {
-      console.error("[v0] Error creating booking:", err)
+      console.error("[MiniHotel] Error creating booking:", err)
       toast.error("Failed to create booking: " + (err instanceof Error ? err.message : "Unknown error"))
     }
   }
@@ -154,7 +154,7 @@ export default function BookingsPage() {
     const formData = new FormData(e.currentTarget)
 
     try {
-      console.log("[v0] Creating new guest...")
+      console.log("[MiniHotel] Creating new guest...")
       const newGuest = await api.createGuest({
         first_name: formData.get("firstName") as string,
         last_name: formData.get("lastName") as string,
@@ -162,12 +162,12 @@ export default function BookingsPage() {
         phone: formData.get("phone") as string,
         address: formData.get("address") as string,
       })
-      console.log("[v0] Guest created:", newGuest)
+      console.log("[MiniHotel] Guest created:", newGuest)
       setGuests([...guests, newGuest])
       setShowGuestForm(false)
       toast.success("Guest created successfully!")
     } catch (err) {
-      console.error("[v0] Error creating guest:", err)
+      console.error("[MiniHotel] Error creating guest:", err)
       toast.error("Failed to create guest: " + (err instanceof Error ? err.message : "Unknown error"))
     }
   }
@@ -176,7 +176,7 @@ export default function BookingsPage() {
 
   const handleStatusChange = async (bookingId: number, newStatus: string, paymentStatus?: string) => {
     try {
-      console.log("[v0] Updating booking status...")
+      console.log("[MiniHotel] Updating booking status...")
       const updateData: any = { status: newStatus }
       if (paymentStatus) updateData.payment_status = paymentStatus
 
@@ -189,7 +189,7 @@ export default function BookingsPage() {
         ),
       )
     } catch (err) {
-      console.error("[v0] Error updating booking status:", err)
+      console.error("[MiniHotel] Error updating booking status:", err)
       toast.error("Failed to update status: " + (err instanceof Error ? err.message : "Unknown error"))
     }
   }
@@ -198,13 +198,13 @@ export default function BookingsPage() {
     if (!confirm("Are you sure you want to delete this booking? This action cannot be undone.")) return
 
     try {
-      console.log("[v0] Deleting booking...", bookingId)
+      console.log("[MiniHotel] Deleting booking...", bookingId)
       await api.deleteBooking(bookingId)
       setBookings(bookings.filter((b) => b.id !== bookingId))
       setSelectedBooking(null)
       toast.success("Booking deleted successfully")
     } catch (err) {
-      console.error("[v0] Error deleting booking:", err)
+      console.error("[MiniHotel] Error deleting booking:", err)
       toast.error("Failed to delete booking: " + (err instanceof Error ? err.message : "Unknown error"))
     }
   }

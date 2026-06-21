@@ -96,21 +96,21 @@ export default function CalendarPage() {
     async function fetchCalendarData() {
       try {
         setLoading(true)
-        console.log("[v0] Fetching calendar data from API...")
+        console.log("[MiniHotel] Fetching calendar data from API...")
         const [bookingsData, roomsData, guestsData, servicesData] = await Promise.all([
           api.getBookings(),
           api.getRooms(),
           api.getGuests(),
           api.getServices()
         ])
-        console.log("[v0] Calendar data received:", { bookingsData, roomsData, guestsData, servicesData })
+        console.log("[MiniHotel] Calendar data received:", { bookingsData, roomsData, guestsData, servicesData })
         setBookings(bookingsData || [])
         setRooms(roomsData)
         setGuests(guestsData)
         setServices(servicesData)
         setError(null)
       } catch (err) {
-        console.error("[v0] Error fetching calendar data:", err)
+        console.error("[MiniHotel] Error fetching calendar data:", err)
         setError(err instanceof Error ? err.message : "Failed to load calendar")
       } finally {
         setLoading(false)
@@ -167,7 +167,7 @@ export default function CalendarPage() {
   const handleSaveEdit = async (payload: any) => {
     if (!selectedBooking) return
     try {
-      console.log("[v0] Saving booking edits...")
+      console.log("[MiniHotel] Saving booking edits...")
       await api.updateBooking(selectedBooking.id, payload)
       const updatedBookings = await api.getBookings()
       setBookings(Array.isArray(updatedBookings) ? updatedBookings : updatedBookings.items || [])
@@ -179,7 +179,7 @@ export default function CalendarPage() {
       setIsEditing(false)
       toast.success("Booking updated successfully")
     } catch (err) {
-      console.error("[v0] Error updating booking:", err)
+      console.error("[MiniHotel] Error updating booking:", err)
       toast.error("Failed to update booking: " + (err instanceof Error ? err.message : "Unknown error"))
     }
   }
@@ -192,7 +192,7 @@ export default function CalendarPage() {
       setIsAddDialogOpen(false)
       toast.success("Booking created successfully")
     } catch (err) {
-      console.error("[v0] Error creating booking:", err)
+      console.error("[MiniHotel] Error creating booking:", err)
       toast.error("Failed to create booking: " + (err instanceof Error ? err.message : "Unknown error"))
     }
   }
@@ -220,7 +220,7 @@ export default function CalendarPage() {
 
   const handleStatusChange = async (bookingId: number, newStatus: string, paymentStatus?: string) => {
     try {
-      console.log("[v0] Updating booking status...")
+      console.log("[MiniHotel] Updating booking status...")
       const updateData: any = { status: newStatus }
       if (paymentStatus) updateData.payment_status = paymentStatus
 
@@ -237,7 +237,7 @@ export default function CalendarPage() {
         setSelectedBooking({ ...selectedBooking, status: newStatus, ...(paymentStatus && { payment_status: paymentStatus }) })
       }
     } catch (err) {
-      console.error("[v0] Error updating booking status:", err)
+      console.error("[MiniHotel] Error updating booking status:", err)
       toast.error("Failed to update status: " + (err instanceof Error ? err.message : "Unknown error"))
     }
   }
@@ -246,14 +246,14 @@ export default function CalendarPage() {
     if (!confirm(tBookings("deleteConfirmation"))) return
 
     try {
-      console.log("[v0] Deleting booking...", bookingId)
+      console.log("[MiniHotel] Deleting booking...", bookingId)
       await api.deleteBooking(bookingId)
       setBookings(bookings.filter((b) => b.id !== bookingId))
       setSelectedBooking(null)
       setIsEditing(false)
       toast.success("Booking deleted successfully")
     } catch (err) {
-      console.error("[v0] Error deleting booking:", err)
+      console.error("[MiniHotel] Error deleting booking:", err)
       toast.error("Failed to delete booking: " + (err instanceof Error ? err.message : "Unknown error"))
     }
   }

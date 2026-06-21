@@ -2,6 +2,15 @@
 
 All notable changes to the MiniHotel root repository are documented here.
 
+## [0.10.1] - 2026-06-21
+
+### Changed
+- Removed all legacy branding and log mentions of `v0`, `[v0]`, and `vercel` across all application levels (Metadata generator, API proxy middleware, proxy matcher, and dashboard page logs).
+
+### Fixed
+- Fixed PostCSS XSS vulnerability (`GHSA-qx2v-qp2m-jg93`) by overriding nested sub-dependencies to `postcss@^8.5.10` via `pnpm.overrides` in `package.json`.
+- Added unit test file `reports-page.test.tsx` for `ReportsPage` component.
+
 ## [0.10.0] - 2026-06-21
 
 ### Added

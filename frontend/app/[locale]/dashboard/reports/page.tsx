@@ -28,7 +28,7 @@ export default function ReportsPage() {
         setOccupancyData(occupancy)
         setError(null)
       } catch (err) {
-        console.error("[v0] Error fetching statistics:", err)
+        console.error("[MiniHotel] Error fetching statistics:", err)
         setError(err instanceof Error ? err.message : "Failed to load statistics")
       } finally {
         setLoading(false)

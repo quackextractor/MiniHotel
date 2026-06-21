@@ -121,3 +121,22 @@ Based on the final specifications in `docs/review.md`, the following changes wer
   - `calendar-page.test.tsx` verifying grid renders, empty cell click opens the booking form pre-populated with dates, and triggers correct submission parameters.
 - Extended the global `next-intl` stub in `__tests__/setup.ts` to include `useLocale` to avoid peer-dependency mocking conflicts.
 
+## 11. Legacy Identifier Removal & Security Override Update (v0.10.1)
+
+Based on the final requirements in `docs/review.md` to modernize the repository and secure sub-dependencies:
+
+### Legacy Branding Cleanup
+- Removed all legacy branding identifiers `v0` and `[v0]` and references to `vercel` across all application levels:
+  - Frontend `package.json` package name updated to `minihotel`.
+  - Next.js root layout metadata generator updated to `MiniHotel`.
+  - Removed `@vercel/analytics` package and its tags/imports from the codebase.
+  - Standardized error and tracking logs across dashboard pages (reports, calendar, bookings) and API proxy route to use the unified `[MiniHotel]` logger label.
+  - Proxy middleware configuration (`frontend/proxy.ts`) matcher and comments updated to remove references to `_vercel`.
+
+### Security Vulnerability Remediation
+- Resolved PostCSS XSS vulnerability (`GHSA-qx2v-qp2m-jg93`) by configuring `pnpm.overrides` inside `frontend/package.json` to enforce `postcss@^8.5.10`. Verified complete resolution via `pnpm audit` showing 0 vulnerabilities.
+
+### Component Verification & Tests
+- Added unit test file `reports-page.test.tsx` for `ReportsPage` component to ensure comprehensive test coverage of page loading and statistics rendering.
+- Executed Vitest test suite (57/57 tests passed) and production build pipeline cleanly.
+

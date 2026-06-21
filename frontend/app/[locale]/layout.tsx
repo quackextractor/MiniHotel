@@ -1,7 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
 import { SettingsProvider } from "@/lib/settings-context"
 import { AuthProvider } from "@/contexts/AuthContext"
 import { AutoLogoutManager } from "@/components/auto-logout-manager"
@@ -20,7 +19,7 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Minihotel Management System",
   description: "Professional hotel management system for bookings, rooms, and operations",
-  generator: "v0.app",
+  generator: "MiniHotel",
   icons: {
     icon: "/favicon.ico",
   },
@@ -51,7 +50,6 @@ export default async function RootLayout({
               <VersionIndicator version={version} />
             </SettingsProvider>
           </AuthProvider>
-          <Analytics />
         </NextIntlClientProvider>
       </body>
     </html>

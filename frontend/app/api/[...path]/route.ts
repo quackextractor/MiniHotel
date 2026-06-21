@@ -53,7 +53,7 @@ async function handleRequest(request: NextRequest, method: string) {
 
     return nextResponse
   } catch (error) {
-    console.error("[v0] API Proxy Error:", error)
+    console.error("[MiniHotel] API Proxy Error:", error)
     return NextResponse.json({ error: "Failed to communicate with backend API" }, { status: 500 })
   }
 }
