@@ -118,9 +118,9 @@ export function ChangelogViewer({ content }: ChangelogViewerProps) {
           {/* Controls moved to the top – they always stay in place */}
           <div className="space-y-2 shrink-0">
             <div className="flex justify-between text-xs text-muted-foreground font-mono">
-              <span>First Version</span>
-              <span>Entry {currentPage + 1} of {chunks.length}</span>
               <span>Latest Version</span>
+              <span>Entry {currentPage + 1} of {chunks.length}</span>
+              <span>First Version</span>
             </div>
             <Slider
               value={[currentPage]}
