@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter, Link } from '@/i18n/routing'
+import { useTranslations } from 'next-intl'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
@@ -37,6 +38,7 @@ const formSchema = z.object({
 
 export default function RegisterPage() {
     const router = useRouter()
+    const t = useTranslations("Auth")
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState<string | null>(null)
     const formRef = useEnterNavigation()
@@ -103,9 +105,9 @@ export default function RegisterPage() {
             <LanguageSwitcher />
             <Card className="w-full max-w-sm">
                 <CardHeader>
-                    <CardTitle className="text-2xl">Create Admin Account</CardTitle>
+                    <CardTitle className="text-2xl">{t("registerTitle")}</CardTitle>
                     <CardDescription>
-                        Set up the initial administrator account.
+                        {t("registerDescription")}
                     </CardDescription>
                 </CardHeader>
                 <form ref={formRef} onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-6">
@@ -120,7 +122,7 @@ export default function RegisterPage() {
                             </Alert>
                         )}
                         <div className="grid gap-2">
-                            <Label htmlFor="username">Username</Label>
+                            <Label htmlFor="username">{t("username")}</Label>
                             <Input
                                 id="username"
                                 type="text"
@@ -131,7 +133,7 @@ export default function RegisterPage() {
                             )}
                         </div>
                         <div className="grid gap-2">
-                            <Label htmlFor="password">Password</Label>
+                            <Label htmlFor="password">{t("password")}</Label>
                             <Input
                                 id="password"
                                 type="password"
@@ -142,7 +144,7 @@ export default function RegisterPage() {
                             )}
                         </div>
                         <div className="grid gap-2">
-                            <Label htmlFor="confirmPassword">Confirm Password</Label>
+                            <Label htmlFor="confirmPassword">{t("confirmPassword")}</Label>
                             <Input
                                 id="confirmPassword"
                                 type="password"
@@ -156,10 +158,10 @@ export default function RegisterPage() {
                     <CardFooter className="flex flex-col gap-3">
                         <Button className="w-full" type="submit" disabled={loading}>
                             {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                            Register Admin
+                            {t("registerAdmin")}
                         </Button>
                         <Link href="/privacy" className="text-sm text-muted-foreground hover:underline">
-                            Privacy Policy
+                            {t("privacyPolicy")}
                         </Link>
                     </CardFooter>
                 </form>

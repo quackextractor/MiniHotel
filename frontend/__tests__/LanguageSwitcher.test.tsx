@@ -23,11 +23,12 @@ describe('LanguageSwitcher', () => {
     expect(select).toBeDefined()
   })
 
-  it('shows all three locale options', () => {
+  it('shows locale options from locales.json', () => {
     render(<LanguageSwitcher />)
-    expect(screen.getByText('EN')).toBeDefined()
-    expect(screen.getByText('CS')).toBeDefined()
-    expect(screen.getByText('DE')).toBeDefined()
+    expect(screen.getByText('🇺🇸 English')).toBeDefined()
+    expect(screen.getByText('🇨🇿 Čeština')).toBeDefined()
+    expect(screen.getByText('🇩🇪 Deutsch')).toBeDefined()
+    expect(screen.getByText('🏴‍☠️ Pirate')).toBeDefined()
   })
 
   it('defaults to current locale from params', () => {

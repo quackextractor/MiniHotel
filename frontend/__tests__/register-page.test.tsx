@@ -43,7 +43,7 @@ describe('RegisterPage', () => {
   it('renders Privacy Policy link pointing to /privacy', async () => {
     render(<RegisterPage />)
     await waitFor(() => {
-      const link = screen.getByText('Privacy Policy') as HTMLAnchorElement
+      const link = screen.getByText('Auth.privacyPolicy') as HTMLAnchorElement
       expect(link).toBeDefined()
       expect(link.getAttribute('href')).toContain('privacy')
     })
@@ -52,7 +52,7 @@ describe('RegisterPage', () => {
   it('renders Register Admin button', async () => {
     render(<RegisterPage />)
     await waitFor(() => {
-      expect(screen.getByText('Register Admin')).toBeDefined()
+      expect(screen.getByText('Auth.registerAdmin')).toBeDefined()
     })
   })
 })

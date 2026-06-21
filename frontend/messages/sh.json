@@ -477,5 +477,17 @@
         "noShow": "A Phantom",
         "tentative": "A Maybe",
         "draft": "A Wisp"
+    },
+    "Auth": {
+        "loginTitle": "Enter Here",
+        "loginDescription": "Give thy secret words to enter the grand chambers.",
+        "registerTitle": "Create Thine Office",
+        "registerDescription": "Appoint the chief lord of these halls.",
+        "username": "Thy Name",
+        "password": "Thy Key",
+        "confirmPassword": "Confirm Thy Key",
+        "signIn": "Enter",
+        "registerAdmin": "Appoint Lord",
+        "privacyPolicy": "Sacred Vows"
     }
 }

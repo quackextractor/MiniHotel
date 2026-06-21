@@ -1,8 +1,11 @@
 {
   "name": "minihotel",
-  "version": "0.10.1",
+  "version": "0.10.3",
   "private": true,
   "scripts": {
+    "prebuild": "node generate_locales.js",
+    "predev": "node generate_locales.js",
+    "prelint": "node generate_locales.js",
     "build": "npm run lint:i18n && next build",
     "dev": "next dev",
     "lint": "eslint . && npm run lint:i18n",

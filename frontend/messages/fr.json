@@ -477,5 +477,17 @@
         "noShow": "Non-présentation",
         "tentative": "Provisoire",
         "draft": "Brouillon"
+    },
+    "Auth": {
+        "loginTitle": "Connexion",
+        "loginDescription": "Entrez vos identifiants pour accéder au tableau de bord administrateur.",
+        "registerTitle": "Créer un compte administrateur",
+        "registerDescription": "Configurez le compte administrateur initial.",
+        "username": "Nom d'utilisateur",
+        "password": "Mot de passe",
+        "confirmPassword": "Confirmer le mot de passe",
+        "signIn": "Se connecter",
+        "registerAdmin": "Enregistrer l'administrateur",
+        "privacyPolicy": "Politique de confidentialité"
     }
 }

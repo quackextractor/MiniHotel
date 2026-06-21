@@ -68,7 +68,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     // Protected routes logic handled here or in proxy.
     // We'll use this context to conditionally render or redirect as a fail-safe.
     useEffect(() => {
-        if (!loading && !isAuthenticated && pathname !== '/login' && pathname !== '/register') {
+        if (!loading && !isAuthenticated && pathname !== '/login' && pathname !== '/register' && pathname !== '/privacy') {
             router.push('/login')
         }
     }, [loading, isAuthenticated, pathname, router])

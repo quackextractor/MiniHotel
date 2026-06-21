@@ -477,5 +477,17 @@
         "noShow": "No Show",
         "tentative": "Tentative",
         "draft": "Draft"
+    },
+    "Auth": {
+        "loginTitle": "Login",
+        "loginDescription": "Enter your credentials to access the admin dashboard.",
+        "registerTitle": "Create Admin Account",
+        "registerDescription": "Set up the initial administrator account.",
+        "username": "Username",
+        "password": "Password",
+        "confirmPassword": "Confirm Password",
+        "signIn": "Sign in",
+        "registerAdmin": "Register Admin",
+        "privacyPolicy": "Privacy Policy"
     }
 }

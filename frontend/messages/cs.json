@@ -477,5 +477,17 @@
         "noShow": "Nedostavil se",
         "tentative": "Předběžná",
         "draft": "Koncept"
+    },
+    "Auth": {
+        "loginTitle": "Přihlášení",
+        "loginDescription": "Zadejte své přihlašovací údaje pro přístup do administrace.",
+        "registerTitle": "Vytvořit administrátorský účet",
+        "registerDescription": "Nastavit počáteční účet administrátora.",
+        "username": "Uživatelské jméno",
+        "password": "Heslo",
+        "confirmPassword": "Potvrdit heslo",
+        "signIn": "Přihlásit se",
+        "registerAdmin": "Registrovat administrátora",
+        "privacyPolicy": "Zásady ochrany osobních údajů"
     }
 }

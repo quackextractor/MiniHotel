@@ -2,6 +2,19 @@
 
 All notable changes to the MiniHotel root repository are documented here.
 
+## [0.10.3] - 2026-06-21
+
+### Added
+- Created dynamic language switcher locales list generation script `generate_locales.js` and added predev/prebuild/prelint triggers to `package.json`.
+- Integrated `locales.json` dynamically into `routing.ts` and `LanguageSwitcher.tsx` to automatically support all languages defined in `messages/*.json` without hardcoding.
+
+## [0.10.2] - 2026-06-21
+
+### Fixed
+- Fixed unauthenticated privacy policy viewing by resolving route redirect constraints in `AuthContext.tsx`.
+- Updated client-side language switcher on login and register pages to dynamically translate UI labels and text blocks into the chosen locale (English, Czech, German, Spanish, French, Leet Speak, Pirate Speak, Shakespearean).
+- Resolved window.fetch interceptor error in `lib/api.ts` to support non-string inputs safely.
+
 ## [0.10.1] - 2026-06-21
 
 ### Changed

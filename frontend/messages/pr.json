@@ -477,5 +477,17 @@
         "noShow": "Ghost",
         "tentative": "Maybe",
         "draft": "Sketch"
+    },
+    "Auth": {
+        "loginTitle": "Board the Ship",
+        "loginDescription": "Enter yer secret words to access the captain's deck.",
+        "registerTitle": "Make a Captain Account",
+        "registerDescription": "Set up the first captain of the crew.",
+        "username": "Pirate Name",
+        "password": "Secret Code",
+        "confirmPassword": "Repeat Code",
+        "signIn": "Set Sail",
+        "registerAdmin": "Enroll Captain",
+        "privacyPolicy": "Code of Conduct"
     }
 }

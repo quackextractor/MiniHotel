@@ -2,14 +2,7 @@
 
 import { useRouter, usePathname } from "@/i18n/routing"
 import { useParams } from "next/navigation"
-
-const locales = ['en', 'cs', 'de'] as const
-
-const localeLabels: Record<string, string> = {
-  en: "EN",
-  cs: "CS",
-  de: "DE",
-}
+import localesData from "@/i18n/locales.json"
 
 export function LanguageSwitcher() {
   const router = useRouter()
@@ -30,9 +23,9 @@ export function LanguageSwitcher() {
         className="rounded border border-border bg-background text-foreground text-sm px-2 py-1 cursor-pointer focus:outline-none focus:ring-1 focus:ring-ring"
         aria-label="Select language"
       >
-        {locales.map((locale) => (
-          <option key={locale} value={locale}>
-            {localeLabels[locale]}
+        {localesData.map((loc) => (
+          <option key={loc.code} value={loc.code}>
+            {loc.flag ? `${loc.flag} ` : ''}{loc.name}
           </option>
         ))}
       </select>

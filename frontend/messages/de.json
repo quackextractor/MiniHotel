@@ -477,5 +477,17 @@
         "noShow": "No-Show",
         "tentative": "Vorläufig",
         "draft": "Entwurf"
+    },
+    "Auth": {
+        "loginTitle": "Anmeldung",
+        "loginDescription": "Geben Sie Ihre Anmeldedaten ein, um auf das Admin-Dashboard zuzugreifen.",
+        "registerTitle": "Admin-Konto erstellen",
+        "registerDescription": "Richten Sie das ursprüngliche Administratorkonto ein.",
+        "username": "Benutzername",
+        "password": "Kennwort",
+        "confirmPassword": "Kennwort bestätigen",
+        "signIn": "Anmelden",
+        "registerAdmin": "Admin registrieren",
+        "privacyPolicy": "Datenschutzerklärung"
     }
 }

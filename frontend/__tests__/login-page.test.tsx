@@ -48,7 +48,7 @@ describe('LoginPage', () => {
   it('renders Privacy Policy link pointing to /privacy', async () => {
     render(<LoginPage />)
     await waitFor(() => {
-      const link = screen.getByText('Privacy Policy') as HTMLAnchorElement
+      const link = screen.getByText('Auth.privacyPolicy') as HTMLAnchorElement
       expect(link).toBeDefined()
       expect(link.getAttribute('href')).toContain('privacy')
     })
@@ -57,7 +57,7 @@ describe('LoginPage', () => {
   it('renders Sign in button', async () => {
     render(<LoginPage />)
     await waitFor(() => {
-      expect(screen.getByText('Sign in')).toBeDefined()
+      expect(screen.getByText('Auth.signIn')).toBeDefined()
     })
   })
 })

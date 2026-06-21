@@ -477,5 +477,17 @@
         "noShow": "No Presentado",
         "tentative": "Tentativa",
         "draft": "Borrador"
+    },
+    "Auth": {
+        "loginTitle": "Iniciar sesión",
+        "loginDescription": "Ingrese sus credenciales para acceder al panel de administración.",
+        "registerTitle": "Crear cuenta de administrador",
+        "registerDescription": "Configure la cuenta de administrador inicial.",
+        "username": "Nombre de usuario",
+        "password": "Contraseña",
+        "confirmPassword": "Confirmar contraseña",
+        "signIn": "Iniciar sesión",
+        "registerAdmin": "Registrar administrador",
+        "privacyPolicy": "Política de privacidad"
     }
 }

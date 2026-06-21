@@ -1,10 +1,8 @@
-import createNextIntlPlugin from 'next-intl/plugin';
-import fs from 'fs';
-import path from 'path';
+const fs = require('fs');
+const path = require('path');
 
-// Generate locales.json on startup
 try {
-  const messagesDir = path.resolve(process.cwd(), 'messages');
+  const messagesDir = path.resolve(__dirname, 'messages');
   if (fs.existsSync(messagesDir)) {
     const files = fs.readdirSync(messagesDir).filter(f => f.endsWith('.json'));
     const locales = [];
@@ -26,25 +24,12 @@ try {
       }
     }
     fs.writeFileSync(
-      path.resolve(process.cwd(), 'i18n/locales.json'),
+      path.resolve(__dirname, 'i18n/locales.json'),
       JSON.stringify(locales, null, 2)
     );
-    console.log('[MiniHotel] Generated locales.json successfully');
+    console.log('[MiniHotel] Generated locales.json successfully via script');
   }
 } catch (e) {
   console.error('[MiniHotel] Failed to generate locales.json', e);
+  process.exit(1);
 }
-
-const withNextIntl = createNextIntlPlugin();
-
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  typescript: {
-    // strict checking enabled
-  },
-  images: {
-    unoptimized: true,
-  },
-}
-
-export default withNextIntl(nextConfig)

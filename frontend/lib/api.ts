@@ -3,8 +3,16 @@ import { handleDemoFetch } from "./local-db"
 if (typeof window !== "undefined" && process.env.NEXT_PUBLIC_DEMO_MODE === "true") {
   const originalFetch = window.fetch
   window.fetch = async function (input, init) {
-    const url = typeof input === "string" ? input : (input as Request).url
-    if (url.includes("/api/")) {
+    let url = ""
+    if (typeof input === "string") {
+      url = input
+    } else if (input instanceof URL) {
+      url = input.toString()
+    } else if (input && typeof input === "object" && "url" in input) {
+      url = (input as any).url || ""
+    }
+
+    if (url && url.includes("/api/")) {
       return handleDemoFetch(url, init)
     }
     return originalFetch(input, init)

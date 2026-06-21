@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter, Link } from '@/i18n/routing'
+import { useTranslations } from 'next-intl'
 import { useSearchParams } from 'next/navigation'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -35,6 +36,7 @@ const formSchema = z.object({
 
 export default function LoginPage() {
     const router = useRouter()
+    const t = useTranslations("Auth")
     const searchParams = useSearchParams()
     const { login } = useAuth()
     const [loading, setLoading] = useState(false)
@@ -118,9 +120,9 @@ export default function LoginPage() {
             <LanguageSwitcher />
             <Card className="w-full max-w-sm">
                 <CardHeader>
-                    <CardTitle className="text-2xl">Login</CardTitle>
+                    <CardTitle className="text-2xl">{t("loginTitle")}</CardTitle>
                     <CardDescription>
-                        Enter your credentials to access the admin dashboard.
+                        {t("loginDescription")}
                     </CardDescription>
                 </CardHeader>
                 <form ref={formRef} onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-6">
@@ -135,7 +137,7 @@ export default function LoginPage() {
                             </Alert>
                         )}
                         <div className="grid gap-2">
-                            <Label htmlFor="username">Username</Label>
+                            <Label htmlFor="username">{t("username")}</Label>
                             <Input
                                 id="username"
                                 type="text"
@@ -147,7 +149,7 @@ export default function LoginPage() {
                             )}
                         </div>
                         <div className="grid gap-2">
-                            <Label htmlFor="password">Password</Label>
+                            <Label htmlFor="password">{t("password")}</Label>
                             <Input
                                 id="password"
                                 type="password"
@@ -161,10 +163,10 @@ export default function LoginPage() {
                     <CardFooter className="flex flex-col gap-3">
                         <Button className="w-full" type="submit" disabled={loading}>
                             {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                            Sign in
+                            {t("signIn")}
                         </Button>
                         <Link href="/privacy" className="text-sm text-muted-foreground hover:underline">
-                            Privacy Policy
+                            {t("privacyPolicy")}
                         </Link>
                     </CardFooter>
                 </form>

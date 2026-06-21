@@ -477,5 +477,17 @@
         "noShow": "Invisible",
         "tentative": "Mebbe",
         "draft": "Fake"
+    },
+    "Auth": {
+        "loginTitle": "L0g1n",
+        "loginDescription": "Ent3r ur cr3d3nt14l5 t0 acc355 th3 4dm1n d45hb04rd.",
+        "registerTitle": "Cr34t3 4dm1n Acc0unt",
+        "registerDescription": "53t up th3 1n1t14l 4dm1n15tr4t0r 4cc0unt.",
+        "username": "U53rn4m3",
+        "password": "P455w0rd",
+        "confirmPassword": "C0nf1rm P455w0rd",
+        "signIn": "51gn 1n",
+        "registerAdmin": "R3g15t3r 4dm1n",
+        "privacyPolicy": "Pr1v4cy P0l1cy"
     }
 }

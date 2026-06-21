@@ -140,3 +140,30 @@ Based on the final requirements in `docs/review.md` to modernize the repository 
 - Added unit test file `reports-page.test.tsx` for `ReportsPage` component to ensure comprehensive test coverage of page loading and statistics rendering.
 - Executed Vitest test suite (57/57 tests passed) and production build pipeline cleanly.
 
+## 12. Unauthenticated Privacy Policy Access & Locale Switcher Fix (v0.10.2)
+
+### Unauthenticated Privacy Policy Route
+- Modified `AuthContext.tsx` initialization hooks to check the active pathname. Exempted `/privacy` (and localized variants like `/cs/privacy` and `/de/privacy`) from redirection to `/login` for unauthenticated sessions. This allows guest users and customers to view terms/policies directly.
+
+### Dynamic Login/Register Page Translation
+- Defined localized translation namespaces (`Auth`) in all 8 translation JSON dictionaries (`en.json`, `cs.json`, `de.json`, `es.json`, `fr.json`, `lc.json`, `pr.json`, `sh.json`).
+- Updated `LoginPage` (`login/page.tsx`) and `RegisterPage` (`register/page.tsx`) to pull text content and form labels from `useTranslations("Auth")` dynamically.
+- Verified that switching languages on the register/login screen instantly updates all labels, cards, and links into the selected language (e.g., English, Czech, German) without page-reload anomalies.
+
+### Robust fetch Interceptor in Demo Mode
+- Patched the global `window.fetch` interceptor in `lib/api.ts` to inspect requests dynamically. Ensured it gracefully handles non-string request objects (e.g. `URL` and `Request` instances) to prevent runtime TypeError failures during RSC requests.
+
+## 13. Dynamic Locales List Scanning & Generation (v0.10.3)
+
+### Dynamic Locale Generation
+- Added `generate_locales.js` script to scan `messages/*.json` dynamically at start/build/lint time. It extracts the language code, descriptive name, and flag emoji from each translation file's `_meta` property.
+- Generated `locales.json` output inside the `i18n` folder to act as a unified, static reference for client-side and server-side code without needing filesystem checks in client components.
+- Configured `predev`, `prebuild`, and `prelint` scripts in `package.json` to automatically run `generate_locales.js` to ensure sync status.
+
+### Client-side Integration
+- Refactored `LanguageSwitcher.tsx` to read the dynamic locales list directly from `locales.json`.
+- Updated Next-intl routing configuration in `routing.ts` to fetch locales dynamically from `locales.json`.
+- Adjusted unit tests in `LanguageSwitcher.test.tsx` to verify option rendering using the generated file structure.
+
+
+
