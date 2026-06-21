@@ -191,7 +191,10 @@
         "noDescription": "Popis není k dispozici",
         "editService": "Upravit službu",
         "editServiceDescription": "Aktualizovat detaily vaší služby.",
-        "save": "Uložit změny"
+        "save": "Uložit změny",
+        "serviceUpdated": "Služba byla úspěšně aktualizována",
+        "confirmDelete": "Opravdu chcete tuto službu smazat?",
+        "serviceDeleted": "Služba byla úspěšně smazána"
     },
     "Bookings": {
         "title": "Rezervace",
@@ -298,7 +301,8 @@
             "card": "Karta",
             "bankTransfer": "Bankovní převod",
             "online": "Online"
-        }
+        },
+        "addBooking": "Přidat rezervaci"
     },
     "Clients": {
         "title": "Klienti",

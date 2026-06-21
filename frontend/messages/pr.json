@@ -191,7 +191,10 @@
         "noDescription": "No tale to tell",
         "editService": "Modify Goodie",
         "editServiceDescription": "Update the tale of this service.",
-        "save": "Secure Changes"
+        "save": "Secure Changes",
+        "serviceUpdated": "Service updated successfully, matey",
+        "confirmDelete": "Are ye sure ye want to scuttle this service?",
+        "serviceDeleted": "Service sent to Davy Jones' locker"
     },
     "Bookings": {
         "title": "The Scroll",
@@ -298,7 +301,8 @@
             "card": "Plastic Magic",
             "bankTransfer": "Gold Wiring",
             "online": "Sky Magic"
-        }
+        },
+        "addBooking": "Add Voyage"
     },
     "Clients": {
         "title": "Souls",

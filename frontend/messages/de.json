@@ -191,7 +191,10 @@
         "noDescription": "Keine Beschreibung verfügbar",
         "editService": "Service bearbeiten",
         "editServiceDescription": "Aktualisieren Sie die Details Ihres Services.",
-        "save": "Änderungen speichern"
+        "save": "Änderungen speichern",
+        "serviceUpdated": "Service erfolgreich aktualisiert",
+        "confirmDelete": "Sind Sie sicher, dass Sie diesen Service löschen möchten?",
+        "serviceDeleted": "Service erfolgreich gelöscht"
     },
     "Bookings": {
         "title": "Buchungen",
@@ -298,7 +301,8 @@
             "card": "Karte",
             "bankTransfer": "Überweisung",
             "online": "Online"
-        }
+        },
+        "addBooking": "Buchung hinzufügen"
     },
     "Clients": {
         "title": "Kunden",

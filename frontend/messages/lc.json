@@ -191,7 +191,10 @@
         "noDescription": "Iz mystery",
         "editService": "Fix Treet",
         "editServiceDescription": "Change treet deetz.",
-        "save": "Save It"
+        "save": "Save It",
+        "serviceUpdated": "Service updatd successfully",
+        "confirmDelete": "R u sure u wanna delete dis service?",
+        "serviceDeleted": "Service deletd successfully"
     },
     "Bookings": {
         "title": "Noms Requests",
@@ -298,7 +301,8 @@
             "card": "Plastic",
             "bankTransfer": "Magic Wire",
             "online": "Interwebz"
-        }
+        },
+        "addBooking": "Add bukkin"
     },
     "Clients": {
         "title": "Frens",

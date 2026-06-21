@@ -191,7 +191,10 @@
         "noDescription": "A mystery, shrouded in silence",
         "editService": "Reform Boon",
         "editServiceDescription": "Amend the secrets of thy service.",
-        "save": "Seal the Fate"
+        "save": "Seal the Fate",
+        "serviceUpdated": "Service updated gloriously",
+        "confirmDelete": "Dost thou wish to strike this service from thy records?",
+        "serviceDeleted": "Service banished to the void"
     },
     "Bookings": {
         "title": "Scrolls of Destiny",
@@ -298,7 +301,8 @@
             "card": "Merchant's Token",
             "bankTransfer": "Alchemy",
             "online": "Sorcery"
-        }
+        },
+        "addBooking": "Add Covenant"
     },
     "Clients": {
         "title": "Wanderers",
