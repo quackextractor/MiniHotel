@@ -63,35 +63,37 @@ export default function AuditLogsPage() {
                     <CardTitle>{t("title")}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                    <Table>
-                        <TableHeader>
-                            <TableRow>
-                                <TableHead>{t("id")}</TableHead>
-                                <TableHead>{t("user")}</TableHead>
-                                <TableHead>{t("action")}</TableHead>
-                                <TableHead>{t("details")}</TableHead>
-                                <TableHead>{t("timestamp")}</TableHead>
-                                <TableHead>{t("ipAddress")}</TableHead>
-                            </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                            {logs.map((log) => (
-                                <TableRow key={log.id}>
-                                    <TableCell>{log.id}</TableCell>
-                                    <TableCell>{log.user?.username || log.user_id}</TableCell>
-                                    <TableCell>{log.action}</TableCell>
-                                    <TableCell>{log.details}</TableCell>
-                                    <TableCell>{new Date(log.timestamp).toLocaleString()}</TableCell>
-                                    <TableCell>{log.ip_address}</TableCell>
-                                </TableRow>
-                            ))}
-                            {logs.length === 0 && (
+                    <div className="overflow-x-auto">
+                        <Table>
+                            <TableHeader>
                                 <TableRow>
-                                    <TableCell colSpan={6} className="text-center">{t("noLogs")}</TableCell>
+                                    <TableHead>{t("id")}</TableHead>
+                                    <TableHead>{t("user")}</TableHead>
+                                    <TableHead>{t("action")}</TableHead>
+                                    <TableHead>{t("details")}</TableHead>
+                                    <TableHead>{t("timestamp")}</TableHead>
+                                    <TableHead>{t("ipAddress")}</TableHead>
                                 </TableRow>
-                            )}
-                        </TableBody>
-                    </Table>
+                            </TableHeader>
+                            <TableBody>
+                                {logs.map((log) => (
+                                    <TableRow key={log.id}>
+                                        <TableCell>{log.id}</TableCell>
+                                        <TableCell>{log.user?.username || log.user_id}</TableCell>
+                                        <TableCell>{log.action}</TableCell>
+                                        <TableCell>{log.details}</TableCell>
+                                        <TableCell>{new Date(log.timestamp).toLocaleString()}</TableCell>
+                                        <TableCell>{log.ip_address}</TableCell>
+                                    </TableRow>
+                                ))}
+                                {logs.length === 0 && (
+                                    <TableRow>
+                                        <TableCell colSpan={6} className="text-center">{t("noLogs")}</TableCell>
+                                    </TableRow>
+                                )}
+                            </TableBody>
+                        </Table>
+                    </div>
                 </CardContent>
             </Card>
         </div>

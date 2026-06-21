@@ -101,15 +101,17 @@ export function ChangelogViewer({ content }: ChangelogViewerProps) {
   }
 
   return (
-    <div className="flex flex-col gap-6 max-w-4xl mx-auto w-full h-[calc(100vh-12rem)] min-h-[450px]">
+    <div className="flex flex-1 flex-col gap-4">
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight">Changelog</h1>
+          <p className="text-muted-foreground">Browse through release versions and changes</p>
+        </div>
+      </div>
       <Card className="flex flex-1 flex-col overflow-hidden h-full">
-        <CardHeader className="shrink-0">
-          <CardTitle className="text-3xl font-bold">Changelog</CardTitle>
-          <CardDescription>Browse through release versions and changes</CardDescription>
-        </CardHeader>
-        <CardContent className="flex flex-1 flex-col gap-6 overflow-hidden min-h-0 pb-6">
+        <CardContent className="flex flex-1 flex-col gap-6 overflow-hidden min-h-0 pt-6 pb-6">
           {/* Main content display */}
-          <div key={currentPage} className="flex-1 overflow-y-auto pr-4">
+          <div key={currentPage} className="h-[400px] overflow-y-auto pr-4">
             {renderMarkdown(chunks[currentPage])}
           </div>
 

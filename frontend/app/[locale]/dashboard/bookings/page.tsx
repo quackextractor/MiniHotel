@@ -242,7 +242,7 @@ export default function BookingsPage() {
           </CardHeader>
           <CardContent>
             <p className="text-sm text-muted-foreground">
-              Make sure the API server is running at http://127.0.0.1:5000
+              {t("checkServer")} ({process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:5000"})
             </p>
           </CardContent>
         </Card>

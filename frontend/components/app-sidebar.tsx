@@ -81,8 +81,8 @@ export function AppSidebar() {
 
   return (
     <Sidebar>
-      <SidebarHeader className="border-b border-sidebar-border p-4">
-        <div className="flex items-center gap-2">
+      <SidebarHeader className="flex h-16 shrink-0 items-center justify-center border-b border-sidebar-border px-4">
+        <div className="flex items-center gap-2 w-full">
           <div className="flex size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
             <DoorOpen className="size-4" />
           </div>

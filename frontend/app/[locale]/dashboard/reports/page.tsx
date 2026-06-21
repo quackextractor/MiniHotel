@@ -14,6 +14,7 @@ import { useTranslations } from "next-intl"
 export default function ReportsPage() {
   const t = useTranslations("Reports")
   const commonT = useTranslations("Common")
+  const tBookings = useTranslations("Bookings")
   const { convert, currency } = useCurrency()
   const [occupancyData, setOccupancyData] = useState<any>(null)
   const [loading, setLoading] = useState(true)
@@ -58,7 +59,7 @@ export default function ReportsPage() {
           </CardHeader>
           <CardContent>
             <p className="text-sm text-muted-foreground">
-              Make sure the API server is running at http://127.0.0.1:5000
+              {tBookings("checkServer")} ({process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:5000"})
             </p>
           </CardContent>
         </Card>

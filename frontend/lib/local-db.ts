@@ -112,7 +112,7 @@ function setStorage<T>(key: string, data: T): void {
 }
 
 export function handleDemoFetch(urlStr: string, init?: RequestInit): Response {
-  const url = new URL(urlStr, typeof window !== "undefined" ? window.location.origin : "http://localhost:3000");
+  const url = new URL(urlStr, typeof window !== "undefined" ? window.location.origin : (process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"));
   const pathname = url.pathname;
   const method = init?.method || "GET";
   const body = init?.body ? JSON.parse(init.body as string) : null;

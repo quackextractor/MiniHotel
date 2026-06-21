@@ -261,7 +261,7 @@ export function BookingForm({
                 </div>
 
                 {/* Dates & Guests */}
-                <div className="grid gap-4 md:grid-cols-3">
+                <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                     <div className="grid gap-2">
                         <Label htmlFor="checkIn">{t("form.checkInDate")} *</Label>
                         <Input

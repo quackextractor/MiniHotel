@@ -195,60 +195,62 @@ export default function HousekeepingPage() {
                     </div>
                 </CardHeader>
                 <CardContent>
-                    <Table>
-                        <TableHeader>
-                            <TableRow>
-                                <TableHead>{t("room")}</TableHead>
-                                <TableHead>{t("statusLabel")}</TableHead>
-                                <TableHead>{t("cleaner")}</TableHead>
-                                <TableHead>{t("lastCleaned")}</TableHead>
-                                <TableHead>{t("notes")}</TableHead>
-                                <TableHead className="text-right">{t("actions")}</TableHead>
-                            </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                            {filteredRooms.map((room) => {
-                                const record = getLatestRecord(room.id)
-                                const status = record?.status || 'clean'
+                    <div className="overflow-x-auto">
+                        <Table>
+                            <TableHeader>
+                                <TableRow>
+                                    <TableHead>{t("room")}</TableHead>
+                                    <TableHead>{t("statusLabel")}</TableHead>
+                                    <TableHead>{t("cleaner")}</TableHead>
+                                    <TableHead>{t("lastCleaned")}</TableHead>
+                                    <TableHead>{t("notes")}</TableHead>
+                                    <TableHead className="text-right">{t("actions")}</TableHead>
+                                </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                                {filteredRooms.map((room) => {
+                                    const record = getLatestRecord(room.id)
+                                    const status = record?.status || 'clean'
 
-                                return (
-                                    <TableRow key={room.id}>
-                                        <TableCell className="font-medium">{room.room_number}</TableCell>
-                                        <TableCell>
-                                            <Badge variant="outline" className={statusColors[status] || "bg-secondary"}>
-                                                {statusT(status as any)}
-                                            </Badge>
-                                        </TableCell>
-                                        <TableCell>{record?.cleaner || "-"}</TableCell>
-                                        <TableCell>{record?.last_cleaned || "-"}</TableCell>
-                                        <TableCell className="max-w-[200px] truncate" title={record?.notes || ""}>
-                                            {record?.notes || "-"}
-                                        </TableCell>
-                                        <TableCell className="text-right">
-                                            <div className="flex justify-end gap-2">
-                                                <Button
-                                                    variant="ghost"
-                                                    size="icon"
-                                                    onClick={() => openUpdateDialog(room, record, true)}
-                                                    disabled={!record}
-                                                    title={t("editDetails")}
-                                                >
-                                                    <Edit className="size-4" />
-                                                </Button>
-                                                <Button
-                                                    variant="outline"
-                                                    size="sm"
-                                                    onClick={() => openUpdateDialog(room, record, false)}
-                                                >
-                                                    {t("updateStatus")}
-                                                </Button>
-                                            </div>
-                                        </TableCell>
-                                    </TableRow>
-                                )
-                            })}
-                        </TableBody>
-                    </Table>
+                                    return (
+                                        <TableRow key={room.id}>
+                                            <TableCell className="font-medium">{room.room_number}</TableCell>
+                                            <TableCell>
+                                                <Badge variant="outline" className={statusColors[status] || "bg-secondary"}>
+                                                    {statusT(status as any)}
+                                                </Badge>
+                                            </TableCell>
+                                            <TableCell>{record?.cleaner || "-"}</TableCell>
+                                            <TableCell>{record?.last_cleaned || "-"}</TableCell>
+                                            <TableCell className="max-w-[200px] truncate" title={record?.notes || ""}>
+                                                {record?.notes || "-"}
+                                            </TableCell>
+                                            <TableCell className="text-right">
+                                                <div className="flex justify-end gap-2">
+                                                    <Button
+                                                        variant="ghost"
+                                                        size="icon"
+                                                        onClick={() => openUpdateDialog(room, record, true)}
+                                                        disabled={!record}
+                                                        title={t("editDetails")}
+                                                    >
+                                                        <Edit className="size-4" />
+                                                    </Button>
+                                                    <Button
+                                                        variant="outline"
+                                                        size="sm"
+                                                        onClick={() => openUpdateDialog(room, record, false)}
+                                                    >
+                                                        {t("updateStatus")}
+                                                    </Button>
+                                                </div>
+                                            </TableCell>
+                                        </TableRow>
+                                    )
+                                })}
+                            </TableBody>
+                        </Table>
+                    </div>
                 </CardContent>
             </Card>
 

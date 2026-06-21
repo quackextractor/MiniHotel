@@ -11,7 +11,7 @@ if (typeof window !== "undefined" && process.env.NEXT_PUBLIC_DEMO_MODE === "true
   }
 }
 
-const API_BASE_URL = "/api"
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "/api"
 
 export async function fetchAPI(endpoint: string, options?: RequestInit) {
   const response = await fetch(`${API_BASE_URL}${endpoint}`, {

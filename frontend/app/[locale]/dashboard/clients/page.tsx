@@ -260,7 +260,7 @@ export default function ClientsPage() {
                 </CardContent>
             </Card>
 
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 {filteredGuests.map((guest) => (
                     <Card key={guest.id}>
                         <CardHeader>

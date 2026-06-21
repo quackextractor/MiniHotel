@@ -16,6 +16,14 @@ All notable changes to the MiniHotel root repository are documented here.
 - Implemented dynamic, persistent user registration and login fallback credentials inside `local-db.ts`.
 - Refactored Changelog page layout to take full screen width as an integrated dashboard component.
 - Corrected changelog translation keys in joke locales (`lc`, `pr`, `sh`) to match their humorous style.
+- Added environment variable configurations with `.env` and `.env.example` templates.
+- Enabled Flask backend port mapping via environment variables.
+
+### Changed
+- Standardized frontend layout responsiveness with fluid grid layout wrappers and overflow-x scroll tables.
+- Aligned SidebarHeader layout to match main content header.
+- Streamlined Changelog page visual structure to fit seamlessly into the dashboard theme.
+- Fixed DemoBadge position and visual style to match VersionIndicator.
 
 ## [0.9.1] - 2026-06-20
 

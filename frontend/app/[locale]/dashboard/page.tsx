@@ -21,6 +21,7 @@ interface DashboardStats {
 export default function DashboardPage() {
   const t = useTranslations("Dashboard")
   const commonT = useTranslations("Common")
+  const tBookings = useTranslations("Bookings")
   const { isAuthenticated, loading: authLoading } = useAuth()
   const [stats, setStats] = useState<DashboardStats | null>(null)
   const [loading, setLoading] = useState(true)
@@ -81,7 +82,7 @@ export default function DashboardPage() {
           </CardHeader>
           <CardContent>
             <p className="text-sm text-muted-foreground">
-              Make sure the API server is running at http://127.0.0.1:5000
+              {tBookings("checkServer")} ({process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:5000"})
             </p>
           </CardContent>
         </Card>

@@ -55,3 +55,19 @@ We implemented a client-side Demo Mode to allow the frontend to run fully standa
 - **Joke Languages**: Updated translations in mock locales (`lc`, `pr`, `sh`) for the changelog to match their respective humorous themes.
 - **`__tests__/` Unit Tests**: Created Vitest files confirming correct state routing, conditionally rendering UI elements, and paginating changelog chunks.
 
+## 6. Environment Configurations
+- **Template Setup (`.env.example` & `.env`)**: Defined `NEXT_PUBLIC_DEMO_MODE`, `NEXT_PUBLIC_API_URL`, and `NEXT_PUBLIC_BASE_URL` to configure frontend build-time endpoints dynamically.
+- **Backend Port Mapping**: Updated backend `main.py` entrypoint to resolve the runtime `PORT` environment variable, enabling custom port binding.
+- **Centralized Fallbacks**: Refactored `api.ts` and `local-db.ts` to dynamically resolve endpoints via process environment parameters with clean fallbacks.
+
+## 7. Responsive Layouts & Breakpoints
+- **Mobile Grid Adaptations**: Replaced hardcoded grid layouts in the Booking Form, Rates Page, Services Page, and Clients Page with `grid-cols-1 md:grid-cols-2 lg:grid-cols-3` wrappers to support small-screen devices.
+- **Scrollable Data Tables**: Wrapped tabular structures on Housekeeping and Audit Logs pages with `overflow-x-auto` blocks, preventing horizontal overflow on tablets and phones.
+
+## 8. UI Consistency & Alignment
+- **Sidebar Integration**: Synced the height and vertical alignment of `SidebarHeader` to match the `h-16` height of the main dashboard navigation header.
+- **Demo Mode Badge Styling**: Cleaned up the large dashed demo mode border, positioning a purple `Demo Mode` indicator watermark at the bottom-right corner.
+- **Version Indicator Alignment**: Shifted the version indicator to the bottom-right corner, aligning it directly above the Demo Mode indicator (if active) or in its place (if inactive).
+- **Changelog Layout Overhaul**: Standardized the container design of the Changelog viewer page to render as a fully integrated dashboard page component, separating page headers from core content card blocks and enforcing a constant container height to prevent layout shifts.
+
+
