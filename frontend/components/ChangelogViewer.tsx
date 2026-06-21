@@ -101,7 +101,7 @@ export function ChangelogViewer({ content }: ChangelogViewerProps) {
   }
 
   return (
-    <div className="flex flex-1 flex-col gap-4">
+    <div className="flex flex-1 flex-col gap-4 h-screen overflow-hidden">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Changelog</h1>
@@ -111,7 +111,8 @@ export function ChangelogViewer({ content }: ChangelogViewerProps) {
       <Card className="flex flex-1 flex-col overflow-hidden h-full">
         <CardContent className="flex flex-1 flex-col gap-6 overflow-hidden min-h-0 pt-6 pb-6">
           {/* Main content display */}
-          <div key={currentPage} className="h-[400px] overflow-y-auto pr-4">
+          {/* flex-1 fills the bounded space. min-h-0 prevents flex blowout. overflow-y-auto creates the internal scrollbar. */}
+          <div key={currentPage} className="flex-1 min-h-0 overflow-y-auto pr-4">
             {renderMarkdown(chunks[currentPage])}
           </div>
 
