@@ -1,7 +1,7 @@
 "use client"
 
-import { useState } from "react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { useState, useRef, useEffect } from "react"
+import { Card, CardContent } from "@/components/ui/card"
 import { Slider } from "@/components/ui/slider"
 import {
   Pagination,
@@ -15,14 +15,20 @@ interface ChangelogViewerProps {
 }
 
 export function ChangelogViewer({ content }: ChangelogViewerProps) {
-  // Split content by version header regex
-  // Match ## [X.X.X] or #### [X.X.X]
   const chunks = content
     .split(/(?=##(?:##)?\s*\[)/)
     .map(chunk => chunk.trim())
     .filter(chunk => chunk.length > 0 && (chunk.includes("## [") || chunk.includes("#### [")))
 
   const [currentPage, setCurrentPage] = useState<number>(0)
+  const contentRef = useRef<HTMLDivElement>(null)
+
+  // Scroll to top when page changes, without remounting the container
+  useEffect(() => {
+    if (contentRef.current) {
+      contentRef.current.scrollTop = 0
+    }
+  }, [currentPage])
 
   if (chunks.length === 0) {
     return (
@@ -46,7 +52,6 @@ export function ChangelogViewer({ content }: ChangelogViewerProps) {
     setCurrentPage(prev => Math.min(chunks.length - 1, prev + 1))
   }
 
-  // Simple custom parser for Keep A Changelog Markdown format
   const renderMarkdown = (text: string) => {
     const lines = text.split("\n")
     const elements: React.ReactNode[] = []
@@ -101,7 +106,7 @@ export function ChangelogViewer({ content }: ChangelogViewerProps) {
   }
 
   return (
-    <div className="flex flex-1 flex-col gap-4 h-screen overflow-hidden">
+    <div className="flex flex-1 flex-col gap-4 h-full overflow-hidden">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Changelog</h1>
@@ -110,14 +115,8 @@ export function ChangelogViewer({ content }: ChangelogViewerProps) {
       </div>
       <Card className="flex flex-1 flex-col overflow-hidden h-full">
         <CardContent className="flex flex-1 flex-col gap-6 overflow-hidden min-h-0 pt-6 pb-6">
-          {/* Main content display */}
-          {/* flex-1 fills the bounded space. min-h-0 prevents flex blowout. overflow-y-auto creates the internal scrollbar. */}
-          <div key={currentPage} className="flex-1 min-h-0 overflow-y-auto pr-4">
-            {renderMarkdown(chunks[currentPage])}
-          </div>
-
-          {/* Slider controller */}
-          <div className="space-y-2 pt-2 shrink-0">
+          {/* Controls moved to the top – they always stay in place */}
+          <div className="space-y-2 shrink-0">
             <div className="flex justify-between text-xs text-muted-foreground font-mono">
               <span>First Version</span>
               <span>Entry {currentPage + 1} of {chunks.length}</span>
@@ -131,8 +130,7 @@ export function ChangelogViewer({ content }: ChangelogViewerProps) {
             />
           </div>
 
-          {/* Pagination controls */}
-          <Pagination className="pt-2 shrink-0">
+          <Pagination className="shrink-0">
             <PaginationContent className="w-full justify-between">
               <PaginationItem>
                 <Button
@@ -163,6 +161,14 @@ export function ChangelogViewer({ content }: ChangelogViewerProps) {
               </PaginationItem>
             </PaginationContent>
           </Pagination>
+
+          {/* Scrollable content – always below the controls */}
+          <div
+            ref={contentRef}
+            className="flex-1 min-h-0 overflow-y-auto pr-4"
+          >
+            {renderMarkdown(chunks[currentPage])}
+          </div>
         </CardContent>
       </Card>
     </div>
