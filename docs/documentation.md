@@ -165,5 +165,14 @@ Based on the final requirements in `docs/review.md` to modernize the repository 
 - Updated Next-intl routing configuration in `routing.ts` to fetch locales dynamically from `locales.json`.
 - Adjusted unit tests in `LanguageSwitcher.test.tsx` to verify option rendering using the generated file structure.
 
+## 14. Localization of Privacy Policy Page (v0.10.4)
+
+### Privacy Page Localization
+- Refactored `PrivacyPolicy.tsx` to read translation keys from next-intl's `Privacy` namespace.
+- Added translation records to all 8 locale files (`en.json`, `cs.json`, `de.json`, `es.json`, `fr.json`, `lc.json`, `pr.json`, `sh.json`).
+- Embedded the `LanguageSwitcher` in the privacy policy page to allow guest users to change their active language.
+- Added `PrivacyPolicy.test.tsx` test cases to verify localized titles, notices, and switcher components.
+
+
 
 

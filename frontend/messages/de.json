@@ -489,5 +489,15 @@
         "signIn": "Anmelden",
         "registerAdmin": "Admin registrieren",
         "privacyPolicy": "Datenschutzerklärung"
+    },
+    "Privacy": {
+        "title": "Datenschutzerklärung",
+        "description": "Informationen zur DSGVO und Datenverarbeitung",
+        "demoMode": "Das System läuft im Demo-Modus. Die Daten werden im lokalen Speicher des Browsers gespeichert. Externe Server erhalten keine Daten.",
+        "standardMode": "Standard-Serververarbeitung aktiv. Die Daten werden sicher übertragen und in meiner Datenbank gespeichert.",
+        "gdprNotice": "Ich nehme den Schutz der Privatsphäre der Nutzer und die Einhaltung der DSGVO sehr ernst. Gemäß der Datenschutz-Grundverordnung (DSGVO) haben Personen (einschließlich Hotelgäste und Systemnutzer) Rechte in Bezug auf ihre personenbezogenen Daten, einschließlich des Rechts auf Auskunft, Berichtigung oder Löschung ihrer personenbezogenen Daten.",
+        "dataDetails": "Insbesondere verwaltet diese MiniHotel-Anwendung Gästeprofile (Namen, E-Mails, Telefonnummern), Zimmerkonfigurationen, Buchungspläne, saisonale Preise, Servicebestellungen und Aktivitätsauditprotokolle.",
+        "demoDataControl": "Im Demo-Modus haben Sie die volle Kontrolle über Ihre Daten, da alles auf Ihrem Gerät verbleibt. Durch das Löschen Ihres Browser-Caches oder der Website-Daten werden alle Zimmer, Gäste, Buchungen und andere Datensätze sofort und dauerhaft gelöscht.",
+        "goBack": "Zurückgehen"
     }
 }

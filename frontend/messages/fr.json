@@ -489,5 +489,15 @@
         "signIn": "Se connecter",
         "registerAdmin": "Enregistrer l'administrateur",
         "privacyPolicy": "Politique de confidentialité"
+    },
+    "Privacy": {
+        "title": "Politique de confidentialité",
+        "description": "Informations sur le RGPD et le traitement des données",
+        "demoMode": "Le système fonctionne en mode démo. Les données sont stockées dans le stockage local du navigateur (localStorage). Les serveurs externes ne reçoivent aucune donnée.",
+        "standardMode": "Traitement standard du serveur actif. Les données sont transmises de manière sécurisée et stockées dans ma base de données.",
+        "gdprNotice": "Je prends la vie privée des utilisateurs et la conformité au RGPD très au sérieux. En vertu du Règlement Général sur la Protection des Données (RGPD), les personnes (y compris les clients de l'hôtel et les utilisateurs du système) ont des droits concernant leurs données personnelles, notamment le droit d'accéder, de rectifier ou de supprimer leurs informations personnelles.",
+        "dataDetails": "Plus précisément, cette application MiniHotel gère les profils des clients (noms, e-mails, téléphones), les configurations des chambres, les calendriers de réservation, les tarifs saisonniers, les commandes de services et les journaux d'audit des actions.",
+        "demoDataControl": "En mode démo, vous avez un contrôle total sur vos données car tout est conservé sur votre appareil. L'effacement du cache de votre navigateur ou des données du site effacera immédiatement et définitivement toutes les chambres, clients, réservations et autres enregistrements de données.",
+        "goBack": "Retourner"
     }
 }

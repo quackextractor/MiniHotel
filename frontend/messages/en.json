@@ -489,5 +489,15 @@
         "signIn": "Sign in",
         "registerAdmin": "Register Admin",
         "privacyPolicy": "Privacy Policy"
+    },
+    "Privacy": {
+        "title": "Privacy Policy",
+        "description": "GDPR and data processing information",
+        "demoMode": "System runs in Demo Mode. Data stored in browser localStorage. External servers receive zero data.",
+        "standardMode": "Standard server processing active. Data is transmitted securely and stored in my database.",
+        "gdprNotice": "I take user privacy and GDPR compliance seriously. Under the General Data Protection Regulation (GDPR), individuals (including hotel guests and system users) have rights concerning their personal data, including the right to access, rectify, or erase their personal information.",
+        "dataDetails": "Specifically, this MiniHotel application manages guest profiles (names, emails, phones), room configurations, booking schedules, seasonal rates, service orders, and action audit logs.",
+        "demoDataControl": "In demo mode, you have complete control over your data since everything is kept on your device. Clearing your browser cache or site data will immediately and permanently erase all rooms, guests, bookings, and other data records.",
+        "goBack": "Go Back"
     }
 }

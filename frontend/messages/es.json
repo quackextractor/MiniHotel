@@ -489,5 +489,15 @@
         "signIn": "Iniciar sesión",
         "registerAdmin": "Registrar administrador",
         "privacyPolicy": "Política de privacidad"
+    },
+    "Privacy": {
+        "title": "Política de privacidad",
+        "description": "Información sobre RGPD y procesamiento de datos",
+        "demoMode": "El sistema funciona en Modo Demo. Datos almacenados en el localStorage del navegador. Los servidores externos no reciben datos.",
+        "standardMode": "Procesamiento de servidor estándar activo. Los datos se transmiten de forma segura y se almacenan en mi base de datos.",
+        "gdprNotice": "Me tomo muy en serio la privacidad del usuario y el cumplimiento de RGPD. Según el Reglamento General de Protección de Datos (RGPD), las personas (incluidos los huéspedes del hotel y los usuarios del sistema) tienen derechos sobre sus datos personales, incluido el derecho a acceder, rectificar o eliminar su información personal.",
+        "dataDetails": "Específicamente, esta aplicación MiniHotel gestiona perfiles de huéspedes (nombres, correos electrónicos, teléfonos), configuraciones de habitaciones, calendarios de reservas, tarifas de temporada, pedidos de servicios y registros de auditoría de acciones.",
+        "demoDataControl": "En modo demo, tienes control total sobre tus datos ya que todo se mantiene en tu dispositivo. Borrar la caché del navegador o los datos del sitio eliminará de forma inmediata y permanente todas las habitaciones, huéspedes, reservas y otros registros de datos.",
+        "goBack": "Volver"
     }
 }

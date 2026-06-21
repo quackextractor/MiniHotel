@@ -489,5 +489,15 @@
         "signIn": "Přihlásit se",
         "registerAdmin": "Registrovat administrátora",
         "privacyPolicy": "Zásady ochrany osobních údajů"
+    },
+    "Privacy": {
+        "title": "Zásady ochrany osobních údajů",
+        "description": "GDPR a informace o zpracování údajů",
+        "demoMode": "Systém běží v demo režimu. Data jsou uložena v místním úložišti prohlížeče. Externí servery nepřijímají žádná data.",
+        "standardMode": "Standardní zpracování serveru aktivní. Data jsou přenášena bezpečně a uložena v mé databázi.",
+        "gdprNotice": "Ochranu soukromí uživatelů a soulad s GDPR beru vážně. Podle obecného nařízení o ochraně osobních údajů (GDPR) mají jednotlivci (včetně hotelových hostů a uživatelů systému) práva týkající se jejich osobních údajů, včetně práva na přístup, opravu nebo vymazání jejich osobních informací.",
+        "dataDetails": "Konkrétně tato aplikace MiniHotel spravuje profily hostů (jména, e-maily, telefony), konfigurace pokojů, rezervační plány, sezónní sazby, objednávky služeb a protokoly o auditu akcí.",
+        "demoDataControl": "V demo režimu máte plnou kontrolu nad svými daty, protože vše zůstává na vašem zařízení. Vymazání mezipaměti prohlížeče nebo dat webu okamžitě a trvale vymaže všechny pokoje, hosty, rezervace a další datové záznamy.",
+        "goBack": "Zpět"
     }
 }

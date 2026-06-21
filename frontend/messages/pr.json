@@ -489,5 +489,15 @@
         "signIn": "Set Sail",
         "registerAdmin": "Enroll Captain",
         "privacyPolicy": "Code of Conduct"
+    },
+    "Privacy": {
+        "title": "Pirate Privacy Creed",
+        "description": "Rules of the sea and data plunderin'",
+        "demoMode": "Ship runs in Demo Mode. Loot stored in browser's locker. Landlubber servers get no gold.",
+        "standardMode": "Standard galleon loggin' active. Loot sent securely to our secret chest.",
+        "gdprNotice": "We take pirate secrecy and sea laws seriously. Every crewmate and guest holds the right to reclaim, correct, or toss their personal scroll into Davy Jones' locker.",
+        "dataDetails": "Specifically, this MiniHotel vessel manages crew profiles, cabin quarters, plunder schedules, seasonal gold rates, grog orders, and captain's logs.",
+        "demoDataControl": "In demo mode, ye be the captain of yer own loot. Clearing yer ship's cache will immediately and permanently sink all cabins, crew, bookings, and records to the ocean floor.",
+        "goBack": "Sail Back"
     }
 }

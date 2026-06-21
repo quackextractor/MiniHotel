@@ -489,5 +489,15 @@
         "signIn": "Enter",
         "registerAdmin": "Appoint Lord",
         "privacyPolicy": "Sacred Vows"
+    },
+    "Privacy": {
+        "title": "Decree of Secrecy",
+        "description": "Of GDPR and the processing of thine own scrolls",
+        "demoMode": "The theatre playeth in Demo Mode. Thy scrolls reside in the chamber of thy browser. Distant castles receive no tidings.",
+        "standardMode": "True scribe processing is active. Thy scrolls are carried in safety and stored in my vault.",
+        "gdprNotice": "I hold user secrecy and the law of GDPR in high esteem. By this decree, every guest and traveler of this domain hath rights to reclaim, amend, or banish their scrolls to the void.",
+        "dataDetails": "In truth, this MiniHotel parchment governeth guest titles, bedchambers, booking calendars, seasonal tribute rates, banquet requests, and audit logs of deeds.",
+        "demoDataControl": "In this mimicry mode, thou art the master of thine own scrolls. Purging thy browser's memory shall immediately and eternally cast all bedchambers, guests, and covenants into oblivion.",
+        "goBack": "Turn Back"
     }
 }

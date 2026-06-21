@@ -489,5 +489,15 @@
         "signIn": "51gn 1n",
         "registerAdmin": "R3g15t3r 4dm1n",
         "privacyPolicy": "Pr1v4cy P0l1cy"
+    },
+    "Privacy": {
+        "title": "Pr1v4cy P0l1cy",
+        "description": "GDPR n stuff bout ur dataz",
+        "demoMode": "Teh system runs in Demo Mode. Data keepz in localstorage of browser. Remote servers get zero nomz.",
+        "standardMode": "Standard server lickin active. Data goes safely to database.",
+        "gdprNotice": "I take user privacy and GDPR srsly. Hoomins haz rights bout dey data like delete and fix.",
+        "dataDetails": "This MiniHotel thingy keeps guest names, emails, room configurations, and stalkin logs.",
+        "demoDataControl": "In demo mode, u is teh boss of ur data. Clearin cache will instantly wipe everything 4ever.",
+        "goBack": "Go Bak"
     }
 }

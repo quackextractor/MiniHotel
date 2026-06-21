@@ -3,6 +3,13 @@
 All notable changes to the MiniHotel frontend are documented here.
 Versioning follows [Semantic Versioning 2.0.0](https://semver.org/).
 
+## [0.10.4] - 2026-06-21
+
+### Added
+- Localized the privacy policy component to use `next-intl` translation namespaces.
+- Populated the `Privacy` namespace translations for all 8 supported languages (`en`, `cs`, `de`, `es`, `fr`, `lc`, `pr`, `sh`).
+- Embedded the `LanguageSwitcher` directly inside the privacy policy page to allow unauthenticated users to change language views.
+
 ## [0.10.3] - 2026-06-21
 
 ### Added
