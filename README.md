@@ -1,7 +1,7 @@
 # Minihotel Management System
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Version](https://img.shields.io/badge/version-0.9.4-blue.svg)](https://github.com/quackextractor/MiniHotel)
+[![Version](https://img.shields.io/badge/version-0.9.5-blue.svg)](https://github.com/quackextractor/MiniHotel)
 
 A comprehensive hotel management system comprising a Next.js frontend dashboard and a Python Flask REST API backend. This monorepo contains the complete suite of tools required to manage rooms, guests, bookings, and daily hotel operations.
 
@@ -42,6 +42,14 @@ Technical documentation is available in two languages inside the [`docs/`](docs/
 
 * [Technical Documentation (English)](docs/TECHNICAL-DOCUMENTATION.md)
 * [Technická dokumentace (Czech)](docs/TECHNICKA-DOKUMENTACE.md)
+
+## Versioning
+
+Version is centralized in [`VERSION.txt`](VERSION.txt) at the repository root. This file is the single source of truth.
+
+- `frontend/package.json` version field must be kept in sync manually when bumping.
+- The dashboard `VersionIndicator` reads `VERSION.txt` at runtime via a Next.js server action.
+- `frontend/version.txt` and `backend/version.txt` have been removed — do not recreate them.
 
 ## License
 MIT License. See [LICENSE](LICENSE) for details.

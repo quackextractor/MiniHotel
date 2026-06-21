@@ -2,6 +2,14 @@
 
 All notable changes to the MiniHotel root repository are documented here.
 
+## [0.9.5] - 2026-06-21
+
+### Changed
+- Centralized project version into single root `VERSION.txt` file.
+- `frontend/app/actions/changelog.ts` `getLatestVersion()` now reads `VERSION.txt` directly instead of parsing `CHANGELOG.md`; falls back to `CHANGELOG.md` parsing if `VERSION.txt` is absent.
+- Removed redundant `frontend/version.txt` and `backend/version.txt` files.
+- Documented version strategy in `README.md` under new Versioning section.
+
 ## [0.9.4] - 2026-06-21
 
 ### Added
