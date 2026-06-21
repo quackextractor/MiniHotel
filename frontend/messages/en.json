@@ -19,7 +19,8 @@
         "logout": "Logout",
         "minihotel": "Minihotel",
         "management": "Management",
-        "clients": "Clients"
+        "clients": "Clients",
+        "changelog": "Changelog"
     },
     "Dashboard": {
         "dashboard": "Dashboard",

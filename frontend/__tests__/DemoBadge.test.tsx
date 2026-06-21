@@ -19,6 +19,6 @@ describe('DemoBadge Component', () => {
   it('renders DEMO MODE when NEXT_PUBLIC_DEMO_MODE is true', () => {
     process.env.NEXT_PUBLIC_DEMO_MODE = 'true'
     render(<DemoBadge />)
-    expect(screen.getByText('DEMO MODE')).toBeInTheDocument()
+    expect(screen.getByText(/Demo Mode/i)).toBeInTheDocument()
   })
 })

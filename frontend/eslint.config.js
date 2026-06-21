@@ -4,7 +4,8 @@ module.exports = [
       "**/node_modules/**",
       "**/.next/**",
       "**/out/**",
-      "**/build/**"
+      "**/build/**",
+      "**/coverage/**"
     ]
   },
   {

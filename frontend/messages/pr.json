@@ -19,7 +19,8 @@
         "logout": "Abandon Ship",
         "minihotel": "The Brig",
         "management": "Quartermasters",
-        "clients": "Souls"
+        "clients": "Souls",
+        "changelog": "Scroll o' Changes"
     },
     "Dashboard": {
         "dashboard": "Captain's Quarters",

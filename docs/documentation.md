@@ -51,6 +51,7 @@ We implemented a client-side Demo Mode to allow the frontend to run fully standa
 - **`DemoBadge`**: Renders a pulse-animated red badge at the top-right corner to indicate active Demo Mode.
 - **`VersionIndicator`**: Renders a fixed bottom-left component dynamically displaying the current project version parsed from `CHANGELOG.md` via a Next.js server action.
 - **`PrivacyPolicy`**: Displays user data rights and GDPR compliance warnings, tailored for browser storage when demo mode is active.
-- **`ChangelogViewer`**: Parses root `CHANGELOG.md` and displays entries via a paginated page with a history slider.
+- **`ChangelogViewer`**: Parses root `CHANGELOG.md` and displays entries via a paginated full-width dashboard component with a history slider. Excludes non-version metadata chunks from rendering.
+- **Joke Languages**: Updated translations in mock locales (`lc`, `pr`, `sh`) for the changelog to match their respective humorous themes.
 - **`__tests__/` Unit Tests**: Created Vitest files confirming correct state routing, conditionally rendering UI elements, and paginating changelog chunks.
 

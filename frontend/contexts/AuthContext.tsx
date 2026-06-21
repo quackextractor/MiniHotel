@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react'
 import { useRouter, usePathname } from '@/i18n/routing'
+import '@/lib/api'
 
 // Define the shape of the user object
 interface User {

@@ -6,8 +6,10 @@ export function DemoBadge() {
   if (!isDemo) return null
 
   return (
-    <div className="fixed top-4 right-4 z-[9999] select-none rounded-full bg-red-600 px-3 py-1 text-xs font-bold text-white shadow-lg animate-pulse border border-red-500">
-      DEMO MODE
+    <div className="pointer-events-none fixed inset-0 z-[9999] border-4 border-dashed border-red-500/30 m-1 rounded-lg">
+      <div className="absolute top-2 right-4 bg-red-500/10 backdrop-blur-xs text-[10px] font-mono text-red-500/60 px-2 py-0.5 rounded border border-red-500/20 uppercase tracking-widest font-bold">
+        Demo Mode
+      </div>
     </div>
   )
 }

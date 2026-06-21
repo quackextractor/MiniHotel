@@ -19,7 +19,8 @@
         "logout": "Cerrar Sesión",
         "minihotel": "Minihotel",
         "management": "Gestión",
-        "clients": "Clientes"
+        "clients": "Clientes",
+        "changelog": "Registro de cambios"
     },
     "Dashboard": {
         "dashboard": "Panel de Control",

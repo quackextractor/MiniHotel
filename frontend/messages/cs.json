@@ -19,7 +19,8 @@
         "logout": "Odhlásit",
         "minihotel": "Minihotel",
         "management": "Správa",
-        "clients": "Klienti"
+        "clients": "Klienti",
+        "changelog": "Historie změn"
     },
     "Dashboard": {
         "dashboard": "Přehled",

@@ -19,7 +19,8 @@
         "logout": "Flee This Realm",
         "minihotel": "Ye Humble Abode",
         "management": "The Overlords",
-        "clients": "Wanderers"
+        "clients": "Wanderers",
+        "changelog": "Scroll of Alterations"
     },
     "Dashboard": {
         "dashboard": "The Grand Stage",

@@ -11,6 +11,11 @@ All notable changes to the MiniHotel root repository are documented here.
 - Added interactive `Changelog` page in the dashboard featuring a version history slider and navigation pagination.
 - Added visual `DemoBadge` and dynamic `VersionIndicator` components to the dashboard layout.
 - Added comprehensive unit tests validating the behavior of all newly introduced components and features.
+- Updated `DemoBadge` to use a non-blinking, subtle dashed screen border style with a static indicator watermark.
+- Fixed client-side registration flow in demo mode by importing proxy fetch interception in `AuthContext.tsx`.
+- Implemented dynamic, persistent user registration and login fallback credentials inside `local-db.ts`.
+- Refactored Changelog page layout to take full screen width as an integrated dashboard component.
+- Corrected changelog translation keys in joke locales (`lc`, `pr`, `sh`) to match their humorous style.
 
 ## [0.9.1] - 2026-06-20
 

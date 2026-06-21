@@ -128,6 +128,7 @@ export function handleDemoFetch(urlStr: string, init?: RequestInit): Response {
   const services = getStorage("demo_services", DEFAULT_SERVICES);
   const roomGroups = getStorage("demo_room_groups", DEFAULT_ROOM_GROUPS);
   const auditLogs = getStorage("demo_audit_logs", DEFAULT_AUDIT_LOGS);
+  const users = getStorage("demo_users", [] as any[]);
 
   const makeResponse = (data: any, status = 200) => {
     return new Response(JSON.stringify(data), {
@@ -138,12 +139,31 @@ export function handleDemoFetch(urlStr: string, init?: RequestInit): Response {
 
   // Auth & Status
   if (pathname === "/api/auth/status") {
-    return makeResponse({ initialized: true });
+    return makeResponse({ initialized: users.length > 0 });
   }
   if (pathname === "/api/auth/login") {
-    return makeResponse({ token: "mock.jwt.token", username: body?.username || "admin" });
+    const { username, password } = body || {};
+    const matched = users.find((u: any) => u.username === username && u.password === password);
+    if (matched || (users.length === 0 && username === "admin")) {
+      const payloadObj = { user_id: 1, username: username || "admin" };
+      const payloadStr = typeof btoa !== "undefined"
+        ? btoa(JSON.stringify(payloadObj))
+        : Buffer.from(JSON.stringify(payloadObj)).toString("base64");
+      return makeResponse({ token: `mock.${payloadStr}.token`, username: username || "admin" });
+    }
+    return makeResponse({ message: "Invalid credentials" }, 401);
   }
   if (pathname === "/api/auth/register") {
+    const { username, password } = body || {};
+    if (!username || !password) {
+      return makeResponse({ message: "Username and password required" }, 400);
+    }
+    const exists = users.some((u: any) => u.username === username);
+    if (exists) {
+      return makeResponse({ message: "User already exists" }, 400);
+    }
+    users.push({ username, password });
+    setStorage("demo_users", users);
     return makeResponse({ message: "Registered successfully" });
   }
   if (pathname === "/api/auth/change-password") {

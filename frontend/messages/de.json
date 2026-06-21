@@ -19,7 +19,8 @@
         "logout": "Abmelden",
         "minihotel": "Minihotel",
         "management": "Verwaltung",
-        "clients": "Kunden"
+        "clients": "Kunden",
+        "changelog": "Änderungsprotokoll"
     },
     "Dashboard": {
         "dashboard": "Dashboard",

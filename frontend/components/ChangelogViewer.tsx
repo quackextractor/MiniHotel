@@ -20,7 +20,7 @@ export function ChangelogViewer({ content }: ChangelogViewerProps) {
   const chunks = content
     .split(/(?=##(?:##)?\s*\[)/)
     .map(chunk => chunk.trim())
-    .filter(chunk => chunk.length > 0 && (chunk.includes("## [") || chunk.includes("#### [") || chunk.startsWith("# ")))
+    .filter(chunk => chunk.length > 0 && (chunk.includes("## [") || chunk.includes("#### [")))
 
   const [currentPage, setCurrentPage] = useState<number>(0)
 
@@ -101,15 +101,16 @@ export function ChangelogViewer({ content }: ChangelogViewerProps) {
   }
 
   return (
-    <div className="flex flex-1 flex-col gap-6 max-w-4xl mx-auto w-full">
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-3xl font-bold">Changelog</CardTitle>
-          <CardDescription>Browse through release versions and changes</CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-6">
+    <div className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-6 w-full">
+      <div>
+        <h1 className="text-lg font-semibold md:text-2xl">Changelog</h1>
+        <p className="text-sm text-muted-foreground">Browse through release versions and changes</p>
+      </div>
+
+      <Card className="w-full">
+        <CardContent className="space-y-6 pt-6">
           {/* Main content display */}
-          <div className="min-h-[300px] border border-border rounded-lg p-6 bg-muted/20">
+          <div className="h-[400px] overflow-y-auto border border-border rounded-lg p-6 bg-muted/20">
             {renderMarkdown(chunks[currentPage])}
           </div>
 
