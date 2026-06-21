@@ -2,6 +2,12 @@
 
 All notable changes to the MiniHotel root repository are documented here.
 
+## [0.9.3] - 2026-06-21
+
+### Changed
+- Relocated pagination and slider controls to the top of the Changelog card to prevent vertical layout shifts when rendering entries of varying heights.
+- Removed key prop from the Changelog content container and added programmatic scroll resetting to eliminate layout reflows and flicker on page changes.
+
 ## [0.9.2] - 2026-06-21
 
 ### Added

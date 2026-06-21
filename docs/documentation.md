@@ -51,7 +51,7 @@ We implemented a client-side Demo Mode to allow the frontend to run fully standa
 - **`DemoBadge`**: Renders a pulse-animated red badge at the top-right corner to indicate active Demo Mode.
 - **`VersionIndicator`**: Renders a fixed bottom-left component dynamically displaying the current project version parsed from `CHANGELOG.md` via a Next.js server action.
 - **`PrivacyPolicy`**: Displays user data rights and GDPR compliance warnings, tailored for browser storage when demo mode is active.
-- **`ChangelogViewer`**: Parses root `CHANGELOG.md` and displays entries via a paginated full-width dashboard component with a history slider. Excludes non-version metadata chunks from rendering.
+- **`ChangelogViewer`**: Parses root `CHANGELOG.md` and displays entries via a paginated full-width dashboard component with a history slider and pagination controls situated at the top to prevent layout shifts. Excludes non-version metadata chunks from rendering.
 - **Joke Languages**: Updated translations in mock locales (`lc`, `pr`, `sh`) for the changelog to match their respective humorous themes.
 - **`__tests__/` Unit Tests**: Created Vitest files confirming correct state routing, conditionally rendering UI elements, and paginating changelog chunks.
 
@@ -68,6 +68,6 @@ We implemented a client-side Demo Mode to allow the frontend to run fully standa
 - **Sidebar Integration**: Synced the height and vertical alignment of `SidebarHeader` to match the `h-16` height of the main dashboard navigation header.
 - **Demo Mode Badge Styling**: Cleaned up the large dashed demo mode border, positioning a purple `Demo Mode` indicator watermark at the bottom-right corner.
 - **Version Indicator Alignment**: Shifted the version indicator to the bottom-right corner, aligning it directly above the Demo Mode indicator (if active) or in its place (if inactive).
-- **Changelog Layout Overhaul**: Standardized the container design of the Changelog viewer page to render as a fully integrated dashboard page component, separating page headers from core content card blocks and enforcing a constant container height to prevent layout shifts.
+- **Changelog Layout Overhaul**: Standardized the container design of the Changelog viewer page to render as a fully integrated dashboard page component, separating page headers from core content card blocks. The pagination and slider controls are positioned at the top of the card (above the scrollable content) to avoid vertical shifts from entries of varying heights. Additionally, the component uses programmatic scroll resetting (via a React ref and `useEffect`) rather than a wrapper key to ensure clean transitions to the top of new entries without layout reflows or flickering.
 
 
