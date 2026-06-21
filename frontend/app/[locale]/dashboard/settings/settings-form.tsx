@@ -49,6 +49,27 @@ export default function SettingsForm({ availableLocales }: SettingsFormProps) {
     const [customCurrencyLoading, setCustomCurrencyLoading] = useState(false)
     const [availableCurrencies, setAvailableCurrencies] = useState<string[]>(["USD", "EUR", "CZK", "GBP"])
 
+    const isDemoMode = process.env.NEXT_PUBLIC_DEMO_MODE === "true"
+
+    const DEMO_KEYS = [
+        "demo_rooms",
+        "demo_guests",
+        "demo_bookings",
+        "demo_housekeeping",
+        "demo_maintenance",
+        "demo_contacts",
+        "demo_seasonal_rates",
+        "demo_services",
+        "demo_room_groups",
+        "demo_audit_logs",
+        "demo_users",
+    ]
+
+    const handleClearDemoData = () => {
+        DEMO_KEYS.forEach((key) => localStorage.removeItem(key))
+        window.location.reload()
+    }
+
     useEffect(() => {
         setLocalSettings({
             ...settings,
@@ -428,6 +449,21 @@ export default function SettingsForm({ availableLocales }: SettingsFormProps) {
                                 {importLoading ? "Importing..." : t("importSampleData")}
                             </Button>
                         </div>
+                        {isDemoMode && (
+                            <div className="space-y-2 border-t pt-4">
+                                <Label>Clear Demo Data</Label>
+                                <p className="text-sm text-muted-foreground mb-4">
+                                    Remove all demo records from browser storage and reset to blank state. Theme preferences are preserved.
+                                </p>
+                                <Button
+                                    id="clear-demo-data-btn"
+                                    onClick={handleClearDemoData}
+                                    variant="destructive"
+                                >
+                                    Clear Demo Data
+                                </Button>
+                            </div>
+                        )}
                     </CardContent>
                 </Card>
 

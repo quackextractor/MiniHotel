@@ -3,6 +3,72 @@
 All notable changes to the MiniHotel frontend are documented here.
 Versioning follows [Semantic Versioning 2.0.0](https://semver.org/).
 
+## [0.10.0] - 2026-06-21
+
+### Added
+- `LanguageSwitcher` component (`components/LanguageSwitcher.tsx`): client-side locale dropdown using `['en', 'cs', 'de']` from `i18n/routing.ts`, rendered at absolute top-right position.
+- `LanguageSwitcher` integrated into `login/page.tsx` and `register/page.tsx` so unauthenticated screens expose locale switching without requiring dashboard access.
+- Privacy Policy `Link` added to `CardFooter` of both `login/page.tsx` and `register/page.tsx`, pointing to `/privacy` with `text-muted-foreground hover:underline` styling.
+- "Clear Demo Data" button added to System Management card in `settings-form.tsx`, visible only when `NEXT_PUBLIC_DEMO_MODE=true`. Removes all 11 demo localStorage keys (`demo_rooms`, `demo_guests`, `demo_bookings`, `demo_housekeeping`, `demo_maintenance`, `demo_contacts`, `demo_seasonal_rates`, `demo_services`, `demo_room_groups`, `demo_audit_logs`, `demo_users`) while preserving theme settings, then reloads.
+- Empty calendar grid cells now accept `onClick` in `calendar/page.tsx`. Clicking an empty cell pre-fills `room_id` and `check_in` (formatted as `YYYY-MM-DD`), sets `isAddDialogOpen` state, and renders an add-booking `Dialog` containing `BookingForm` with `initialData`.
+- `handleAddBooking` async handler in `calendar/page.tsx` calls `api.createBooking`, refreshes booking list, and closes dialog on success.
+- New Vitest test files: `LanguageSwitcher.test.tsx`, `login-page.test.tsx`, `register-page.test.tsx`, `calendar-page.test.tsx`, `settings-form.test.tsx`.
+
+### Changed
+- `VersionIndicator` moved from `dashboard/layout.tsx` to root `app/[locale]/layout.tsx`. All screens (login, register, error pages, dashboard) now display version overlay.
+- `dashboard/layout.tsx` no longer imports or calls `getLatestVersion`; version resolution is exclusively in root layout.
+- `handleSaveEdit` in `calendar/page.tsx` deduplicated — triple `api.updateBooking` calls reduced to single call.
+- Global `next-intl` mock in `__tests__/setup.ts` extended with `useLocale` export to prevent missing mock errors across all test files.
+
+## [0.9.5] - 2026-06-21
+
+### Changed
+- Centralized project version into single root `VERSION.txt` file.
+- `frontend/app/actions/changelog.ts` `getLatestVersion()` now reads `VERSION.txt` directly instead of parsing `CHANGELOG.md`; falls back to `CHANGELOG.md` parsing if `VERSION.txt` is absent.
+- Removed redundant `frontend/version.txt` and `backend/version.txt` files.
+- Documented version strategy in `README.md` under new Versioning section.
+
+## [0.9.4] - 2026-06-21
+
+### Added
+- Added Privacy & GDPR card to Settings page with direct link to Privacy Policy page.
+- Added Save Settings button to Settings page header for immediate visibility, resolving UX issue where Version and Demo badges obscured the bottom save button.
+- Added `Go Back` button to Privacy Policy page footer.
+
+### Changed
+- Updated Privacy Policy language from `we`/`us`/`our` to first-person `I`/`my`.
+- Expanded GDPR section with concrete details specific to MiniHotel: guest profiles, booking schedules, room configurations, service orders, seasonal rates, and audit logs.
+- Added `pb-24` bottom padding to Settings page container to prevent floating Version/Demo indicators from covering the bottom save button.
+
+## [0.9.3] - 2026-06-21
+
+### Changed
+- Relocated pagination and slider controls to the top of the Changelog card to prevent vertical layout shifts when rendering entries of varying heights.
+- Removed key prop from the Changelog content container and added programmatic scroll resetting to eliminate layout reflows and flicker on page changes.
+
+## [0.9.2] - 2026-06-21
+
+### Added
+- Implemented client-side Demo Mode architecture utilizing browser `localStorage` for offline CRUD data persistence.
+- Added global fetch interceptor in `lib/api.ts` to seamlessly route backend REST requests to client-side mock handlers when demo mode is active.
+- Created `PrivacyPolicy` page providing clear information on GDPR compliance and client-side data handling.
+- Added interactive `Changelog` page in the dashboard featuring a version history slider and navigation pagination.
+- Added visual `DemoBadge` and dynamic `VersionIndicator` components to the dashboard layout.
+- Added comprehensive unit tests validating the behavior of all newly introduced components and features.
+- Updated `DemoBadge` to use a non-blinking, subtle dashed screen border style with a static indicator watermark.
+- Fixed client-side registration flow in demo mode by importing proxy fetch interception in `AuthContext.tsx`.
+- Implemented dynamic, persistent user registration and login fallback credentials inside `local-db.ts`.
+- Refactored Changelog page layout to take full screen width as an integrated dashboard component.
+- Corrected changelog translation keys in joke locales (`lc`, `pr`, `sh`) to match their humorous style.
+- Added environment variable configurations with `.env` and `.env.example` templates.
+- Enabled Flask backend port mapping via environment variables.
+
+### Changed
+- Standardized frontend layout responsiveness with fluid grid layout wrappers and overflow-x scroll tables.
+- Aligned SidebarHeader layout to match main content header.
+- Streamlined Changelog page visual structure to fit seamlessly into the dashboard theme.
+- Fixed DemoBadge position and visual style to match VersionIndicator.
+
 ## [0.9.1] - 2026-06-20
 
 ### Changed

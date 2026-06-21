@@ -10,6 +10,8 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { I18nAuditLoader } from "@/components/i18n-audit-loader"
 import { DemoBadge } from "@/components/DemoBadge"
+import { VersionIndicator } from "@/components/VersionIndicator"
+import { getLatestVersion } from "@/app/actions/changelog"
 import "../globals.css"
 
 const _geist = Geist({ subsets: ["latin"] })
@@ -33,6 +35,7 @@ export default async function RootLayout({
 }>) {
   const { locale } = await params;
   const messages = await getMessages();
+  const version = await getLatestVersion();
 
   return (
     <html lang={locale} className="dark" suppressHydrationWarning>
@@ -45,6 +48,7 @@ export default async function RootLayout({
               {children}
               <Toaster />
               <I18nAuditLoader />
+              <VersionIndicator version={version} />
             </SettingsProvider>
           </AuthProvider>
           <Analytics />

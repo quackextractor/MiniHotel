@@ -89,6 +89,8 @@ export default function CalendarPage() {
   const [selectedBooking, setSelectedBooking] = useState<Booking | null>(null)
   const [isEditing, setIsEditing] = useState(false)
   const [editFormData, setEditFormData] = useState<Partial<Booking>>({})
+  const [isAddDialogOpen, setIsAddDialogOpen] = useState(false)
+  const [newBookingData, setNewBookingData] = useState<Partial<Booking>>({})
 
   useEffect(() => {
     async function fetchCalendarData() {
@@ -167,11 +169,6 @@ export default function CalendarPage() {
     try {
       console.log("[v0] Saving booking edits...")
       await api.updateBooking(selectedBooking.id, payload)
-      console.log("[v0] Saving booking edits...")
-      await api.updateBooking(selectedBooking.id, payload)
-
-
-      await api.updateBooking(selectedBooking.id, payload)
       const updatedBookings = await api.getBookings()
       setBookings(Array.isArray(updatedBookings) ? updatedBookings : updatedBookings.items || [])
 
@@ -184,6 +181,19 @@ export default function CalendarPage() {
     } catch (err) {
       console.error("[v0] Error updating booking:", err)
       toast.error("Failed to update booking: " + (err instanceof Error ? err.message : "Unknown error"))
+    }
+  }
+
+  const handleAddBooking = async (payload: any) => {
+    try {
+      await api.createBooking(payload)
+      const updatedBookings = await api.getBookings()
+      setBookings(Array.isArray(updatedBookings) ? updatedBookings : updatedBookings.items || [])
+      setIsAddDialogOpen(false)
+      toast.success("Booking created successfully")
+    } catch (err) {
+      console.error("[v0] Error creating booking:", err)
+      toast.error("Failed to create booking: " + (err instanceof Error ? err.message : "Unknown error"))
     }
   }
 
@@ -330,12 +340,19 @@ export default function CalendarPage() {
                           className={cn(
                             "min-h-[60px] rounded-md border border-border p-2 transition-colors",
                             booking ? statusColors[statusKey] || statusColors.pending : "bg-muted/30 hover:bg-muted/50",
-                            booking ? "cursor-pointer hover:opacity-80" : ""
+                            booking ? "cursor-pointer hover:opacity-80" : "cursor-pointer"
                           )}
                           onClick={() => {
                             if (booking) {
                               setSelectedBooking(booking)
                               setIsEditing(false)
+                            } else {
+                              const y = date.getFullYear()
+                              const m = String(date.getMonth() + 1).padStart(2, "0")
+                              const d = String(date.getDate()).padStart(2, "0")
+                              const formattedDate = `${y}-${m}-${d}`
+                              setNewBookingData({ room_id: room.id, check_in: formattedDate })
+                              setIsAddDialogOpen(true)
                             }
                           }}
                         >
@@ -589,6 +606,26 @@ export default function CalendarPage() {
                   </DialogFooter>
                 </>
               )}
+            </div>
+          </DialogContent>
+        </Dialog>
+      )}
+      {isAddDialogOpen && (
+        <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
+          <DialogContent className="max-w-2xl">
+            <DialogHeader>
+              <DialogTitle>{tBookings("addBooking")}</DialogTitle>
+              <DialogDescription>{tBookings("bookingDetailsDescription")}</DialogDescription>
+            </DialogHeader>
+            <div className="grid gap-6 py-4">
+              <BookingForm
+                initialData={newBookingData}
+                rooms={rooms}
+                guests={guests}
+                services={services}
+                onSubmit={handleAddBooking}
+                onCancel={() => setIsAddDialogOpen(false)}
+              />
             </div>
           </DialogContent>
         </Dialog>

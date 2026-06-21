@@ -17,6 +17,7 @@ vi.mock('next-intl', () => {
         return `${prefix}${key}`;
       };
     },
+    useLocale: () => 'en',
   };
 });
 

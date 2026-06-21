@@ -1,12 +1,13 @@
 "use client"
 
 import { useState, useEffect } from 'react'
-import { useRouter } from '@/i18n/routing'
+import { useRouter, Link } from '@/i18n/routing'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 import { Loader2, AlertCircle } from 'lucide-react'
 import { useEnterNavigation } from '@/hooks/use-enter-navigation'
+import { LanguageSwitcher } from '@/components/LanguageSwitcher'
 
 import { Button } from "@/components/ui/button"
 import {
@@ -98,7 +99,8 @@ export default function RegisterPage() {
     }
 
     return (
-        <div className="flex h-screen w-full items-center justify-center bg-background">
+        <div className="relative flex h-screen w-full items-center justify-center bg-background">
+            <LanguageSwitcher />
             <Card className="w-full max-w-sm">
                 <CardHeader>
                     <CardTitle className="text-2xl">Create Admin Account</CardTitle>
@@ -151,11 +153,14 @@ export default function RegisterPage() {
                             )}
                         </div>
                     </CardContent>
-                    <CardFooter>
+                    <CardFooter className="flex flex-col gap-3">
                         <Button className="w-full" type="submit" disabled={loading}>
                             {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                             Register Admin
                         </Button>
+                        <Link href="/privacy" className="text-sm text-muted-foreground hover:underline">
+                            Privacy Policy
+                        </Link>
                     </CardFooter>
                 </form>
             </Card>

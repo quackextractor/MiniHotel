@@ -2,7 +2,25 @@
 
 All notable changes to the MiniHotel root repository are documented here.
 
+## [0.10.0] - 2026-06-21
+
+### Added
+- `LanguageSwitcher` component (`components/LanguageSwitcher.tsx`): client-side locale dropdown using `['en', 'cs', 'de']` from `i18n/routing.ts`, rendered at absolute top-right position.
+- `LanguageSwitcher` integrated into `login/page.tsx` and `register/page.tsx` so unauthenticated screens expose locale switching without requiring dashboard access.
+- Privacy Policy `Link` added to `CardFooter` of both `login/page.tsx` and `register/page.tsx`, pointing to `/privacy` with `text-muted-foreground hover:underline` styling.
+- "Clear Demo Data" button added to System Management card in `settings-form.tsx`, visible only when `NEXT_PUBLIC_DEMO_MODE=true`. Removes all 11 demo localStorage keys (`demo_rooms`, `demo_guests`, `demo_bookings`, `demo_housekeeping`, `demo_maintenance`, `demo_contacts`, `demo_seasonal_rates`, `demo_services`, `demo_room_groups`, `demo_audit_logs`, `demo_users`) while preserving theme settings, then reloads.
+- Empty calendar grid cells now accept `onClick` in `calendar/page.tsx`. Clicking an empty cell pre-fills `room_id` and `check_in` (formatted as `YYYY-MM-DD`), sets `isAddDialogOpen` state, and renders an add-booking `Dialog` containing `BookingForm` with `initialData`.
+- `handleAddBooking` async handler in `calendar/page.tsx` calls `api.createBooking`, refreshes booking list, and closes dialog on success.
+- New Vitest test files: `LanguageSwitcher.test.tsx`, `login-page.test.tsx`, `register-page.test.tsx`, `calendar-page.test.tsx`, `settings-form.test.tsx`.
+
+### Changed
+- `VersionIndicator` moved from `dashboard/layout.tsx` to root `app/[locale]/layout.tsx`. All screens (login, register, error pages, dashboard) now display version overlay.
+- `dashboard/layout.tsx` no longer imports or calls `getLatestVersion`; version resolution is exclusively in root layout.
+- `handleSaveEdit` in `calendar/page.tsx` deduplicated — triple `api.updateBooking` calls reduced to single call.
+- Global `next-intl` mock in `__tests__/setup.ts` extended with `useLocale` export to prevent missing mock errors across all test files.
+
 ## [0.9.5] - 2026-06-21
+
 
 ### Changed
 - Centralized project version into single root `VERSION.txt` file.

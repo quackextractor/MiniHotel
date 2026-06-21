@@ -87,3 +87,37 @@ Based on user review feedback documented in `docs/review.md`:
 ### Test Suite Updates
 - Updated `__tests__/PrivacyPolicy.test.tsx` with three tests: demo mode rendering, production mode rendering, and Go Back button navigation using a mocked `useRouter`.
 - Added `@/i18n/routing` mock to `__tests__/setup.ts` as a shared global mock for all test files.
+
+## 10. Unauthenticated Navigation, Storage Reset, Global Versioning & Calendar Bookings (v0.10.0)
+
+Based on the final specifications in `docs/review.md`, the following changes were made to complete all remaining system review items:
+
+### Language Switcher on Login/Registration
+- Created a standalone `LanguageSwitcher.tsx` component (`components/LanguageSwitcher.tsx`) that reads and switches locales using client-side React controls, utilizing the static array of supported languages `['en', 'cs', 'de']` from `@/i18n/routing`.
+- Placed the dropdown select absolutely in the top-right corner, allowing unauthenticated users to switch display language on the login and register cards before entering the application.
+
+### Clear Memory in Demo Mode
+- Integrated a new "Clear Demo Data" button into the System Management section of the settings form (`settings-form.tsx`), controlled dynamically by the `NEXT_PUBLIC_DEMO_MODE` environment variable.
+- On click, it loops through a predefined array of 11 specific localStorage keys (`demo_rooms`, `demo_guests`, `demo_bookings`, `demo_housekeeping`, `demo_maintenance`, `demo_contacts`, `demo_seasonal_rates`, `demo_services`, `demo_room_groups`, `demo_audit_logs`, `demo_users`) and removes them via `localStorage.removeItem(key)` before triggering `window.location.reload()`. This resets the mock database without wiping critical user configuration parameters (e.g. active color themes).
+
+### Global Version Indicator
+- Relocated the `VersionIndicator` component from the internal dashboard dashboard layout (`dashboard/layout.tsx`) to the global root layout (`app/[locale]/layout.tsx`).
+- It resolved the limitation where version details were not floating above registration pages, login screens, or error pages. The version is calculated via a server-side action (`getLatestVersion()`) and rendered once globally.
+
+### Privacy Policy Navigation on Authentication screens
+- Imported Next-intl `Link` from `@/i18n/routing` into `login/page.tsx` and `register/page.tsx`.
+- Embedded the Privacy Policy link inside the card footer (`<CardFooter>`) centered underneath the primary call-to-actions, styled with responsive hover-underline aesthetics.
+
+### Direct Booking Creation via Empty Calendar Space Click
+- Implemented `isAddDialogOpen` and `newBookingData` states inside the main calendar viewer page (`calendar/page.tsx`).
+- Integrated click listeners onto empty background grid cell container elements. Clicking a vacant slot constructs check-in parameters, formats dates into standard ISO format (`YYYY-MM-DD`), maps the corresponding room ID, and renders a booking modal.
+- Passed initial payload mapping to the `<BookingForm>` element's `initialData` property, allowing rapid booking placement without manual field inputs.
+
+### Unit Testing & Coverage
+- Implemented five new testing files to verify all five implementations:
+  - `LanguageSwitcher.test.tsx` checking layout, locale parsing, and routing hooks.
+  - `login-page.test.tsx` and `register-page.test.tsx` verifying language select and policy link layouts.
+  - `settings-form.test.tsx` confirming that data purge is hidden in production mode, visible in demo mode, and targets only the correct database keys.
+  - `calendar-page.test.tsx` verifying grid renders, empty cell click opens the booking form pre-populated with dates, and triggers correct submission parameters.
+- Extended the global `next-intl` stub in `__tests__/setup.ts` to include `useLocale` to avoid peer-dependency mocking conflicts.
+
