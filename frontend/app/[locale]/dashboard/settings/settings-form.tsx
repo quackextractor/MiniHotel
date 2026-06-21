@@ -134,12 +134,25 @@ export default function SettingsForm({ availableLocales }: SettingsFormProps) {
     }
 
     return (
-        <div className="flex flex-1 flex-col gap-4">
+        <div className="flex flex-1 flex-col gap-4 pb-24">
             <div className="flex items-center justify-between">
                 <div>
                     <h1 className="text-3xl font-bold tracking-tight">{t("settings")}</h1>
                     <p className="text-muted-foreground">{t("configureSystem")}</p>
                 </div>
+                <Button onClick={handleSave} className="gap-2" disabled={saved}>
+                    {saved ? (
+                        <>
+                            <CheckCircle2 className="size-4" />
+                            {t("settingsSaved")}
+                        </>
+                    ) : (
+                        <>
+                            <Save className="size-4" />
+                            {t("saveSettings")}
+                        </>
+                    )}
+                </Button>
             </div>
 
             <div className="grid gap-4 md:grid-cols-2">
@@ -413,6 +426,27 @@ export default function SettingsForm({ availableLocales }: SettingsFormProps) {
                             </p>
                             <Button onClick={handleImportData} disabled={importLoading} variant="outline">
                                 {importLoading ? "Importing..." : t("importSampleData")}
+                            </Button>
+                        </div>
+                    </CardContent>
+                </Card>
+
+                <Card>
+                    <CardHeader>
+                        <div className="flex items-center gap-2">
+                            <Shield className="size-5 text-primary" />
+                            <CardTitle>Privacy & GDPR</CardTitle>
+                        </div>
+                        <CardDescription>View compliance and data usage statements</CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                        <div className="space-y-2">
+                            <Label>Privacy Policy</Label>
+                            <p className="text-sm text-muted-foreground mb-4">
+                                Review how MiniHotel manages guest profiles, booking schedules, rates, and audit logs.
+                            </p>
+                            <Button onClick={() => router.push("/privacy")} variant="outline" className="w-full">
+                                View Privacy Policy
                             </Button>
                         </div>
                     </CardContent>

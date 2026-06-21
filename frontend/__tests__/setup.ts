@@ -34,6 +34,22 @@ vi.mock('next/navigation', () => {
   };
 });
 
+// Mock @/i18n/routing
+vi.mock('@/i18n/routing', () => {
+  return {
+    useRouter: () => ({
+      push: vi.fn(),
+      replace: vi.fn(),
+      prefetch: vi.fn(),
+      back: vi.fn(),
+    }),
+    usePathname: () => '/en/dashboard',
+    Link: ({ children, href, ...props }: any) => children,
+    redirect: vi.fn(),
+    getPathname: vi.fn(),
+  };
+});
+
 // Mock ResizeObserver for JSDOM
 class ResizeObserverMock {
   observe() {}

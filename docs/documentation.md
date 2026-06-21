@@ -70,4 +70,20 @@ We implemented a client-side Demo Mode to allow the frontend to run fully standa
 - **Version Indicator Alignment**: Shifted the version indicator to the bottom-right corner, aligning it directly above the Demo Mode indicator (if active) or in its place (if inactive).
 - **Changelog Layout Overhaul**: Standardized the container design of the Changelog viewer page to render as a fully integrated dashboard page component, separating page headers from core content card blocks. The pagination and slider controls are positioned at the top of the card (above the scrollable content) to avoid vertical shifts from entries of varying heights. Additionally, the component uses programmatic scroll resetting (via a React ref and `useEffect`) rather than a wrapper key to ensure clean transitions to the top of new entries without layout reflows or flickering.
 
+## 9. Privacy Policy Specificity & Settings UX (v0.9.4)
 
+Based on user review feedback documented in `docs/review.md`:
+
+### Privacy Policy Improvements
+- Replaced generic first-person plural (`we`, `us`, `our`) with singular (`I`, `my`) throughout `PrivacyPolicy.tsx`.
+- Expanded GDPR section from a vague two-sentence description to concrete, MiniHotel-specific language: guest profiles (names, emails, phones), booking schedules, room configurations, seasonal rates, service orders, and action audit logs.
+- Added a **Go Back** button in a `CardFooter` at the bottom of the Privacy Policy card, using `useRouter().back()` from `@/i18n/routing`.
+
+### Settings Page UX Fixes
+- Added a **Save Settings** button at the top-right of the Settings page header. This resolves the UX issue where the floating `VersionIndicator` and `DemoBadge` components at the bottom-right covered the only save button.
+- Added `pb-24` bottom padding to the Settings form container to ensure the bottom save button remains accessible even when floating indicators are present.
+- Added a **Privacy & GDPR** card at the bottom of the Settings grid, containing a `View Privacy Policy` button that routes to `/privacy`. This gives users direct access to the policy from within the settings screen.
+
+### Test Suite Updates
+- Updated `__tests__/PrivacyPolicy.test.tsx` with three tests: demo mode rendering, production mode rendering, and Go Back button navigation using a mocked `useRouter`.
+- Added `@/i18n/routing` mock to `__tests__/setup.ts` as a shared global mock for all test files.

@@ -2,6 +2,18 @@
 
 All notable changes to the MiniHotel root repository are documented here.
 
+## [0.9.4] - 2026-06-21
+
+### Added
+- Added Privacy & GDPR card to Settings page with direct link to Privacy Policy page.
+- Added Save Settings button to Settings page header for immediate visibility, resolving UX issue where Version and Demo badges obscured the bottom save button.
+- Added `Go Back` button to Privacy Policy page footer.
+
+### Changed
+- Updated Privacy Policy language from `we`/`us`/`our` to first-person `I`/`my`.
+- Expanded GDPR section with concrete details specific to MiniHotel: guest profiles, booking schedules, room configurations, service orders, seasonal rates, and audit logs.
+- Added `pb-24` bottom padding to Settings page container to prevent floating Version/Demo indicators from covering the bottom save button.
+
 ## [0.9.3] - 2026-06-21
 
 ### Changed
