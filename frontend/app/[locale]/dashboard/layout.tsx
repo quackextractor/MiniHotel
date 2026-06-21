@@ -3,12 +3,16 @@ import { SidebarProvider, SidebarInset, SidebarTrigger } from "@/components/ui/s
 import { AppSidebar } from "@/components/app-sidebar"
 import { Separator } from "@/components/ui/separator"
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink } from "@/components/ui/breadcrumb"
+import { getLatestVersion } from "@/app/actions/changelog"
+import { VersionIndicator } from "@/components/VersionIndicator"
 
-export default function DashboardLayout({
+export default async function DashboardLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const version = await getLatestVersion()
+
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -26,6 +30,7 @@ export default function DashboardLayout({
         </header>
         <main className="flex flex-1 flex-col gap-4 p-4">{children}</main>
       </SidebarInset>
+      <VersionIndicator version={version} />
     </SidebarProvider>
   )
 }

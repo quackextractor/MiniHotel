@@ -2,6 +2,16 @@
 
 All notable changes to the MiniHotel root repository are documented here.
 
+## [0.9.2] - 2026-06-21
+
+### Added
+- Implemented client-side Demo Mode architecture utilizing browser `localStorage` for offline CRUD data persistence.
+- Added global fetch interceptor in `lib/api.ts` to seamlessly route backend REST requests to client-side mock handlers when demo mode is active.
+- Created `PrivacyPolicy` page providing clear information on GDPR compliance and client-side data handling.
+- Added interactive `Changelog` page in the dashboard featuring a version history slider and navigation pagination.
+- Added visual `DemoBadge` and dynamic `VersionIndicator` components to the dashboard layout.
+- Added comprehensive unit tests validating the behavior of all newly introduced components and features.
+
 ## [0.9.1] - 2026-06-20
 
 ### Changed

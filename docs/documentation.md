@@ -41,4 +41,16 @@ We implemented comprehensive unit tests for all custom components under `fronten
 6. **`ThemeProvider`**: Assures child inclusion and wrapper propagation.
 7. **`api`**: Fixes backend endpoint mocking for paginated bookings.
 
-All 22 unit tests run synchronously via `npm run test` and pass with 100% success.
+## 5. Demo Mode Architecture & Interception
+
+We implemented a client-side Demo Mode to allow the frontend to run fully standalone in the browser without any backend process.
+
+### Components Implemented:
+- **`lib/local-db.ts`**: Implements a browser `localStorage` mock database mimicking Flask backend endpoints, including relational object nesting (injecting room and guest objects into booking payloads) and dynamic occupancy statistics.
+- **`lib/api.ts` Fetch Interceptor**: Monkey-patches browser `window.fetch` at initialization time if `process.env.NEXT_PUBLIC_DEMO_MODE === 'true'`. It intercepts all `/api/` calls and redirects them to `handleDemoFetch` in `local-db.ts`.
+- **`DemoBadge`**: Renders a pulse-animated red badge at the top-right corner to indicate active Demo Mode.
+- **`VersionIndicator`**: Renders a fixed bottom-left component dynamically displaying the current project version parsed from `CHANGELOG.md` via a Next.js server action.
+- **`PrivacyPolicy`**: Displays user data rights and GDPR compliance warnings, tailored for browser storage when demo mode is active.
+- **`ChangelogViewer`**: Parses root `CHANGELOG.md` and displays entries via a paginated page with a history slider.
+- **`__tests__/` Unit Tests**: Created Vitest files confirming correct state routing, conditionally rendering UI elements, and paginating changelog chunks.
+

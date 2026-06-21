@@ -1,3 +1,16 @@
+import { handleDemoFetch } from "./local-db"
+
+if (typeof window !== "undefined" && process.env.NEXT_PUBLIC_DEMO_MODE === "true") {
+  const originalFetch = window.fetch
+  window.fetch = async function (input, init) {
+    const url = typeof input === "string" ? input : (input as Request).url
+    if (url.includes("/api/")) {
+      return handleDemoFetch(url, init)
+    }
+    return originalFetch(input, init)
+  }
+}
+
 const API_BASE_URL = "/api"
 
 export async function fetchAPI(endpoint: string, options?: RequestInit) {

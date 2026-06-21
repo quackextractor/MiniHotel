@@ -9,6 +9,7 @@ import { Toaster } from "@/components/ui/sonner"
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { I18nAuditLoader } from "@/components/i18n-audit-loader"
+import { DemoBadge } from "@/components/DemoBadge"
 import "../globals.css"
 
 const _geist = Geist({ subsets: ["latin"] })
@@ -40,6 +41,7 @@ export default async function RootLayout({
           <AuthProvider>
             <SettingsProvider>
               <AutoLogoutManager />
+              <DemoBadge />
               {children}
               <Toaster />
               <I18nAuditLoader />
