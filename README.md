@@ -1,7 +1,7 @@
 # Minihotel Management System
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Version](https://img.shields.io/badge/version-0.10.4-blue.svg)](https://github.com/quackextractor/MiniHotel)
+[![Version](https://img.shields.io/badge/version-0.10.5-blue.svg)](https://github.com/quackextractor/MiniHotel)
 
 A comprehensive hotel management system comprising a Next.js frontend dashboard and a Python Flask REST API backend. This monorepo contains the complete suite of tools required to manage rooms, guests, bookings, and daily hotel operations.
 

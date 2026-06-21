@@ -173,6 +173,14 @@ Based on the final requirements in `docs/review.md` to modernize the repository 
 - Embedded the `LanguageSwitcher` in the privacy policy page to allow guest users to change their active language.
 - Added `PrivacyPolicy.test.tsx` test cases to verify localized titles, notices, and switcher components.
 
+## 15. URL Locale Lock Mechanism (v0.10.5)
+
+### Active Language Redirection
+- Modified `SettingsProvider` inside `settings-context.tsx` to lock the URL locale based on the active language setting stored in `localStorage`.
+- Automatically redirects/replaces URL paths back to the saved language route if the user attempts to forcibly change the URL prefix manually.
+- Integrated `updateSettings` inside `LanguageSwitcher.tsx` to ensure intentional dropdown switches update the saved active language safely without triggering the lock mechanism redirect.
+
+
 
 
 

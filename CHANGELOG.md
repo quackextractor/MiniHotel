@@ -2,6 +2,12 @@
 
 All notable changes to the MiniHotel root repository are documented here.
 
+## [0.10.5] - 2026-06-21
+
+### Fixed
+- Added a URL locale lock redirection mechanism inside `SettingsProvider` to automatically redirect users back to their active/saved language if they forcibly modify the URL locale prefix.
+- Updated `LanguageSwitcher` to sync selected languages to the regional settings `localStorage` object, preventing redirect loops during dropdown switches.
+
 ## [0.10.4] - 2026-06-21
 
 ### Added

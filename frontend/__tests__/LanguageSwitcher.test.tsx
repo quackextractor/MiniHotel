@@ -7,6 +7,13 @@ vi.mock('next/navigation', () => ({
 }))
 
 const mockReplace = vi.fn()
+const mockUpdateSettings = vi.fn()
+
+vi.mock('@/lib/settings-context', () => ({
+  useSettings: () => ({
+    updateSettings: mockUpdateSettings
+  })
+}))
 
 vi.mock('@/i18n/routing', () => ({
   useRouter: () => ({ replace: mockReplace, push: vi.fn() }),

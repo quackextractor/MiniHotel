@@ -1,7 +1,8 @@
 "use client"
 
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react"
-// translations import removed
+import { useRouter, usePathname } from "@/i18n/routing"
+import { useParams } from "next/navigation"
 
 export interface Settings {
   language: string // simple string now, was Language
@@ -33,6 +34,10 @@ const SettingsContext = createContext<SettingsContextType | undefined>(undefined
 export function SettingsProvider({ children }: { children: ReactNode }) {
   const [settings, setSettings] = useState<Settings>(defaultSettings)
   const [isLoaded, setIsLoaded] = useState(false)
+  const router = useRouter()
+  const pathname = usePathname()
+  const params = useParams()
+  const currentLocale = params?.locale as string
 
   // Load settings from localStorage on mount
   useEffect(() => {
@@ -44,9 +49,18 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
       } catch (error) {
         console.error("Failed to parse settings:", error)
       }
+    } else if (currentLocale) {
+      setSettings((prev) => ({ ...prev, language: currentLocale }))
     }
     setIsLoaded(true)
-  }, [])
+  }, [currentLocale])
+
+  // Redirect if URL locale doesn't match active settings language
+  useEffect(() => {
+    if (isLoaded && currentLocale && settings.language && currentLocale !== settings.language) {
+      router.replace(pathname, { locale: settings.language })
+    }
+  }, [isLoaded, currentLocale, settings.language, pathname, router])
 
   // Save settings to localStorage whenever they change
   useEffect(() => {
