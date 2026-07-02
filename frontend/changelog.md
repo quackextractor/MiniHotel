@@ -3,6 +3,17 @@
 All notable changes to the MiniHotel frontend are documented here.
 Versioning follows [Semantic Versioning 2.0.0](https://semver.org/).
 
+## [0.10.7] - 2026-07-02
+
+### Changed
+- Updated README.md installation and deployment instructions from npm to pnpm.
+
+## [0.10.6] - 2026-06-22
+
+### Added
+- Added service messages and addBooking translation keys.
+- Added firstDayOfWeek setting, localization, and testing.
+
 ## [0.10.5] - 2026-06-21
 
 ### Fixed
