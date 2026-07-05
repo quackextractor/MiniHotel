@@ -7,7 +7,7 @@ import { useSearchParams } from 'next/navigation'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
-import { Loader2, AlertCircle } from 'lucide-react'
+import { Loader2, AlertCircle, Github } from 'lucide-react'
 import { LanguageSwitcher } from '@/components/LanguageSwitcher'
 
 import { Button } from "@/components/ui/button"
@@ -168,6 +168,10 @@ export default function LoginPage() {
                         <Link href="/privacy" className="text-sm text-muted-foreground hover:underline">
                             {t("privacyPolicy")}
                         </Link>
+                        <a href="https://github.com/quackextractor/MiniHotel" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:underline flex items-center gap-1.5 mt-1">
+                            <Github className="h-4 w-4" />
+                            GitHub Repository
+                        </a>
                     </CardFooter>
                 </form>
             </Card>
