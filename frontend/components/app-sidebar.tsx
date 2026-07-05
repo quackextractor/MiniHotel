@@ -1,5 +1,5 @@
 "use client"
-import { Calendar, DoorOpen, Home, BarChart3, CalendarDays, Settings, Users, LogOut, FileText, ConciergeBell, Percent, Sparkles, History, Github } from "lucide-react"
+import { Calendar, DoorOpen, Home, BarChart3, CalendarDays, Settings, Users, LogOut, FileText, ConciergeBell, Percent, Sparkles, History } from "lucide-react"
 import { useSettings } from "@/lib/settings-context"
 import { useAuth } from "@/contexts/AuthContext"
 import { useTranslations } from "next-intl"
@@ -113,14 +113,6 @@ export function AppSidebar() {
       </SidebarContent>
       <SidebarFooter className="border-t border-sidebar-border p-4">
         <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton asChild>
-              <a href="https://github.com/quackextractor/MiniHotel" target="_blank" rel="noopener noreferrer">
-                <Github className="size-4" />
-                <span>GitHub Repository</span>
-              </a>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
           <SidebarMenuItem>
             <SidebarMenuButton asChild>
               <a href="/dashboard/settings">
